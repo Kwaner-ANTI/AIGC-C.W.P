@@ -1,8 +1,26 @@
 {
-  "description": "ANIMA Aesthetic v1.1 first image, no reference adapter",
+  "description": "ANIMA Aesthetic v1.1 image generation, with Turbo LoRA dependency used by C.A-VT1 workflow",
   "models": [
-    {"repo":"circlestone-labs/Anima","source":"split_files/diffusion_models/anima-aesthetic-v1.1.safetensors","target":"diffusion_models/anima-aesthetic-v1.1.safetensors"},
-    {"repo":"circlestone-labs/Anima","source":"split_files/text_encoders/qwen_3_06b_base.safetensors","target":"text_encoders/qwen_3_06b_base.safetensors"},
-    {"repo":"circlestone-labs/Anima","source":"split_files/vae/qwen_image_vae.safetensors","target":"vae/qwen_image_vae.safetensors"}
-  ], "nodes": []
+    {
+      "repo": "circlestone-labs/Anima",
+      "source": "split_files/diffusion_models/anima-aesthetic-v1.1.safetensors",
+      "target": "diffusion_models/anima-aesthetic-v1.1.safetensors"
+    },
+    {
+      "repo": "circlestone-labs/Anima",
+      "source": "split_files/text_encoders/qwen_3_06b_base.safetensors",
+      "target": "text_encoders/qwen_3_06b_base.safetensors"
+    },
+    {
+      "repo": "circlestone-labs/Anima",
+      "source": "split_files/vae/qwen_image_vae.safetensors",
+      "target": "vae/qwen_image_vae.safetensors"
+    },
+    {
+      "repo": "circlestone-labs/Anima-Official-LoRAs",
+      "source": "anima-turbo-lora-v0.2.safetensors",
+      "target": "loras/anima-turbo-lora-v0.2.safetensors"
+    }
+  ],
+  "nodes": []
 }
