@@ -1,6 +1,10 @@
 # Workflow source placement
 
-This public repository does **not** contain the user's original ComfyUI canvas JSON files; those private source materials are not part of the public deployment package. Export the **UI workflow** JSON files from the working H3 and image ComfyUI sessions and commit them here after checking for private paths/tokens.
+The user's working ANIMA Aesthetic v1.1 UI workflow `C.A-VT1.json` is retained unchanged in `workflows/local/` on the user's computer. This directory is Git-ignored: the workflow and all positive/negative prompts are private by the user's explicit choice and are not included in public clones.
+
+After `bash bootstrap.sh images-anima`, open the template's existing ComfyUI service and drag the original local JSON into the canvas. Retain its models, prompts, Steps/CFG control connections, Turbo switch, LoRA branch, and all original links. The script restores the four model dependencies; it does not upload or import a workflow. Back up the local JSON separately before moving computers or destroying an instance.
+
+The original Vast.ai RTX 4090 instance generated an image successfully according to the user. A fresh instance restored from this repository has not yet passed GPU inference. H3 and MOSS user-customized workflow JSON files have not been supplied here.
 
 Official UI templates to import and adapt (not replacements for your customized workflows):
 

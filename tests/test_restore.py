@@ -30,8 +30,11 @@ class RestoreTests(TestCase):
             with mock.patch.object(restore, 'hf_hub_download', side_effect=fake_download):
                 restore.restore_models('images-anima', ROOT, assets, comfy, sys.executable)
                 restore.restore_models('images-anima', ROOT, assets, comfy, sys.executable)
-            self.assertEqual(len(calls), 3)
+            self.assertEqual(len(calls), 4)
             self.assertTrue((comfy / 'models/diffusion_models/anima-aesthetic-v1.1.safetensors').is_symlink())
+            lora = comfy / 'models/loras/anima-turbo-lora-v0.2.safetensors'
+            self.assertTrue(lora.is_symlink())
+            self.assertEqual(lora.resolve(), assets / 'repos/circlestone-labs__Anima-Official-LoRAs/anima-turbo-lora-v0.2.safetensors')
 
     def test_existing_model_file_avoids_network_re_download(self):
         with TemporaryDirectory() as td:
@@ -49,7 +52,7 @@ class RestoreTests(TestCase):
                     return str(destination)
                 download.side_effect = fake_download
                 restore.restore_models('images-anima', ROOT, assets, comfy, sys.executable)
-            self.assertEqual(download.call_count, 2)
+            self.assertEqual(download.call_count, 3)
             self.assertEqual(model.read_bytes(), b'user-provided-image-model')
 
     def test_vlm_download_is_full_repository_and_respects_selected_id(self):
