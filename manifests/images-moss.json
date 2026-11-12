@@ -1,0 +1,8 @@
+{
+  "description": "MOSS Image SFT BF16 text-to-image with Qwen3.5 9B INT8 encoder",
+  "models": [
+    {"repo":"Comfy-Org/MOSS-Image","source":"diffusion_models/moss_image_sft_bf16.safetensors","target":"diffusion_models/moss_image_sft_bf16.safetensors"},
+    {"repo":"Comfy-Org/MOSS-Image","source":"text_encoders/qwen3.5_9b_int8_convrot.safetensors","target":"text_encoders/qwen3.5_9b_int8_convrot.safetensors"},
+    {"repo":"Comfy-Org/MOSS-Image","source":"vae/flux2-vae_small.safetensors","target":"vae/flux2-vae_small.safetensors"}
+  ], "nodes": []
+}
