@@ -1,0 +1,10 @@
+{
+  "description": "MOSS SFT BF16 and Chenkin-x edit patch, when multi-reference editing is needed",
+  "models": [
+    {"repo":"Comfy-Org/MOSS-Image","source":"diffusion_models/moss_image_sft_bf16.safetensors","target":"diffusion_models/moss_image_sft_bf16.safetensors"},
+    {"repo":"Comfy-Org/MOSS-Image","source":"text_encoders/qwen3.5_9b_int8_convrot.safetensors","target":"text_encoders/qwen3.5_9b_int8_convrot.safetensors"},
+    {"repo":"Comfy-Org/MOSS-Image","source":"vae/flux2-vae_small.safetensors","target":"vae/flux2-vae_small.safetensors"},
+    {"repo":"chinoll/Moss-Image-Edit","source":"adapter_model.safetensors","target":"model_patches/moss-edit/adapter_model.safetensors"},
+    {"repo":"chinoll/Moss-Image-Edit","source":"adapter_config.json","target":"model_patches/moss-edit/adapter_config.json"}
+  ], "nodes": [{"name":"ComfyUI-Moss-Image-Edit","url":"https://github.com/Chenkin-x/ComfyUI-Moss-Image-Edit.git"}]
+}
