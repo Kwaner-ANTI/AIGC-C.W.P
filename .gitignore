@@ -1,0 +1,46 @@
+# Local environment and credentials (never commit real values)
+.env
+.env.*
+!.env.example
+**/.ssh/
+*.pem
+*.key
+*.p12
+*.pfx
+id_rsa
+id_ed25519
+id_ecdsa
+id_dsa
+auth.json
+credentials.json
+secrets.json
+token.json
+
+# Project-private context (retain in the original offline archive)
+/docs/source/
+/ENGINEERING_DEPLOYMENT_*.md
+
+# Local runtime data and generated output
+**/__pycache__/
+*.pyc
+*.db
+*.db-*
+*.sqlite
+*.sqlite3
+*.log
+*.safetensors
+*.gguf
+*.pt
+*.pth
+*.ckpt
+*.png
+*.jpg
+*.jpeg
+*.webp
+*.mp4
+*.mov
+*.mkv
+*.wav
+*.flac
+input/
+output/
