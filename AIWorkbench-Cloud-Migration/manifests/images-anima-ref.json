@@ -1,8 +1,0 @@
-{
-  "description": "ANIMA Base v1.0 + reference adapter node, separate from Aesthetic v1.1",
-  "models": [
-    {"repo":"circlestone-labs/Anima","source":"split_files/diffusion_models/anima-base-v1.0.safetensors","target":"diffusion_models/anima-base-v1.0.safetensors"},
-    {"repo":"circlestone-labs/Anima","source":"split_files/text_encoders/qwen_3_06b_base.safetensors","target":"text_encoders/qwen_3_06b_base.safetensors"},
-    {"repo":"circlestone-labs/Anima","source":"split_files/vae/qwen_image_vae.safetensors","target":"vae/qwen_image_vae.safetensors"}
-  ], "nodes": [{"name":"ComfyUI-Anima-Ref-Adapter","url":"https://github.com/ElectronGirl/ComfyUI-Anima-Ref-Adapter.git"}]
-}

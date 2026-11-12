@@ -1,8 +1,0 @@
-{
-  "description": "MiniMax H3 production Ref2VA full INT8 ConvRot UNet + INT8 Qwen3-VL text encoder; 20-step workflow", 
-  "models": [
-    {"repo":"Comfy-Org/MiniMax-H3","source":"diffusion_models/minimax_h3_ref2va_int8_convrot.safetensors","target":"diffusion_models/minimax_h3_ref2va_int8_convrot.safetensors"},
-    {"repo":"Comfy-Org/MiniMax-H3","source":"text_encoders/qwen3vl_32b_minimax_h3_int8_convrot.safetensors","target":"text_encoders/qwen3vl_32b_minimax_h3_int8_convrot.safetensors"},
-    {"repo":"Comfy-Org/MiniMax-H3","source":"vae/minimax_h3_video_vae_fp16.safetensors","target":"vae/minimax_h3_video_vae_fp16.safetensors"}
-  ], "nodes": []
-}

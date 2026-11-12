@@ -1,7 +1,0 @@
-{
-  "description": "Optional MiniMax H3 Fun ControlNet Union BF16 patch; only when selected by an existing workflow",
-  "models": [
-    {"repo":"Comfy-Org/MiniMax-H3","source":"model_patches/minimax_h3_fun_controlnet_union_pruned_bf16.safetensors","target":"model_patches/minimax_h3_fun_controlnet_union_pruned_bf16.safetensors"}
-  ],
-  "nodes": []
-}
