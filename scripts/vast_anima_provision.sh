@@ -55,7 +55,7 @@ fi
 read -r -a PROFILES <<< "${AIW_PROFILES:-images-anima images-anima-ref}"
 for profile in "${PROFILES[@]}"; do
   case "$profile" in
-    images-anima|images-anima-ref|images-moss|images-moss-edit|images-flux2-dev) ;;
+    images-anima|images-anima-ref|images-moss|images-moss-edit|images-flux2-dev|images-krea2-turbo) ;;
     *) echo "Unsupported image profile: $profile" >&2; exit 2 ;;
   esac
   echo "[profile] $profile"
