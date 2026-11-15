@@ -1,0 +1,21 @@
+{
+  "description": "FLUX.2 Dev 32B FP8 mixed + Mistral FP8 + Flux2 VAE (ComfyUI image workload; CPU offload on 24GB GPU)",
+  "models": [
+    {
+      "repo": "Comfy-Org/flux2-dev",
+      "source": "split_files/diffusion_models/flux2_dev_fp8mixed.safetensors",
+      "target": "diffusion_models/flux2_dev_fp8mixed.safetensors"
+    },
+    {
+      "repo": "Comfy-Org/flux2-dev",
+      "source": "split_files/text_encoders/mistral_3_small_flux2_fp8.safetensors",
+      "target": "text_encoders/mistral_3_small_flux2_fp8.safetensors"
+    },
+    {
+      "repo": "Comfy-Org/flux2-dev",
+      "source": "split_files/vae/flux2-vae.safetensors",
+      "target": "vae/flux2-vae.safetensors"
+    }
+  ],
+  "nodes": []
+}
