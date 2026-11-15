@@ -4,6 +4,28 @@
   "last_link_id": 0,
   "nodes": [
     {
+      "id": 101,
+      "type": "MarkdownNote",
+      "pos": [
+        -1140,
+        1470
+      ],
+      "size": [
+        820,
+        900
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "title": "AIW | 参数·LoRA·Seed·D.R.GMV",
+      "properties": {},
+      "widgets_values": [
+        "# AIW | Krea-2 · Style Reference / LoRA / Seed\n## 当前真实画布\n- `krea2_turbo_int8_convrot.safetensors` + `qwen3vl_4b_fp8_scaled.safetensors` + `qwen_image_vae.safetensors`。\n- 原生专用 `krea2_style_reference.safetensors`，strength 1；Euler + simple 8 steps。它承载图片风格参考机制，**不是**用于任意替换的普通画风 LoRA。\n- 保持 Style Reference 原作者子图、参考输入和原采样线路；普通角色/风格 LoRA 若要叠加，先复制画布做对照，再看是否影响参考一致性。未实测前不得宣称成功。\n## LoRA 可逆使用（本页是知识板，不改变节点）\n- 外置 LoRA 可能共同影响角色、画风、衣物和光影，并非互不干扰的滤镜。原生 → 单条 → 组合逐步对照，同条件逐一开关定位冲突。\n- 关闭对应开关、strength=0 或绕过 Loader 可撤销该外置 LoRA；恢复完整原生效果还须核对 Ref/Edit/Turbo、VAE、采样参数。已 Merge/Fuse 保存的模型必须重新载入未合并原底模。\n- 不同底模/模型架构的 LoRA 不能直接互换；LoRA strength 不是画风百分比。\n## 历史有效 Seed · 创作经验（不是找 Seed 教程）\n- 优先登记用户**以前实际保存、观察到有效**的 Seed，写清它曾改善的机位/人物/构图/光影/队形及条件；单次经验也值得保留。\n- 记录：`Shot | Seed | 底模/LoRA:强度/开关 | Prompt/参考 | 采样/steps/CFG/尺寸/VAE | 曾观察的效果 | PNG/MP4或笔记 | 状态`。\n- 状态明确区分「已绑定输出」「用户历史经验待关联」「仅 JSON 控件缓存」；即使失去旧 /history，也可如实保留用户的早期记录。\n- 本仓库当前资料**没有可核对的历史优秀 Seed 具体数值**，这里不伪造。固定某个 Seed 不保证换模型、LoRA 或参考后仍有同样效果。\n## 已执行优秀 Seed\n- **待回填用户旧记录**。RandomNoise 缓存数值不等于已验证的历史优质 Seed。"
+      ]
+    },
+    {
       "id": 100,
       "type": "919de0b5-6d2b-4e3f-924a-11e077547229",
       "pos": [
