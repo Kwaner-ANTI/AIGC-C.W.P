@@ -1,0 +1,31 @@
+{
+  "description": "Krea-2 Turbo INT8 ConvRot; one set of model weights for official T2I, official style reference and local img2img trial",
+  "models": [
+    {
+      "repo": "Comfy-Org/Krea-2",
+      "source": "diffusion_models/krea2_turbo_int8_convrot.safetensors",
+      "target": "diffusion_models/krea2_turbo_int8_convrot.safetensors"
+    },
+    {
+      "repo": "Comfy-Org/Krea-2",
+      "source": "text_encoders/qwen3vl_4b_fp8_scaled.safetensors",
+      "target": "text_encoders/qwen3vl_4b_fp8_scaled.safetensors"
+    },
+    {
+      "repo": "Comfy-Org/Krea-2",
+      "source": "vae/qwen_image_vae.safetensors",
+      "target": "vae/qwen_image_vae.safetensors"
+    },
+    {
+      "repo": "Comfy-Org/Krea-2",
+      "source": "loras/krea2_style_reference.safetensors",
+      "target": "loras/krea2_style_reference.safetensors"
+    },
+    {
+      "repo": "Comfy-Org/Krea-2",
+      "source": "loras/krea2_darkbrush.safetensors",
+      "target": "loras/krea2_darkbrush.safetensors"
+    }
+  ],
+  "nodes": []
+}
