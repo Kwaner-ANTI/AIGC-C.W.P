@@ -1,0 +1,16 @@
+{
+  "description": "Optional H3 LightX2V Ref2VA v1.1 768p 8-step weight + rgthree Power LoRA/Seed UI; requires h3-int8-int8 and h3-audio profiles. New workflow is not GPU-validated.",
+  "models": [
+    {
+      "repo": "lightx2v/Minimax-h3-Turbo",
+      "source": "minimax_h3_ref2v_turbo_8step_v1.1_768p_comfyui_bf16.safetensors",
+      "target": "loras/minimax_h3_ref2v_turbo_8step_v1.1_768p_comfyui_bf16.safetensors"
+    }
+  ],
+  "nodes": [
+    {
+      "name": "rgthree-comfy",
+      "url": "https://github.com/rgthree/rgthree-comfy.git"
+    }
+  ]
+}
