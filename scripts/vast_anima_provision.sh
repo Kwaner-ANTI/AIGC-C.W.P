@@ -50,11 +50,12 @@ if [[ -d "$WORKFLOW_SRC" ]]; then
 fi
 
 # Models/nodes: delegate to the existing bootstrap/manifest mechanism.
-# Choose 'images-anima', 'images-anima-ref', or both via AIW_PROFILES.
+# Select only the image models used this session via AIW_PROFILES.
+# FLUX.2 Dev on RTX 4090 requires CPU offload and sufficient system RAM.
 read -r -a PROFILES <<< "${AIW_PROFILES:-images-anima images-anima-ref}"
 for profile in "${PROFILES[@]}"; do
   case "$profile" in
-    images-anima|images-anima-ref) ;;
+    images-anima|images-anima-ref|images-moss|images-moss-edit|images-flux2-dev) ;;
     *) echo "Unsupported image profile: $profile" >&2; exit 2 ;;
   esac
   echo "[profile] $profile"
