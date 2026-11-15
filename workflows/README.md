@@ -4,7 +4,26 @@ The user's working ANIMA Aesthetic v1.1 UI workflow `C.A-VT1.json` is retained u
 
 After `bash bootstrap.sh images-anima`, open the template's existing ComfyUI service and drag the original local JSON into the canvas. Retain its models, prompts, Steps/CFG control connections, Turbo switch, LoRA branch, and all original links. The script restores the four model dependencies; it does not upload or import a workflow. Back up the local JSON separately before moving computers or destroying an instance.
 
-The original Vast.ai RTX 4090 instance generated an image successfully according to the user. A fresh instance restored from this repository has not yet passed GPU inference. H3 and MOSS user-customized workflow JSON files have not been supplied here.
+The original Vast.ai RTX 4090 instance generated an ANIMA image successfully according to the user. A fresh instance restored from this repository has not yet passed GPU inference. The user's original Vast PRO6000 full Ref2VA double-INT8 H3 workflow generated an MP4; the Power LoRA/8-step revision published below is a subsequent offline edit, NOT independently GPU validated. The ANIMA user's request to keep that workflow local remains unchanged; the H3 fictional prompt may be public per the user's later explicit instruction.
+
+
+## MiniMax H3: public 0.9 MP UI workflow (2026-11-15)
+
+- `workflows/vast/h3_ref2va_double_int8_0.9_power_lora.json`: user's actual fictional prompt, reference image filenames, and H3 Ref2VA node layout are retained. No invented privacy/redaction requirement. The image files themselves are not embedded.
+- Default switches OFF: full non-pruned `minimax_h3_ref2va_int8_convrot.safetensors` + INT8 Qwen3-VL, 20 steps, `res_multistep` / `beta`, 0.9 MP 16:9 (1280×736).
+- A single rgthree **Power Lora Loader** handles separate creative and LightX2V LoRA rows. All rows default OFF. To try the LightX2V Ref2VA v1.1 8-step row, select ON on that row **and** ON on the Acceleration Boolean. The latter switches Euler/simple/8 and sigma shift 12/3. Both must be selected; the acceleration configuration is unverified on the user's GPU.
+- Restore from the **existing** `bootstrap.sh`: `h3-int8-int8`, `h3-audio`, and optional `h3-lightx2v-ref2va8` (adds rgthree and the targeted LoRA). `scripts/vast_h3_lightx2v_provision.sh` wraps these for an optional Vast Template `PROVISIONING_SCRIPT`, using the public GitHub HTTPS source and no GitHub authentication. It does not run a second ComfyUI instance.
+- Seed: `rgthree Seed` for quick random/fixed/last-queued use; repository's existing `comfyui_seed_finder` for filename to executed `/history` lookup. The graph retains native `RandomNoise` until rgthree Seed UI can be wired on a real ComfyUI session.
+- Model weights (H3 and LoRA) and actual reference media are **not** stored in Git. These are downloaded or uploaded on each ephemeral instance. Keep secrets, tokens, SSH credentials and account/private user data out of public repository commits.
+
+### Subsequent Vast rentals
+
+With the appropriate Vast ComfyUI template (`/workspace/ComfyUI`, `/venv/main/bin/python`, verified for that rental), set Vast `PROVISIONING_SCRIPT` to:
+
+`https://raw.githubusercontent.com/Kwaner-ANTI/AIGC-C.W.P/main/scripts/vast_h3_lightx2v_provision.sh`
+
+After the template's bootstrap and node discovery, open the template-managed ComfyUI and load the UI JSON from `workflows/vast/`. Re-upload references from durable storage. The auto-provisioning path is published but has **not** yet been validated on a newly rented GPU; do not count it as a success until a real MP4 is generated.
+
 
 Official UI templates to import and adapt (not replacements for your customized workflows):
 
