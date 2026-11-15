@@ -1,7 +1,29 @@
 {
-  "last_node_id": 11,
+  "last_node_id": 12,
   "last_link_id": 12,
   "nodes": [
+    {
+      "id": 12,
+      "type": "MarkdownNote",
+      "pos": [
+        1590,
+        -430
+      ],
+      "size": [
+        810,
+        940
+      ],
+      "flags": {},
+      "order": 11,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "title": "AIW | 参数·LoRA·Seed·D.R.GMV",
+      "properties": {},
+      "widgets_values": [
+        "# AIW | Krea-2 · I2I 参数 / LoRA / Seed\n## 当前真实画布\n- `krea2_turbo_int8_convrot.safetensors` + `qwen3vl_4b_fp8_scaled.safetensors` + `qwen_image_vae.safetensors`。\n- 当前 KSampler：`8 steps / CFG 1 / euler / simple / denoise 0.65`。结构保留原图比例/形体时，可另试 denoise 0.30–0.50；仅为实验区间，不能称为已测最佳。\n- **此 JSON 没有创作 LoRA Loader。** 本次仅补说明板，原 MODEL → KSampler 保持不变。若需 LoRA，应复制并在主 MODEL 路线上接兼容 Loader 后真正生图。\n- 当前示例输入图仍是占位文件；导入后自行更换 Shot 参考素材和 Prompt。\n## LoRA 可逆使用（本页是知识板，不改变节点）\n- 外置 LoRA 可能共同影响角色、画风、衣物和光影，并非互不干扰的滤镜。原生 → 单条 → 组合逐步对照，同条件逐一开关定位冲突。\n- 关闭对应开关、strength=0 或绕过 Loader 可撤销该外置 LoRA；恢复完整原生效果还须核对 Ref/Edit/Turbo、VAE、采样参数。已 Merge/Fuse 保存的模型必须重新载入未合并原底模。\n- 不同底模/模型架构的 LoRA 不能直接互换；LoRA strength 不是画风百分比。\n## 历史有效 Seed · 创作经验（不是找 Seed 教程）\n- 优先登记用户**以前实际保存、观察到有效**的 Seed，写清它曾改善的机位/人物/构图/光影/队形及条件；单次经验也值得保留。\n- 记录：`Shot | Seed | 底模/LoRA:强度/开关 | Prompt/参考 | 采样/steps/CFG/尺寸/VAE | 曾观察的效果 | PNG/MP4或笔记 | 状态`。\n- 状态明确区分「已绑定输出」「用户历史经验待关联」「仅 JSON 控件缓存」；即使失去旧 /history，也可如实保留用户的早期记录。\n- 本仓库当前资料**没有可核对的历史优秀 Seed 具体数值**，这里不伪造。固定某个 Seed 不保证换模型、LoRA 或参考后仍有同样效果。\n## JSON 固定 Seed（不能误记为优秀经验）\n- `928735412`：KSampler 保存的 `fixed` **控件值**，没有已绑定的成功 PNG 或对应效用。可用于原图/LoRA 试验对照，但不能标为过去的优质 Seed。\n## 已执行优秀 Seed\n- **待回填用户旧记录**。"
+      ]
+    },
     {
       "id": 1,
       "type": "UNETLoader",
