@@ -1,9 +1,31 @@
 {
   "id": "f7a250a1-53fb-496b-8c39-c60d9e764028",
   "revision": 0,
-  "last_node_id": 108,
+  "last_node_id": 109,
   "last_link_id": 174,
   "nodes": [
+    {
+      "id": 109,
+      "type": "MarkdownNote",
+      "pos": [
+        -1770,
+        1120
+      ],
+      "size": [
+        790,
+        910
+      ],
+      "flags": {},
+      "order": 20,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "title": "AIW | 参数·LoRA·Seed·D.R.GMV",
+      "properties": {},
+      "widgets_values": [
+        "# AIW | ANIMA Aesthetic · 实战参数 / LoRA / Seed\n## 当前真实画布\n- 模型 `anima-aesthetic-v1.1.safetensors`；`qwen_3_06b_base.safetensors`；`qwen_image_vae.safetensors`。\n- 此图有 Turbo 布尔分支：OFF 为原生 60 steps / CFG 4.5；ON 为 `anima-turbo-lora-v0.2.safetensors` + 8 steps / CFG 1。**默认 Boolean OFF**。KSampler 控件缓存 steps/CFG 被 Primitive 连线覆盖，以实际执行图为准。\n- 原生 Vast 4090 Aesthetic PNG 曾成功；不据此认定 Turbo/多创作 LoRA 均已成功。\n## LoRA 可逆使用（本页是知识板，不改变节点）\n- 外置 LoRA 可能共同影响角色、画风、衣物和光影，并非互不干扰的滤镜。原生 → 单条 → 组合逐步对照，同条件逐一开关定位冲突。\n- 关闭对应开关、strength=0 或绕过 Loader 可撤销该外置 LoRA；恢复完整原生效果还须核对 Ref/Edit/Turbo、VAE、采样参数。已 Merge/Fuse 保存的模型必须重新载入未合并原底模。\n- 不同底模/模型架构的 LoRA 不能直接互换；LoRA strength 不是画风百分比。\n- Turbo 是加速适配而非普通角色画风 LoRA；恢复原生要同时关闭 Turbo 并切回 60 steps / CFG 4.5。\n- 「Anime in Real」如用于 ANIMA，必须选择明确适配 ANIMA 的版本，不能用 Krea2 权重。\n## 历史有效 Seed · 创作经验（不是找 Seed 教程）\n- 优先登记用户**以前实际保存、观察到有效**的 Seed，写清它曾改善的机位/人物/构图/光影/队形及条件；单次经验也值得保留。\n- 记录：`Shot | Seed | 底模/LoRA:强度/开关 | Prompt/参考 | 采样/steps/CFG/尺寸/VAE | 曾观察的效果 | PNG/MP4或笔记 | 状态`。\n- 状态明确区分「已绑定输出」「用户历史经验待关联」「仅 JSON 控件缓存」；即使失去旧 /history，也可如实保留用户的早期记录。\n- 本仓库当前资料**没有可核对的历史优秀 Seed 具体数值**，这里不伪造。固定某个 Seed 不保证换模型、LoRA 或参考后仍有同样效果。\n## 已执行优秀 Seed\n- **待回填用户旧记录**；KSampler randomize 缓存不是成功案例。"
+      ]
+    },
     {
       "id": 48,
       "type": "MarkdownNote",
