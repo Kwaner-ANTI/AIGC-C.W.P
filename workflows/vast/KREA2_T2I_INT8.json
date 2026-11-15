@@ -1,8 +1,30 @@
 {
   "revision": 0,
-  "last_node_id": 71,
+  "last_node_id": 72,
   "last_link_id": 0,
   "nodes": [
+    {
+      "id": 72,
+      "type": "MarkdownNote",
+      "pos": [
+        610,
+        -310
+      ],
+      "size": [
+        820,
+        930
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "title": "AIW | 参数·LoRA·Seed·D.R.GMV",
+      "properties": {},
+      "widgets_values": [
+        "# AIW | Krea-2 Turbo · T2I 参数 / LoRA / Seed\n## 当前真实画布\n- 底模 `krea2_turbo_int8_convrot.safetensors`；CLIP `qwen3vl_4b_fp8_scaled.safetensors`；VAE `qwen_image_vae.safetensors`。\n- 子图 KSampler 为 `8 steps / CFG 1 / euler / simple / denoise 1`。原生 LoRA `krea2_darkbrush.safetensors` 预置 strength 0.8，但 **Enable LoRA 默认 OFF**；并不代表已开启或已通过项目 GPU 验证。\n- 子图已有 LoRA Loader/开关；先测试它，不额外复制与之竞争的 Loader。Krea-2 Raw 为训练基座，Turbo 为推理模型，训练/推理的区别不可混淆。\n## LoRA 可逆使用（本页是知识板，不改变节点）\n- 外置 LoRA 可能共同影响角色、画风、衣物和光影，并非互不干扰的滤镜。原生 → 单条 → 组合逐步对照，同条件逐一开关定位冲突。\n- 关闭对应开关、strength=0 或绕过 Loader 可撤销该外置 LoRA；恢复完整原生效果还须核对 Ref/Edit/Turbo、VAE、采样参数。已 Merge/Fuse 保存的模型必须重新载入未合并原底模。\n- 不同底模/模型架构的 LoRA 不能直接互换；LoRA strength 不是画风百分比。\n## D.R.GMV · Krea-2 候选（均待本项目实测）\n- Anime in Real v2.0（Krea2 版）：角色与真实背景融合，可先单独 0.7–0.8 对照。\n- Shiiro Niji A（Krea2 版）：插画风格，可先单独 0.5–0.7 对照。\n- Mrpopo Anime/Art v3（Krea2 版）：动画色彩/纹理，可先单独 0.7 或 1.0 对照。\n- 这三款均不是 ANIMA/MOSS/FLUX2/H3 通用 LoRA；`qwen_image_hdr_vae-BF16.safetensors` 是可选 VAE 试验，不覆盖原 VAE。\n## 历史有效 Seed · 创作经验（不是找 Seed 教程）\n- 优先登记用户**以前实际保存、观察到有效**的 Seed，写清它曾改善的机位/人物/构图/光影/队形及条件；单次经验也值得保留。\n- 记录：`Shot | Seed | 底模/LoRA:强度/开关 | Prompt/参考 | 采样/steps/CFG/尺寸/VAE | 曾观察的效果 | PNG/MP4或笔记 | 状态`。\n- 状态明确区分「已绑定输出」「用户历史经验待关联」「仅 JSON 控件缓存」；即使失去旧 /history，也可如实保留用户的早期记录。\n- 本仓库当前资料**没有可核对的历史优秀 Seed 具体数值**，这里不伪造。固定某个 Seed 不保证换模型、LoRA 或参考后仍有同样效果。\n## 已执行优秀 Seed\n- **待回填用户旧记录**：当前子图 seed 处于 randomize；其缓存数字不能列为有效案例。"
+      ]
+    },
     {
       "id": 71,
       "type": "d4f72eea-4f9e-48f8-8702-034f2e3285b8",
