@@ -1,0 +1,1269 @@
+{
+  "id": "f7a250a1-53fb-496b-8c39-c60d9e764028",
+  "revision": 0,
+  "last_node_id": 110,
+  "last_link_id": 175,
+  "nodes": [
+    {
+      "id": 109,
+      "type": "MarkdownNote",
+      "pos": [
+        -1770,
+        1120
+      ],
+      "size": [
+        790,
+        910
+      ],
+      "flags": {},
+      "order": 20,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "title": "AIW | 参数·LoRA·Seed·D.R.GMV",
+      "properties": {},
+      "widgets_values": [
+        "# AIW | ANIMA Aesthetic · 实战参数 / LoRA / Seed\n## 当前真实画布\n- 模型 `anima-aesthetic-v1.1.safetensors`；`qwen_3_06b_base.safetensors`；`qwen_image_vae.safetensors`。\n- 此图有 Turbo 布尔分支：OFF 为原生 60 steps / CFG 4.5；ON 为 `anima-turbo-lora-v0.2.safetensors` + 8 steps / CFG 1。**默认 Boolean OFF**。KSampler 控件缓存 steps/CFG 被 Primitive 连线覆盖，以实际执行图为准。\n- 原生 Vast 4090 Aesthetic PNG 曾成功；不据此认定 Turbo/多创作 LoRA 均已成功。\n## LoRA 可逆使用（本页是知识板，不改变节点）\n- 外置 LoRA 可能共同影响角色、画风、衣物和光影，并非互不干扰的滤镜。原生 → 单条 → 组合逐步对照，同条件逐一开关定位冲突。\n- 关闭对应开关、strength=0 或绕过 Loader 可撤销该外置 LoRA；恢复完整原生效果还须核对 Ref/Edit/Turbo、VAE、采样参数。已 Merge/Fuse 保存的模型必须重新载入未合并原底模。\n- 不同底模/模型架构的 LoRA 不能直接互换；LoRA strength 不是画风百分比。\n- Turbo 是加速适配而非普通角色画风 LoRA；恢复原生要同时关闭 Turbo 并切回 60 steps / CFG 4.5。\n- 「Anime in Real」如用于 ANIMA，必须选择明确适配 ANIMA 的版本，不能用 Krea2 权重。\n## 历史有效 Seed · 创作经验（不是找 Seed 教程）\n- 优先登记用户**以前实际保存、观察到有效**的 Seed，写清它曾改善的机位/人物/构图/光影/队形及条件；单次经验也值得保留。\n- 记录：`Shot | Seed | 底模/LoRA:强度/开关 | Prompt/参考 | 采样/steps/CFG/尺寸/VAE | 曾观察的效果 | PNG/MP4或笔记 | 状态`。\n- 状态明确区分「已绑定输出」「用户历史经验待关联」「仅 JSON 控件缓存」；即使失去旧 /history，也可如实保留用户的早期记录。\n- 本仓库当前资料**没有可核对的历史优秀 Seed 具体数值**，这里不伪造。固定某个 Seed 不保证换模型、LoRA 或参考后仍有同样效果。\n## 已执行优秀 Seed\n- **待回填用户旧记录**；KSampler randomize 缓存不是成功案例。\n\n## 本次 Featurize Micro Details v2\n- 独立 LoRA 已接入 Aesthetic 正常 60 Step 分支，初始 0.5；Turbo 路线保留，但不会自动叠加 Micro Details。\n- 关闭：Micro Loader strength=0；若打开 Turbo 则是另一种不含 Micro 的采样路径。\n- 此次画布用途：character；切换用途请换相应独立画布。实际运行状态以 Queue PNG 为准。"
+      ]
+    },
+    {
+      "id": 48,
+      "type": "MarkdownNote",
+      "pos": [
+        -1776.130109016695,
+        114.4450192474573
+      ],
+      "size": [
+        670,
+        960
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "properties": {},
+      "widgets_values": [
+        "- Guide: [Subgraph](https://docs.comfy.org/interface/features/subgraph)\n- Repository: [circlestone-labs/Anima](https://huggingface.co/circlestone-labs/Anima)\n## Model Links\n\n**text_encoders**\n\n- [qwen_3_06b_base.safetensors](https://huggingface.co/circlestone-labs/Anima/resolve/main/split_files/text_encoders/qwen_3_06b_base.safetensors) (1.11 GB)\n\n**vae**\n\n- [qwen_image_vae.safetensors](https://huggingface.co/circlestone-labs/Anima/resolve/main/split_files/vae/qwen_image_vae.safetensors) (242 MB)\n\n**diffusion_models**\n\n- [anima-base-v1.0.safetensors](https://huggingface.co/circlestone-labs/Anima/resolve/main/split_files/diffusion_models/anima-base-v1.0.safetensors) (3.89 GB)\n\n**loras**\n\n- [anima-turbo-lora-v0.2.safetensors](https://huggingface.co/circlestone-labs/Anima-Official-LoRAs/resolve/main/anima-turbo-lora-v0.2.safetensors) (142 MB)\n\n\n## Model Storage Location\n\n```\n📂 ComfyUI/\n├── 📂 models/\n│   ├── 📂 text_encoders/\n│   │   └── qwen_3_06b_base.safetensors\n│   ├── 📂 vae/\n│   │   └── qwen_image_vae.safetensors\n│   ├── 📂 diffusion_models/\n│   │   └── anima-base-v1.0.safetensors\n│   └── 📂 loras/\n│       └── anima-turbo-lora-v0.2.safetensors\n```\n\n## Report Issue\n\nNote: Please update ComfyUI first ([guide](https://docs.comfy.org/installation/update_comfyui)) and prepare required models. Desktop/Cloud updates follow stable releases, so some nightly-supported models may not be available yet.\n\n- Cannot run / runtime errors: [ComfyUI/issues](https://github.com/comfyanonymous/ComfyUI/issues)\n- UI / frontend issues: [ComfyUI_frontend/issues](https://github.com/Comfy-Org/ComfyUI_frontend/issues)\n- Workflow issues: [workflow_templates/issues](https://github.com/Comfy-Org/workflow_templates/issues)\n"
+      ],
+      "widgets_values_named": {
+        "text": "- Guide: [Subgraph](https://docs.comfy.org/interface/features/subgraph)\n- Repository: [circlestone-labs/Anima](https://huggingface.co/circlestone-labs/Anima)\n## Model Links\n\n**text_encoders**\n\n- [qwen_3_06b_base.safetensors](https://huggingface.co/circlestone-labs/Anima/resolve/main/split_files/text_encoders/qwen_3_06b_base.safetensors) (1.11 GB)\n\n**vae**\n\n- [qwen_image_vae.safetensors](https://huggingface.co/circlestone-labs/Anima/resolve/main/split_files/vae/qwen_image_vae.safetensors) (242 MB)\n\n**diffusion_models**\n\n- [anima-base-v1.0.safetensors](https://huggingface.co/circlestone-labs/Anima/resolve/main/split_files/diffusion_models/anima-base-v1.0.safetensors) (3.89 GB)\n\n**loras**\n\n- [anima-turbo-lora-v0.2.safetensors](https://huggingface.co/circlestone-labs/Anima-Official-LoRAs/resolve/main/anima-turbo-lora-v0.2.safetensors) (142 MB)\n\n\n## Model Storage Location\n\n```\n📂 ComfyUI/\n├── 📂 models/\n│   ├── 📂 text_encoders/\n│   │   └── qwen_3_06b_base.safetensors\n│   ├── 📂 vae/\n│   │   └── qwen_image_vae.safetensors\n│   ├── 📂 diffusion_models/\n│   │   └── anima-base-v1.0.safetensors\n│   └── 📂 loras/\n│       └── anima-turbo-lora-v0.2.safetensors\n```\n\n## Report Issue\n\nNote: Please update ComfyUI first ([guide](https://docs.comfy.org/installation/update_comfyui)) and prepare required models. Desktop/Cloud updates follow stable releases, so some nightly-supported models may not be available yet.\n\n- Cannot run / runtime errors: [ComfyUI/issues](https://github.com/comfyanonymous/ComfyUI/issues)\n- UI / frontend issues: [ComfyUI_frontend/issues](https://github.com/Comfy-Org/ComfyUI_frontend/issues)\n- Workflow issues: [workflow_templates/issues](https://github.com/Comfy-Org/workflow_templates/issues)\n"
+      },
+      "color": "#222",
+      "bgcolor": "#000"
+    },
+    {
+      "id": 46,
+      "type": "SaveImage",
+      "pos": [
+        701.9188660705347,
+        45.60264620886435
+      ],
+      "size": [
+        690,
+        760
+      ],
+      "flags": {},
+      "order": 19,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 172
+        }
+      ],
+      "outputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "links": null
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.11.1",
+        "Node name for S&R": "SaveImage",
+        "enableTabs": false,
+        "tabWidth": 65,
+        "tabXOffset": 10,
+        "hasSecondTab": false,
+        "secondTabText": "Send Back",
+        "secondTabOffset": 80,
+        "secondTabWidth": 65
+      },
+      "widgets_values": [
+        "ANIMA-Micro-character"
+      ],
+      "widgets_values_named": {
+        "filename_prefix": "C.A-Test"
+      }
+    },
+    {
+      "id": 92,
+      "type": "CLIPLoader",
+      "pos": [
+        -940.0027070001335,
+        267.61895336863927
+      ],
+      "size": [
+        310,
+        150
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "links": [
+            154,
+            161
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.11.0",
+        "Node name for S&R": "CLIPLoader",
+        "enableTabs": false,
+        "tabWidth": 65,
+        "tabXOffset": 10,
+        "hasSecondTab": false,
+        "secondTabText": "Send Back",
+        "secondTabOffset": 80,
+        "secondTabWidth": 65,
+        "models": [
+          {
+            "name": "qwen_3_06b_base.safetensors",
+            "url": "https://huggingface.co/circlestone-labs/Anima/resolve/main/split_files/text_encoders/qwen_3_06b_base.safetensors",
+            "directory": "text_encoders"
+          }
+        ]
+      },
+      "widgets_values": [
+        "qwen_3_06b_base.safetensors",
+        "stable_diffusion",
+        "default"
+      ],
+      "widgets_values_named": {
+        "clip_name": "qwen_3_06b_base.safetensors",
+        "type": "stable_diffusion",
+        "device": "default"
+      }
+    },
+    {
+      "id": 93,
+      "type": "VAELoader",
+      "pos": [
+        -930.0027070001333,
+        497.61895336864006
+      ],
+      "size": [
+        310,
+        100
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "VAE",
+          "type": "VAE",
+          "links": [
+            153
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.40",
+        "Node name for S&R": "VAELoader",
+        "enableTabs": false,
+        "tabWidth": 65,
+        "tabXOffset": 10,
+        "hasSecondTab": false,
+        "secondTabText": "Send Back",
+        "secondTabOffset": 80,
+        "secondTabWidth": 65,
+        "models": [
+          {
+            "name": "qwen_image_vae.safetensors",
+            "url": "https://huggingface.co/circlestone-labs/Anima/resolve/main/split_files/vae/qwen_image_vae.safetensors",
+            "directory": "vae"
+          }
+        ]
+      },
+      "widgets_values": [
+        "qwen_image_vae.safetensors"
+      ],
+      "widgets_values_named": {
+        "vae_name": "qwen_image_vae.safetensors"
+      }
+    },
+    {
+      "id": 94,
+      "type": "VAEDecode",
+      "pos": [
+        1109.9972929998582,
+        117.61895336863914
+      ],
+      "size": [
+        230,
+        50
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 18,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "samples",
+          "type": "LATENT",
+          "link": 152
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": 153
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "slot_index": 0,
+          "links": [
+            172
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.40",
+        "Node name for S&R": "VAEDecode",
+        "enableTabs": false,
+        "tabWidth": 65,
+        "tabXOffset": 10,
+        "hasSecondTab": false,
+        "secondTabText": "Send Back",
+        "secondTabOffset": 80,
+        "secondTabWidth": 65
+      }
+    },
+    {
+      "id": 95,
+      "type": "EmptyLatentImage",
+      "pos": [
+        -930.0027070001333,
+        707.6189533686401
+      ],
+      "size": [
+        310,
+        150
+      ],
+      "flags": {},
+      "order": 10,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            158
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.40",
+        "Node name for S&R": "EmptyLatentImage",
+        "enableTabs": false,
+        "tabWidth": 65,
+        "tabXOffset": 10,
+        "hasSecondTab": false,
+        "secondTabText": "Send Back",
+        "secondTabOffset": 80,
+        "secondTabWidth": 65
+      },
+      "widgets_values": [
+        1056,
+        1408,
+        1
+      ],
+      "widgets_values_named": {
+        "width": 1056,
+        "height": 1408,
+        "batch_size": 1
+      }
+    },
+    {
+      "id": 96,
+      "type": "CLIPTextEncode",
+      "pos": [
+        -540.0027070001363,
+        717.6189533686401
+      ],
+      "size": [
+        490,
+        140
+      ],
+      "flags": {},
+      "order": 11,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 154
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            157
+          ]
+        }
+      ],
+      "title": "CLIP Text Encode (Negative Prompt)",
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.65",
+        "Node name for S&R": "CLIPTextEncode",
+        "enableTabs": false,
+        "tabWidth": 65,
+        "tabXOffset": 10,
+        "hasSecondTab": false,
+        "secondTabText": "Send Back",
+        "secondTabOffset": 80,
+        "secondTabWidth": 65
+      },
+      "widgets_values": [
+        "duplicate person, extra arms, extra legs, badly drawn hands, missing feet, cropped head, cropped shoes, distorted knees, shiny plastic skin, 3d resin statue, excessive saturation, armor, cape, swimsuit, signatures, watermark, text"
+      ],
+      "widgets_values_named": {
+        "text": "worst quality, low quality, blurry,\njpeg artifacts, chromatic aberration,\ntext, watermark, signature,\nmultiple characters, multiple views,\ncropped head, cropped feet,\nbad anatomy, extra arms, extra legs,\nmalformed hands,\nunrecognizable face,\ngeneric animal ears,\nfantasy armor, corset dress,\nflowing cape, detached sleeves,\nfloating golden mechanical ring,\nmagic staff, weapon,\nthigh straps, thigh pouch,\nexcessive golden ornaments,\nrevealing costume,\nphotorealistic, plastic 3d render,\ncomplex background"
+      },
+      "color": "#223",
+      "bgcolor": "#335"
+    },
+    {
+      "id": 97,
+      "type": "KSampler",
+      "pos": [
+        779.9972929998615,
+        87.61895336863863
+      ],
+      "size": [
+        300,
+        620
+      ],
+      "flags": {},
+      "order": 17,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 155
+        },
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "link": 156
+        },
+        {
+          "name": "negative",
+          "type": "CONDITIONING",
+          "link": 157
+        },
+        {
+          "name": "latent_image",
+          "type": "LATENT",
+          "link": 158
+        },
+        {
+          "name": "steps",
+          "type": "INT",
+          "widget": {
+            "name": "steps"
+          },
+          "link": 159
+        },
+        {
+          "name": "cfg",
+          "type": "FLOAT",
+          "widget": {
+            "name": "cfg"
+          },
+          "link": 160
+        }
+      ],
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "slot_index": 0,
+          "links": [
+            152
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.40",
+        "Node name for S&R": "KSampler",
+        "enableTabs": false,
+        "tabWidth": 65,
+        "tabXOffset": 10,
+        "hasSecondTab": false,
+        "secondTabText": "Send Back",
+        "secondTabOffset": 80,
+        "secondTabWidth": 65
+      },
+      "widgets_values": [
+        562919895118834,
+        "randomize",
+        30,
+        4,
+        "euler",
+        "simple",
+        1
+      ],
+      "widgets_values_named": {
+        "seed": 562919895118834,
+        "control_after_generate": "randomize",
+        "steps": 30,
+        "cfg": 4,
+        "sampler_name": "euler",
+        "scheduler": "simple",
+        "denoise": 1
+      }
+    },
+    {
+      "id": 98,
+      "type": "CLIPTextEncode",
+      "pos": [
+        -550.0027070001363,
+        57.61895336863868
+      ],
+      "size": [
+        490,
+        610
+      ],
+      "flags": {},
+      "order": 12,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 161
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            156
+          ]
+        }
+      ],
+      "title": "CLIP Text Encode (Positive Prompt)",
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.65",
+        "Node name for S&R": "CLIPTextEncode",
+        "enableTabs": false,
+        "tabWidth": 65,
+        "tabXOffset": 10,
+        "hasSecondTab": false,
+        "secondTabText": "Send Back",
+        "secondTabOffset": 80,
+        "secondTabWidth": 65
+      },
+      "widgets_values": [
+        "One adult anime woman, solo, full body, standing in a relaxed natural three-quarter front view, head to shoes visible, elegant hand-drawn anime illustration. Long silver-white hair, calm expression, light cream sailor blouse with dark navy sailor collar, understated charcoal necktie, dark navy pleated skirt reaching above knees, dark loafers, polished but non-photoreal fabric textures. Correct anatomy, coherent clothing seams, believable hands and legs, graceful soft daylight, subtle rim lighting, rich yet restrained color, highly detailed eyes and clothing, clean neutral studio background; no foreground props, one person only."
+      ],
+      "widgets_values_named": {
+        "text": "TEST"
+      },
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 99,
+      "type": "UNETLoader",
+      "pos": [
+        -930.0027070001333,
+        57.61895336863868
+      ],
+      "size": [
+        310,
+        130
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            162,
+            163
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.11.0",
+        "Node name for S&R": "UNETLoader",
+        "enableTabs": false,
+        "tabWidth": 65,
+        "tabXOffset": 10,
+        "hasSecondTab": false,
+        "secondTabText": "Send Back",
+        "secondTabOffset": 80,
+        "secondTabWidth": 65,
+        "models": [
+          {
+            "name": "anima-base-v1.0.safetensors",
+            "url": "https://huggingface.co/circlestone-labs/Anima/resolve/main/split_files/diffusion_models/anima-base-v1.0.safetensors",
+            "directory": "diffusion_models"
+          }
+        ]
+      },
+      "widgets_values": [
+        "anima-aesthetic-v1.1.safetensors",
+        "default"
+      ],
+      "widgets_values_named": {
+        "unet_name": "anima-aesthetic-v1.1.safetensors",
+        "weight_dtype": "default"
+      }
+    },
+    {
+      "id": 100,
+      "type": "PrimitiveInt",
+      "pos": [
+        -0.0027070001409111866,
+        37.618953368638635
+      ],
+      "size": [
+        270,
+        90
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "INT",
+          "type": "INT",
+          "links": [
+            166
+          ]
+        }
+      ],
+      "title": "Int (Steps)",
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.43.0",
+        "Node name for S&R": "PrimitiveInt"
+      },
+      "widgets_values": [
+        60,
+        "fixed"
+      ],
+      "widgets_values_named": {
+        "value": 60,
+        "control_after_generate": "fixed"
+      }
+    },
+    {
+      "id": 101,
+      "type": "PrimitiveInt",
+      "pos": [
+        -0.0027070001409111866,
+        367.61895336863955
+      ],
+      "size": [
+        270,
+        90
+      ],
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "INT",
+          "type": "INT",
+          "links": [
+            167
+          ]
+        }
+      ],
+      "title": "Int (Steps)",
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.43.0",
+        "Node name for S&R": "PrimitiveInt"
+      },
+      "widgets_values": [
+        8,
+        "fixed"
+      ],
+      "widgets_values_named": {
+        "value": 8,
+        "control_after_generate": "fixed"
+      }
+    },
+    {
+      "id": 102,
+      "type": "LoraLoaderModelOnly",
+      "pos": [
+        -0.0027070001409111866,
+        647.6189533686401
+      ],
+      "size": [
+        270,
+        120
+      ],
+      "flags": {},
+      "order": 13,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 162
+        }
+      ],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            164
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.43.0",
+        "Node name for S&R": "LoraLoaderModelOnly",
+        "models": [
+          {
+            "name": "anima-turbo-lora-v0.2.safetensors",
+            "url": "https://huggingface.co/circlestone-labs/Anima-Official-LoRAs/resolve/main/anima-turbo-lora-v0.2.safetensors",
+            "directory": "loras"
+          }
+        ]
+      },
+      "widgets_values": [
+        "anima-turbo-lora-v0.2.safetensors",
+        1
+      ],
+      "widgets_values_named": {
+        "lora_name": "anima-turbo-lora-v0.2.safetensors",
+        "strength_model": 1
+      }
+    },
+    {
+      "id": 103,
+      "type": "ComfySwitchNode",
+      "pos": [
+        369.99729299986063,
+        177.61895336863935
+      ],
+      "size": [
+        270,
+        130
+      ],
+      "flags": {},
+      "order": 16,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "on_false",
+          "shape": 7,
+          "type": "MODEL",
+          "link": 175
+        },
+        {
+          "name": "on_true",
+          "shape": 7,
+          "type": "MODEL",
+          "link": 164
+        },
+        {
+          "name": "switch",
+          "type": "BOOLEAN",
+          "widget": {
+            "name": "switch"
+          },
+          "link": 165
+        }
+      ],
+      "outputs": [
+        {
+          "name": "output",
+          "type": "MODEL",
+          "links": [
+            155
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.43.0",
+        "Node name for S&R": "ComfySwitchNode"
+      },
+      "widgets_values": [
+        false
+      ],
+      "widgets_values_named": {
+        "switch": false
+      }
+    },
+    {
+      "id": 104,
+      "type": "ComfySwitchNode",
+      "pos": [
+        369.99729299986063,
+        367.61895336863955
+      ],
+      "size": [
+        270,
+        130
+      ],
+      "flags": {},
+      "order": 14,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "on_false",
+          "shape": 7,
+          "type": "INT",
+          "link": 166
+        },
+        {
+          "name": "on_true",
+          "shape": 7,
+          "type": "INT",
+          "link": 167
+        },
+        {
+          "name": "switch",
+          "type": "BOOLEAN",
+          "widget": {
+            "name": "switch"
+          },
+          "link": 168
+        }
+      ],
+      "outputs": [
+        {
+          "name": "output",
+          "type": "INT",
+          "links": [
+            159
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.43.0",
+        "Node name for S&R": "ComfySwitchNode"
+      },
+      "widgets_values": [
+        false
+      ],
+      "widgets_values_named": {
+        "switch": false
+      }
+    },
+    {
+      "id": 105,
+      "type": "PrimitiveFloat",
+      "pos": [
+        -0.0027070001409111866,
+        177.61895336863935
+      ],
+      "size": [
+        270,
+        80
+      ],
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "FLOAT",
+          "type": "FLOAT",
+          "links": [
+            169
+          ]
+        }
+      ],
+      "title": "Float (CFG)",
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.43.0",
+        "Node name for S&R": "PrimitiveFloat"
+      },
+      "widgets_values": [
+        4.5
+      ],
+      "widgets_values_named": {
+        "value": 4.5
+      }
+    },
+    {
+      "id": 106,
+      "type": "ComfySwitchNode",
+      "pos": [
+        369.99729299986063,
+        567.6189533686401
+      ],
+      "size": [
+        270,
+        130
+      ],
+      "flags": {},
+      "order": 15,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "on_false",
+          "shape": 7,
+          "type": "FLOAT",
+          "link": 169
+        },
+        {
+          "name": "on_true",
+          "shape": 7,
+          "type": "FLOAT",
+          "link": 170
+        },
+        {
+          "name": "switch",
+          "type": "BOOLEAN",
+          "widget": {
+            "name": "switch"
+          },
+          "link": 171
+        }
+      ],
+      "outputs": [
+        {
+          "name": "output",
+          "type": "FLOAT",
+          "links": [
+            160
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.43.0",
+        "Node name for S&R": "ComfySwitchNode"
+      },
+      "widgets_values": [
+        false
+      ],
+      "widgets_values_named": {
+        "switch": false
+      }
+    },
+    {
+      "id": 107,
+      "type": "PrimitiveFloat",
+      "pos": [
+        -0.0027070001409111866,
+        507.6189533686401
+      ],
+      "size": [
+        270,
+        80
+      ],
+      "flags": {},
+      "order": 8,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "FLOAT",
+          "type": "FLOAT",
+          "links": [
+            170
+          ]
+        }
+      ],
+      "title": "Float (CFG)",
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.43.0",
+        "Node name for S&R": "PrimitiveFloat"
+      },
+      "widgets_values": [
+        1
+      ],
+      "widgets_values_named": {
+        "value": 1
+      }
+    },
+    {
+      "id": 108,
+      "type": "PrimitiveBoolean",
+      "pos": [
+        -0.0027070001409111866,
+        827.6189533686402
+      ],
+      "size": [
+        270,
+        80
+      ],
+      "flags": {},
+      "order": 9,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "BOOLEAN",
+          "type": "BOOLEAN",
+          "links": [
+            165,
+            168,
+            171
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.43.0",
+        "Node name for S&R": "PrimitiveBoolean"
+      },
+      "widgets_values": [
+        false
+      ],
+      "widgets_values_named": {
+        "value": false
+      }
+    },
+    {
+      "id": 110,
+      "type": "LoraLoaderModelOnly",
+      "pos": [
+        60,
+        1015
+      ],
+      "size": [
+        305,
+        120
+      ],
+      "flags": {},
+      "order": 15,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 163
+        }
+      ],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            175
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "Node name for S&R": "LoraLoaderModelOnly"
+      },
+      "widgets_values": [
+        "AddMicroDetails_Anima_v2.safetensors",
+        0.5
+      ],
+      "widgets_values_named": {
+        "lora_name": "AddMicroDetails_Anima_v2.safetensors",
+        "strength_model": 0.5
+      },
+      "title": "MICRO DETAILS v2 - ANIMA 28 BLOCK"
+    }
+  ],
+  "links": [
+    [
+      152,
+      97,
+      0,
+      94,
+      0,
+      "LATENT"
+    ],
+    [
+      153,
+      93,
+      0,
+      94,
+      1,
+      "VAE"
+    ],
+    [
+      154,
+      92,
+      0,
+      96,
+      0,
+      "CLIP"
+    ],
+    [
+      155,
+      103,
+      0,
+      97,
+      0,
+      "MODEL"
+    ],
+    [
+      156,
+      98,
+      0,
+      97,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      157,
+      96,
+      0,
+      97,
+      2,
+      "CONDITIONING"
+    ],
+    [
+      158,
+      95,
+      0,
+      97,
+      3,
+      "LATENT"
+    ],
+    [
+      159,
+      104,
+      0,
+      97,
+      4,
+      "INT"
+    ],
+    [
+      160,
+      106,
+      0,
+      97,
+      5,
+      "FLOAT"
+    ],
+    [
+      161,
+      92,
+      0,
+      98,
+      0,
+      "CLIP"
+    ],
+    [
+      162,
+      99,
+      0,
+      102,
+      0,
+      "MODEL"
+    ],
+    [
+      163,
+      99,
+      0,
+      110,
+      0,
+      "MODEL"
+    ],
+    [
+      164,
+      102,
+      0,
+      103,
+      1,
+      "MODEL"
+    ],
+    [
+      165,
+      108,
+      0,
+      103,
+      2,
+      "BOOLEAN"
+    ],
+    [
+      166,
+      100,
+      0,
+      104,
+      0,
+      "INT"
+    ],
+    [
+      167,
+      101,
+      0,
+      104,
+      1,
+      "INT"
+    ],
+    [
+      168,
+      108,
+      0,
+      104,
+      2,
+      "BOOLEAN"
+    ],
+    [
+      169,
+      105,
+      0,
+      106,
+      0,
+      "FLOAT"
+    ],
+    [
+      170,
+      107,
+      0,
+      106,
+      1,
+      "FLOAT"
+    ],
+    [
+      171,
+      108,
+      0,
+      106,
+      2,
+      "BOOLEAN"
+    ],
+    [
+      172,
+      94,
+      0,
+      46,
+      0,
+      "IMAGE"
+    ],
+    [
+      175,
+      110,
+      0,
+      103,
+      0,
+      "MODEL"
+    ]
+  ],
+  "groups": [
+    {
+      "id": 6,
+      "title": "Load Models",
+      "bounding": [
+        -960.0027070001336,
+        -32.38104663136131,
+        360,
+        640
+      ],
+      "color": "#3f789e",
+      "flags": {}
+    },
+    {
+      "id": 7,
+      "title": "Image Size(1MP))",
+      "bounding": [
+        -960.0027070001336,
+        637.6189533686401,
+        360,
+        240
+      ],
+      "color": "#3f789e",
+      "flags": {}
+    },
+    {
+      "id": 8,
+      "title": "Prompt",
+      "bounding": [
+        -570.0027070001363,
+        -32.38104663136131,
+        530,
+        910
+      ],
+      "color": "#3f789e",
+      "flags": {}
+    },
+    {
+      "id": 9,
+      "title": "Settings (Full)",
+      "bounding": [
+        -10.002707000140974,
+        -32.38104663136131,
+        290,
+        306
+      ],
+      "color": "#3f789e",
+      "flags": {}
+    },
+    {
+      "id": 10,
+      "title": "Settings (Turbo LoRA)",
+      "bounding": [
+        -10.002707000140974,
+        297.6189533686392,
+        300,
+        490
+      ],
+      "color": "#3f789e",
+      "flags": {}
+    }
+  ],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 0.8634615384615417,
+      "offset": [
+        1122.9290118856334,
+        118.33826384444454
+      ]
+    },
+    "frontendVersion": "1.57.4",
+    "workflowRendererVersion": "Vue-corrected",
+    "VHS_latentpreview": false,
+    "VHS_latentpreviewrate": 0,
+    "VHS_MetadataImage": true,
+    "VHS_KeepIntermediate": true
+  },
+  "version": 0.4
+}
