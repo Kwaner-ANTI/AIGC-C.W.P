@@ -1,0 +1,25 @@
+{
+  "description": "Optional Krea-2 Turbo third-party LoRAs. Paid/permission-gated versions are never fetched without explicit selection. Personal weights and Civitai tokens stay outside GitHub.",
+  "assets": {
+    "mrpopo": {
+      "filename": "Mrpopo anime full potential.safetensors",
+      "model_id": 2744585,
+      "version_id": 3168308,
+      "suggested_strength": 0.7
+    },
+    "shiiro": {
+      "filename": "0-11xx-A-krea-2-base-epoch-10.safetensors",
+      "model_id": 1197562,
+      "version_id": 3462062,
+      "suggested_strength": 0.6,
+      "trigger": "0__11Xx_illu"
+    },
+    "anime-in-real": {
+      "filename": "Krea_2_in_real_krea2_3320272_epoch_20.safetensors",
+      "model_id": 1979448,
+      "version_id": 3341474,
+      "suggested_strength": 0.75,
+      "access_note": "The user encountered an insufficient-Buzz restriction on 2026-11-16; do not auto-download."
+    }
+  }
+}
