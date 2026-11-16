@@ -4,6 +4,14 @@
 
 **这是可公开访问的轻量部署仓库，不需要 GitHub Pages，也不需要为克隆仓库配置 GitHub Token。** GPU 上实际模型下载仍受 Hugging Face 原作者访问条件、网络和实例空间约束。
 
+## 2026-11-17 · ANIMA 实测画布模板更新
+
+- `workflows/vast/Vast.ANIMA-TEXT.json`：已用用户 2026-11-17 提交的 `Aesthic.T2I-3.json` 替换。主输出为 ANIMA Aesthetic v1.1、`er_sde + simple`、40 Steps / CFG 4、16:9 的 2.4 MP ResolutionSelector，Turbo 开关默认关闭。画布另有 **未连接输出** 的实验子图，内部包含额外直接串联的 LoRA Loader；它不代表默认主输出可启用第二层 LoRA，亦不应当作已验证的生成路径。原子图名称含 Base v1.0，不要仅凭名称确定实际底模。
+- `workflows/vast/Vast.ANIMA-REF.S30_ERSDE.json`：已用 `Aesthic.REF-1.json` 替换。当前选用 **ANIMA Aesthetic v1.1**、Ref Adapter v2（`anima_ref_adapter_v2_r64.safetensors`）、80 Steps / CFG 4.5 / er_sde + simple、1792×1008。历史文件名中的 S30 **不再对应节点参数**。作者主要验证 Ref Adapter 搭配 **ANIMA Base v1.0**；Aesthetic + Adapter 属用户当前实验组合，不可冒充作者已经验证的兼容结论。
+- REF 工作流中 `LoadImage` 的原测试图片名已改为 `UPLOAD_REFERENCE_IMAGE.png`。**这只是缺失输入的提示名称，不是图片文件，也不会自动上传。** 用户每次导入模板必须在 `LoadImage` 主动上传本次要用的参考图片；没有上传时工作流可能报错，防止静默引用旧的参考图。上传参考图并不会修改 GitHub 模板。旧图显示也可能源于用户原有工作流、ComfyUI `input/` 持久化目录或浏览器预览状态；不得把文件名残留归因为模型训练记忆。
+- 重新部署该 REF 画布时，选择 `AIW_PROFILES="images-anima images-anima-ref"` 以取得 Aesthetic 底模与 Adapter；仅用原 `images-anima-ref` 清单主要提供 Base，不保证有 Aesthetic。T2I 用到较新 ComfyUI 内置的 `ResolutionSelector`、`ComfySwitchNode` 和子图功能；旧版环境未必支持。
+- Vast provisioning 目前的策略是 **仅在同名文件不存在时复制公开工作流**，不会覆盖实例里已有的、可能包含私有 Prompt/参考图的 JSON；本次 GitHub 模板替换不等于已有 ComfyUI 用户工作流已自动改写。新租空实例会复制新模板，复用旧持久目录的实例则应手动导入新 GitHub JSON 或自行替换对应保存的工作流。请勿为消除图片缩略图残留而清空整个 `input/` 或删除个人素材。
+
 ## 2026-11-16 · 多 LoRA 自动恢复与 Featurize 同步盘
 
 **Vast.ai：Templates 不限单个 LoRA。** 在现有图片模板的 Environment Variables 中设置：
