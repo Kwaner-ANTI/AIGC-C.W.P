@@ -119,11 +119,11 @@ def download_selected(names, assets, folder):
         config = f'url = "https://civitai.com/api/download/models/{item["version_id"]}"\n'
         if token:
             config += f'header = {json.dumps("Authorization: Bearer " + token)}\n'
-        cmd = ["curl", "--fail", "--location", "--retry", "2", "--continue-at", "-", "--output", str(partial), "--config", "-"]
+        cmd = ["curl", "--fail", "--location", "--http1.1", "--connect-timeout", "30", "--retry", "4", "--retry-all-errors", "--retry-delay", "3", "--continue-at", "-", "--output", str(partial), "--config", "-"]
         print(f"[download] {name} (Civitai version {item['version_id']})", flush=True)
         result = subprocess.run(cmd, input=config, text=True, check=False)
         if result.returncode:
-            print(f"[unavailable] {name}: curl exit {result.returncode}; check login, model access or Buzz", file=sys.stderr)
+            print(f"[download-error] {name}: curl exit {result.returncode}; 35 = TLS/connection error, 22 = HTTP error (inspect HTTP response and access)", file=sys.stderr)
             failed.append(name)
             continue
         if not partial.is_file() or partial.stat().st_size == 0:
@@ -168,8 +168,11 @@ def main():
         restore_archive(args.archive, assets, folder)
     failures = download_selected(selected, assets, folder) if selected else []
     link_saved_loras(assets, folder, comfy_folder)
+    if failures:
+        print(f"[failed] Not restored: {', '.join(failures)}; no success claimed", file=sys.stderr)
+        return 1
     print("[complete] Selected Civitai LoRAs restored; choose compatible files in ComfyUI")
-    return 1 if failures else 0
+    return 0
 
 
 if __name__ == "__main__":
