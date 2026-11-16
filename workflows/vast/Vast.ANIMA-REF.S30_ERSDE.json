@@ -1,31 +1,9 @@
 {
-  "id": "ea7339a6-8521-43d5-a3f0-b9fb0ce472d2",
+  "id": "03eee4e1-33c6-45a8-836d-8ded3b7b424e",
   "revision": 0,
-  "last_node_id": 21,
-  "last_link_id": 12,
+  "last_node_id": 23,
+  "last_link_id": 14,
   "nodes": [
-    {
-      "id": 21,
-      "type": "MarkdownNote",
-      "pos": [
-        420,
-        1310
-      ],
-      "size": [
-        800,
-        850
-      ],
-      "flags": {},
-      "order": 12,
-      "mode": 0,
-      "inputs": [],
-      "outputs": [],
-      "title": "AIW | 参数·LoRA·Seed·D.R.GMV",
-      "properties": {},
-      "widgets_values": [
-        "# AIW | ANIMA Base + Ref Adapter · 实战参数 / LoRA / Seed\n## 当前真实画布\n- `anima-base-v1.0.safetensors` + `anima_ref_adapter_v2_r64.safetensors`；Qwen3 0.6B + Qwen Image VAE。\n- KSampler 为 `30 steps / CFG 4.5 / er_sde / simple / denoise 1`；Ref Adapter 当前设有 `ref_guidance 4.5`、`apg` 校正。保留实际参考图输入和专用适配器，不把它当普通角色 LoRA 替换。\n- 已有 Ref 生成 History/文件名证据；尚未独立核查人物身份和品质。此图目前未额外连接普通创作 LoRA。\n## LoRA 可逆使用（本页是知识板，不改变节点）\n- 外置 LoRA 可能共同影响角色、画风、衣物和光影，并非互不干扰的滤镜。原生 → 单条 → 组合逐步对照，同条件逐一开关定位冲突。\n- 关闭对应开关、strength=0 或绕过 Loader 可撤销该外置 LoRA；恢复完整原生效果还须核对 Ref/Edit/Turbo、VAE、采样参数。已 Merge/Fuse 保存的模型必须重新载入未合并原底模。\n- 不同底模/模型架构的 LoRA 不能直接互换；LoRA strength 不是画风百分比。\n- 后续若加兼容 ANIMA Base 创作 LoRA，应位于正确的 MODEL 主链并保留 Ref Adapter；先原生参考、再单条 LoRA，对照参考身份是否漂移。\n## 历史有效 Seed · 创作经验（不是找 Seed 教程）\n- 优先登记用户**以前实际保存、观察到有效**的 Seed，写清它曾改善的机位/人物/构图/光影/队形及条件；单次经验也值得保留。\n- 记录：`Shot | Seed | 底模/LoRA:强度/开关 | Prompt/参考 | 采样/steps/CFG/尺寸/VAE | 曾观察的效果 | PNG/MP4或笔记 | 状态`。\n- 状态明确区分「已绑定输出」「用户历史经验待关联」「仅 JSON 控件缓存」；即使失去旧 /history，也可如实保留用户的早期记录。\n- 本仓库当前资料**没有可核对的历史优秀 Seed 具体数值**，这里不伪造。固定某个 Seed 不保证换模型、LoRA 或参考后仍有同样效果。\n## 已执行优秀 Seed\n- **待回填用户旧记录**；当前 randomize 控件数值不等于有效经验。"
-      ]
-    },
     {
       "id": 1,
       "type": "UNETLoader",
@@ -52,16 +30,14 @@
         }
       ],
       "properties": {
-        "cnr_id": "comfy-core",
-        "ver": "0.43.0",
         "Node name for S&R": "UNETLoader"
       },
       "widgets_values": [
-        "anima-base-v1.0.safetensors",
+        "anima-aesthetic-v1.1.safetensors",
         "default"
       ],
       "widgets_values_named": {
-        "unet_name": "anima-base-v1.0.safetensors",
+        "unet_name": "anima-aesthetic-v1.1.safetensors",
         "weight_dtype": "default"
       }
     },
@@ -92,8 +68,6 @@
         }
       ],
       "properties": {
-        "cnr_id": "comfy-core",
-        "ver": "0.43.0",
         "Node name for S&R": "CLIPLoader"
       },
       "widgets_values": [
@@ -134,8 +108,6 @@
         }
       ],
       "properties": {
-        "cnr_id": "comfy-core",
-        "ver": "0.43.0",
         "Node name for S&R": "VAELoader"
       },
       "widgets_values": [
@@ -146,61 +118,15 @@
       }
     },
     {
-      "id": 7,
-      "type": "LoadImage",
-      "pos": [
-        40,
-        420
-      ],
-      "size": [
-        320,
-        400
-      ],
-      "flags": {},
-      "order": 3,
-      "mode": 0,
-      "inputs": [],
-      "outputs": [
-        {
-          "name": "IMAGE",
-          "type": "IMAGE",
-          "slot_index": 0,
-          "links": [
-            3
-          ]
-        },
-        {
-          "name": "MASK",
-          "type": "MASK",
-          "slot_index": 1,
-          "links": null
-        }
-      ],
-      "title": "Reference",
-      "properties": {
-        "cnr_id": "comfy-core",
-        "ver": "0.43.0",
-        "Node name for S&R": "LoadImage"
-      },
-      "widgets_values": [
-        "S.50-ersde-W_S684435425824190.png",
-        "image"
-      ],
-      "widgets_values_named": {
-        "image": "S.50-ersde-W_S684435425824190.png",
-        "upload": "image"
-      }
-    },
-    {
       "id": 4,
       "type": "AnimaRefAdapter",
       "pos": [
-        400,
-        40
+        1232.1047940887452,
+        5.868440544128305
       ],
       "size": [
-        320,
-        238
+        342.7333862304687,
+        285.7999694824219
       ],
       "flags": {},
       "order": 8,
@@ -219,14 +145,7 @@
         {
           "name": "image",
           "type": "IMAGE",
-          "link": 3
-        },
-        {
-          "label": "clip (SnapRef only)",
-          "name": "clip",
-          "shape": 7,
-          "type": "CLIP",
-          "link": null
+          "link": 14
         }
       ],
       "outputs": [
@@ -240,45 +159,35 @@
         }
       ],
       "properties": {
-        "aux_id": "ElectronGirl/ComfyUI-Anima-Ref-Adapter",
-        "ver": "f02d54dd34593b4d4ce27b38de2a996049aeac58",
         "Node name for S&R": "AnimaRefAdapter"
       },
       "widgets_values": [
         "anima_ref_adapter_v2_r64.safetensors",
         4.5,
         "apg",
-        0.85,
-        0.75,
-        1,
-        "cs",
-        "",
-        false,
+        0.9,
+        0.8,
         1
       ],
       "widgets_values_named": {
         "lora_name": "anima_ref_adapter_v2_r64.safetensors",
         "ref_guidance": 4.5,
         "correction": "apg",
-        "strength": 0.85,
-        "ref_end": 0.75,
-        "ref_megapixels": 1,
-        "snapref_mode": "cs",
-        "ref_caption": "",
-        "snapref_guidance": false,
-        "ref_weight": 1
+        "strength": 0.9,
+        "ref_end": 0.8,
+        "ref_megapixels": 1
       }
     },
     {
       "id": 9,
       "type": "CLIPTextEncode",
       "pos": [
-        760,
-        40
+        756.1547861640244,
+        -261.68874101542775
       ],
       "size": [
         420,
-        200
+        296
       ],
       "flags": {},
       "order": 6,
@@ -302,27 +211,25 @@
       ],
       "title": "Positive",
       "properties": {
-        "cnr_id": "comfy-core",
-        "ver": "0.43.0",
         "Node name for S&R": "CLIPTextEncode"
       },
       "widgets_values": [
-        "Galleon from Granblue Fantasy, one adult female, single full-body anime illustration, shown in a strong three-quarter front view facing diagonally toward the right.\nThe viewing angle is clearly more rotated than a mild three-quarter pose, with both the front and the right-side surfaces of the body clearly visible.\nHer head, shoulders, chest, waist, pelvis, knees and feet all share the same right-facing diagonal orientation.\nThe near shoulder and near side of the torso are clearly closer to the viewer, while the far side recedes visibly in perspective.\nThe shoulder line and hip line are both clearly angled, not near-frontal and not symmetrical.\nMaintain Galleon’s facial identity, mature curvy body proportions, long dark brown hair with blue accents, tall upright furry ears, large curved horns, pointed ears and gold hair ornaments.\nPreserve the white sailor blouse, blue-gray neckerchief, gray pleated skirt, gloves and loafers from the reference image.\nRelaxed upright standing posture, calm natural pose, both feet on the ground, arms resting beside the body.\nClean anime linework, refined cel shading, soft even lighting, plain light-gray background, one complete centered figure."
+        "masterpiece, best quality, high quality anime illustration, solo, one adult woman, mature feminine proportions, closed eyes, calm peaceful expression,\n\na quiet adult woman sitting beside a very large panoramic side window inside a modern Japanese commuter train, seated naturally on a long passenger seat, relaxed posture, hands resting gently on her lap, body angled slightly toward the window, long hair falling naturally over her shoulders and beside the seat,\n\npreserve the character identity, face, hair, ears, horns, sailor uniform and legwear from the reference image, but make the character slightly smaller in the composition so the environment becomes important, complete head, complete ears, complete horns, complete upper body, lap and knees visible,\n\nwide cinematic composition, the character placed on the right side of the frame occupying about one third of the image, the panoramic side window and the exterior city view occupying most of the image, clear relationship between character, seat, window frame and outside scenery,\n\ninside a clean modern Japanese commuter train, elegant seat design, clear window frame, subtle interior paneling, believable train wall surfaces, refined seat cushions, coherent perspective, visible lower wall vent and interior structure, simple and realistic train interior details,\n\noutside the window: a vast fictional Japanese-inspired romantic metropolis seen from an elevated railway, richly layered mid-rise city blocks, dense residential and commercial districts, clearly separated middle-distance building groups, distant high-rise skyline, scattered warm city windows, luminous atmospheric depth, refined architectural silhouettes, visible urban layering, believable building volumes, no empty blur, no abstract texture field,\n\nlate twilight transitioning into early blue hour, indigo-blue city atmosphere, soft violet-blue ambient light, pale rose and lavender evening sky near the horizon, delicate separated evening cloud bands, warm city lights beginning to glow, subtle reflected cool light from the window softly illuminating the character and train interior,\n\nsophisticated cinematic anime background art, refined animated-film environment painting, detailed architectural drawing, clear atmospheric perspective, delicate painterly depth, controlled glass reflections, beautiful modern urban romanticism, serene dreamlike everyday mood, strong sense of place, strong environment quality, harmonious integration of character and scene"
       ],
       "widgets_values_named": {
-        "text": "Galleon from Granblue Fantasy, one adult female, single full-body anime illustration, shown in a strong three-quarter front view facing diagonally toward the right.\nThe viewing angle is clearly more rotated than a mild three-quarter pose, with both the front and the right-side surfaces of the body clearly visible.\nHer head, shoulders, chest, waist, pelvis, knees and feet all share the same right-facing diagonal orientation.\nThe near shoulder and near side of the torso are clearly closer to the viewer, while the far side recedes visibly in perspective.\nThe shoulder line and hip line are both clearly angled, not near-frontal and not symmetrical.\nMaintain Galleon’s facial identity, mature curvy body proportions, long dark brown hair with blue accents, tall upright furry ears, large curved horns, pointed ears and gold hair ornaments.\nPreserve the white sailor blouse, blue-gray neckerchief, gray pleated skirt, gloves and loafers from the reference image.\nRelaxed upright standing posture, calm natural pose, both feet on the ground, arms resting beside the body.\nClean anime linework, refined cel shading, soft even lighting, plain light-gray background, one complete centered figure."
+        "text": "masterpiece, best quality, high quality anime illustration, solo, one adult woman, mature feminine proportions, closed eyes, calm peaceful expression,\n\na quiet adult woman sitting beside a very large panoramic side window inside a modern Japanese commuter train, seated naturally on a long passenger seat, relaxed posture, hands resting gently on her lap, body angled slightly toward the window, long hair falling naturally over her shoulders and beside the seat,\n\npreserve the character identity, face, hair, ears, horns, sailor uniform and legwear from the reference image, but make the character slightly smaller in the composition so the environment becomes important, complete head, complete ears, complete horns, complete upper body, lap and knees visible,\n\nwide cinematic composition, the character placed on the right side of the frame occupying about one third of the image, the panoramic side window and the exterior city view occupying most of the image, clear relationship between character, seat, window frame and outside scenery,\n\ninside a clean modern Japanese commuter train, elegant seat design, clear window frame, subtle interior paneling, believable train wall surfaces, refined seat cushions, coherent perspective, visible lower wall vent and interior structure, simple and realistic train interior details,\n\noutside the window: a vast fictional Japanese-inspired romantic metropolis seen from an elevated railway, richly layered mid-rise city blocks, dense residential and commercial districts, clearly separated middle-distance building groups, distant high-rise skyline, scattered warm city windows, luminous atmospheric depth, refined architectural silhouettes, visible urban layering, believable building volumes, no empty blur, no abstract texture field,\n\nlate twilight transitioning into early blue hour, indigo-blue city atmosphere, soft violet-blue ambient light, pale rose and lavender evening sky near the horizon, delicate separated evening cloud bands, warm city lights beginning to glow, subtle reflected cool light from the window softly illuminating the character and train interior,\n\nsophisticated cinematic anime background art, refined animated-film environment painting, detailed architectural drawing, clear atmospheric perspective, delicate painterly depth, controlled glass reflections, beautiful modern urban romanticism, serene dreamlike everyday mood, strong sense of place, strong environment quality, harmonious integration of character and scene"
       }
     },
     {
       "id": 10,
       "type": "CLIPTextEncode",
       "pos": [
-        760,
-        280
+        742.970182560692,
+        145.1768673943706
       ],
       "size": [
-        420,
-        140
+        438.532492897727,
+        248.69022314930027
       ],
       "flags": {},
       "order": 7,
@@ -346,15 +253,13 @@
       ],
       "title": "Negative",
       "properties": {
-        "cnr_id": "comfy-core",
-        "ver": "0.43.0",
         "Node name for S&R": "CLIPTextEncode"
       },
       "widgets_values": [
-        "duplicate character, twin, second figure, multiple views, split composition, turnaround sheet, reference sheet, strict front view, near-frontal body, symmetrical front-facing pose, slight torso twist only, weak three-quarter angle, crossed legs, walking pose, side profile, back view, cropped ears, cropped horns, cropped feet, malformed anatomy, altered costume, busy background"
+        "worst quality, low quality, lowres, blurry, soft focus, smeared background, muddy details, abstract city texture, shapeless buildings, melted architecture, repetitive building noise, unreadable skyline, empty exterior, flat blue background, washed out cityscape, low-detail scenery,\n\nmultiple characters, extra character, duplicate character, collage, multiple views, split screen, character sheet, standing pose, floating pose, distorted seated pose, bad sitting anatomy, twisted legs, fused legs, extra limbs, missing limbs, bad hands, extra fingers, malformed body, broken proportions,\n\ncropped head, cropped ears, cropped horns, missing ears, missing horns, duplicate ears, duplicate horns, deformed face, asymmetrical face, open eyes, wrong expression,\n\nwrong outfit, incorrect sailor uniform, wrong color scheme, missing neckerchief, exposed midriff, bare waist, unintended bodysuit, wrong stockings, missing pantyhose, wrong socks, random leg accessories, fantasy armor parts,\n\nfantasy cape, floating mechanical ring, staff, weapon, large fantasy ornaments, decorative halo, giant sci-fi structures attached to the character,\n\nsecond railway outside the window, parallel railway tracks, excessive elevated highways, road interchange, front windshield view, driver perspective, countryside, rural railway, cyberpunk neon, dystopian city, giant mushroom cloud, over-orange sunset, midday lighting,\n\nphotorealistic rendering, 3d cgi, plastic shading, childish cartoon, flat storybook scenery, poor train perspective, malformed window frame, duplicated reflections, reflected duplicate face, text, watermark, logo, signature"
       ],
       "widgets_values_named": {
-        "text": "duplicate character, twin, second figure, multiple views, split composition, turnaround sheet, reference sheet, strict front view, near-frontal body, symmetrical front-facing pose, slight torso twist only, weak three-quarter angle, crossed legs, walking pose, side profile, back view, cropped ears, cropped horns, cropped feet, malformed anatomy, altered costume, busy background"
+        "text": "worst quality, low quality, lowres, blurry, soft focus, smeared background, muddy details, abstract city texture, shapeless buildings, melted architecture, repetitive building noise, unreadable skyline, empty exterior, flat blue background, washed out cityscape, low-detail scenery,\n\nmultiple characters, extra character, duplicate character, collage, multiple views, split screen, character sheet, standing pose, floating pose, distorted seated pose, bad sitting anatomy, twisted legs, fused legs, extra limbs, missing limbs, bad hands, extra fingers, malformed body, broken proportions,\n\ncropped head, cropped ears, cropped horns, missing ears, missing horns, duplicate ears, duplicate horns, deformed face, asymmetrical face, open eyes, wrong expression,\n\nwrong outfit, incorrect sailor uniform, wrong color scheme, missing neckerchief, exposed midriff, bare waist, unintended bodysuit, wrong stockings, missing pantyhose, wrong socks, random leg accessories, fantasy armor parts,\n\nfantasy cape, floating mechanical ring, staff, weapon, large fantasy ornaments, decorative halo, giant sci-fi structures attached to the character,\n\nsecond railway outside the window, parallel railway tracks, excessive elevated highways, road interchange, front windshield view, driver perspective, countryside, rural railway, cyberpunk neon, dystopian city, giant mushroom cloud, over-orange sunset, midday lighting,\n\nphotorealistic rendering, 3d cgi, plastic shading, childish cartoon, flat storybook scenery, poor train perspective, malformed window frame, duplicated reflections, reflected duplicate face, text, watermark, logo, signature"
       }
     },
     {
@@ -369,7 +274,7 @@
         110
       ],
       "flags": {},
-      "order": 4,
+      "order": 3,
       "mode": 0,
       "inputs": [],
       "outputs": [
@@ -383,18 +288,16 @@
         }
       ],
       "properties": {
-        "cnr_id": "comfy-core",
-        "ver": "0.43.0",
         "Node name for S&R": "EmptyLatentImage"
       },
       "widgets_values": [
-        1056,
-        1408,
+        1792,
+        1008,
         1
       ],
       "widgets_values_named": {
-        "width": 1056,
-        "height": 1408,
+        "width": 1792,
+        "height": 1008,
         "batch_size": 1
       }
     },
@@ -402,12 +305,12 @@
       "id": 15,
       "type": "KSampler",
       "pos": [
-        1220,
-        40
+        1228.7897557128904,
+        339.47133325500494
       ],
       "size": [
-        320,
-        270
+        347.10216674804684,
+        280.9958618164062
       ],
       "flags": {},
       "order": 9,
@@ -445,23 +348,21 @@
         }
       ],
       "properties": {
-        "cnr_id": "comfy-core",
-        "ver": "0.43.0",
         "Node name for S&R": "KSampler"
       },
       "widgets_values": [
-        926670164250245,
+        1070465197304739,
         "randomize",
-        30,
+        80,
         4.5,
         "er_sde",
         "simple",
         1
       ],
       "widgets_values_named": {
-        "seed": 926670164250245,
+        "seed": 1070465197304739,
         "control_after_generate": "randomize",
-        "steps": 30,
+        "steps": 80,
         "cfg": 4.5,
         "sampler_name": "er_sde",
         "scheduler": "simple",
@@ -472,8 +373,8 @@
       "id": 16,
       "type": "VAEDecode",
       "pos": [
-        1220,
-        350
+        1260.0187035461427,
+        -493.17518776596086
       ],
       "size": [
         320,
@@ -505,8 +406,6 @@
         }
       ],
       "properties": {
-        "cnr_id": "comfy-core",
-        "ver": "0.43.0",
         "Node name for S&R": "VAEDecode"
       }
     },
@@ -514,14 +413,16 @@
       "id": 17,
       "type": "SaveImage",
       "pos": [
-        1580,
-        40
+        1676.496924937855,
+        21.345454545454558
       ],
       "size": [
         560,
         760
       ],
-      "flags": {},
+      "flags": {
+        "collapsed": false
+      },
       "order": 11,
       "mode": 0,
       "inputs": [
@@ -539,43 +440,82 @@
         }
       ],
       "properties": {
-        "cnr_id": "comfy-core",
-        "ver": "0.43.0",
         "Node name for S&R": "SaveImage"
       },
       "widgets_values": [
-        "ERSDE30-S"
+        "ersde_S60C4.5_0.9-0.8"
       ],
       "widgets_values_named": {
-        "filename_prefix": "ERSDE30-S"
+        "filename_prefix": "ersde_S60C4.5_0.9-0.8"
       }
     },
     {
       "id": 19,
       "type": "MarkdownNote",
       "pos": [
-        438.2222493489585,
-        734.2222493489581
+        744.1534027099609,
+        646.0533825683594
       ],
       "size": [
         780,
         520
       ],
       "flags": {},
-      "order": 5,
+      "order": 4,
       "mode": 0,
       "inputs": [],
       "outputs": [],
       "title": "How to use",
       "properties": {},
       "widgets_values": [
-        "## Anima Reference Adapter\n\nThe Anima default workflow plus one node. The reference gives **who** is drawn and much of **how**; the prompt gives pose, scene and framing.\n\n- **Prompt**: quality tags, `1girl` / `1boy`, `solo`, then scene tags. No character name, artist tag or outfit tags needed.\n- **Anima Ref Adapter**: put it after the model loader and any LoRAs.\n  - `ref_guidance` 4.5: how hard to push toward the reference (1 = no extra model call, weaker).\n  - `correction` apg: keeps colors in check.\n  - `ref_end` 1.0: set ~0.6 to save time with nearly the same image.\n- Any sampler works. Defaults here: er_sde, simple, 30 steps, cfg 4.5.\n- **Faster**: a turbo LoRA in front of the adapter with 10 steps, cfg 1, ref_guidance 1; SageAttention; EasyCache.\n"
+        "\n## 记得改名\n\n# er_sde+simple对应建筑\n\n# 1.8MP=1792*1008\n# 1.0MP\t1360×768\t\n# 1.3MP\t1536×864\t\n# 1.5MP\t约 1632×912\t\t\n# 2.0MP\t约 1888×1056\t\n# 2.36MP 2048×1152\n\n\n1029420174235775\n957452313466548\n1070301962178338\n624953497604917\n\n## 跨实例使用提醒（2026-11-17）\n- LoadImage 参考图位置已改为 UPLOAD_REFERENCE_IMAGE.png 占位名称；这是提示，不是自带图片。进入新实例后须主动在 LoadImage 重新上传或选择真实参考图，才可以 Queue。工作流 JSON 不携带原图片。\n- 本次实测画布当前为 ANIMA Aesthetic v1.1 + Ref Adapter v2，输出 1792×1008、80 steps / CFG 4.5 / er_sde + simple；原文件名 S30 是历史命名，不代表目前参数。\n- Ref Adapter 作者的验证底模为 ANIMA Base v1.0；Aesthetic v1.1 与此适配器组合并非作者已验证的等价方案，按实际输出判断。\n- 在 Vast 新实例需 images-anima 与 images-anima-ref 的资产组合；上传图、模型文件、工作流 JSON 是不同资产。旧文件名可能在其他用户工作流或浏览器状态仍存在，本文件不会删除任何历史图片。"
       ],
       "widgets_values_named": {
-        "text": "## Anima Reference Adapter\n\nThe Anima default workflow plus one node. The reference gives **who** is drawn and much of **how**; the prompt gives pose, scene and framing.\n\n- **Prompt**: quality tags, `1girl` / `1boy`, `solo`, then scene tags. No character name, artist tag or outfit tags needed.\n- **Anima Ref Adapter**: put it after the model loader and any LoRAs.\n  - `ref_guidance` 4.5: how hard to push toward the reference (1 = no extra model call, weaker).\n  - `correction` apg: keeps colors in check.\n  - `ref_end` 1.0: set ~0.6 to save time with nearly the same image.\n- Any sampler works. Defaults here: er_sde, simple, 30 steps, cfg 4.5.\n- **Faster**: a turbo LoRA in front of the adapter with 10 steps, cfg 1, ref_guidance 1; SageAttention; EasyCache.\n"
+        "text": "\n## 记得改名\n\n# er_sde+simple对应建筑\n\n# 1.8MP=1792*1008\n# 1.0MP\t1360×768\t\n# 1.3MP\t1536×864\t\n# 1.5MP\t约 1632×912\t\t\n# 2.0MP\t约 1888×1056\t\n# 2.36MP 2048×1152\n\n\n1029420174235775\n957452313466548\n1070301962178338\n624953497604917\n\n## 跨实例使用提醒（2026-11-17）\n- LoadImage 参考图位置已改为 UPLOAD_REFERENCE_IMAGE.png 占位名称；这是提示，不是自带图片。进入新实例后须主动在 LoadImage 重新上传或选择真实参考图，才可以 Queue。工作流 JSON 不携带原图片。\n- 本次实测画布当前为 ANIMA Aesthetic v1.1 + Ref Adapter v2，输出 1792×1008、80 steps / CFG 4.5 / er_sde + simple；原文件名 S30 是历史命名，不代表目前参数。\n- Ref Adapter 作者的验证底模为 ANIMA Base v1.0；Aesthetic v1.1 与此适配器组合并非作者已验证的等价方案，按实际输出判断。\n- 在 Vast 新实例需 images-anima 与 images-anima-ref 的资产组合；上传图、模型文件、工作流 JSON 是不同资产。旧文件名可能在其他用户工作流或浏览器状态仍存在，本文件不会删除任何历史图片。"
       },
       "color": "#432",
       "bgcolor": "#653"
+    },
+    {
+      "id": 23,
+      "type": "LoadImage",
+      "pos": [
+        1228.2192715675671,
+        -373.91067287142744
+      ],
+      "size": [
+        338.2277425231934,
+        321.9999469772339
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            14
+          ]
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LoadImage"
+      },
+      "widgets_values": [
+        "UPLOAD_REFERENCE_IMAGE.png",
+        "image"
+      ],
+      "widgets_values_named": {
+        "image": "UPLOAD_REFERENCE_IMAGE.png",
+        "upload": "image"
+      }
     }
   ],
   "links": [
@@ -594,14 +534,6 @@
       4,
       1,
       "VAE"
-    ],
-    [
-      3,
-      7,
-      0,
-      4,
-      2,
-      "IMAGE"
     ],
     [
       4,
@@ -674,19 +606,27 @@
       17,
       0,
       "IMAGE"
+    ],
+    [
+      14,
+      23,
+      0,
+      4,
+      2,
+      "IMAGE"
     ]
   ],
   "groups": [],
   "config": {},
   "extra": {
     "ds": {
-      "scale": 0.5644739300537774,
+      "scale": 0.8264462809917354,
       "offset": [
-        97.39161811832969,
-        599.4133594810853
+        -441.80361172369294,
+        346.41124282832743
       ]
     },
-    "frontendVersion": "1.57.4"
+    "frontendVersion": "1.57.6"
   },
   "version": 0.4
 }
