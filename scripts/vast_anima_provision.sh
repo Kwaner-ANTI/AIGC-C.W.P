@@ -51,13 +51,15 @@ fi
 
 # Models/nodes: delegate to the existing bootstrap/manifest mechanism.
 # Select only the image models used this session via AIW_PROFILES.
-# Optional images-krea2-personal-loras requires AIW_LORA_ARCHIVE (uploaded first)
-# or explicit AIW_CIVITAI_LORAS; it never fetches paid assets implicitly.
+# Optional images-civitai-loras / legacy images-krea2-personal-loras
+# fetch the comma-separated AIW_CIVITAI_LORAS selection (or restore an archive).
+# Per-family *-civitai-loras.json manifests hold filenames and Civitai version IDs.
+# No unselected models are downloaded; credentials are never stored here.
 # FLUX.2 Dev on RTX 4090 requires CPU offload and sufficient system RAM.
 read -r -a PROFILES <<< "${AIW_PROFILES:-images-anima images-anima-ref}"
 for profile in "${PROFILES[@]}"; do
   case "$profile" in
-    images-anima|images-anima-ref|images-moss|images-moss-edit|images-flux2-dev|images-krea2-turbo|images-krea2-personal-loras) ;;
+    images-anima|images-anima-ref|images-moss|images-moss-edit|images-flux2-dev|images-krea2-turbo|images-krea2-personal-loras|images-civitai-loras) ;;
     *) echo "Unsupported image profile: $profile" >&2; exit 2 ;;
   esac
   echo "[profile] $profile"
