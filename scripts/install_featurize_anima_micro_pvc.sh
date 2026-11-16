@@ -34,7 +34,7 @@ else
     if [[ -n "${CIVITAI_TOKEN:-}" ]]; then
       printf 'header = "Authorization: Bearer %s"\n' "$CIVITAI_TOKEN"
     fi
-  } | curl --fail --location --retry 2 --continue-at - --output "$part" --config -
+  } | curl --fail --location --http1.1 --connect-timeout 30 --retry 4 --retry-all-errors --retry-delay 3 --continue-at - --output "$part" --config -
   [[ -s "$part" ]] || { echo "[error] empty PVC download" >&2; exit 1; }
   ln "$part" "$source_file"
   rm -f "$part"
