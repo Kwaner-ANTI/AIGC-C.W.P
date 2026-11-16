@@ -1,0 +1,13 @@
+{
+  "description": "ANIMA 28-block concept LoRA for Featurize. Do not apply to 2.9B (40 blocks) without remapping.",
+  "assets": {
+    "anima-micro-v2": {
+      "filename": "AddMicroDetails_Anima_v2.safetensors",
+      "model_id": 1377820,
+      "version_id": 3443066,
+      "suggested_strength": 0.5,
+      "base_model": "Anima Base v1.0 / Aesthetic v1.1",
+      "trigger_note": "Optional addmicrodetails text; version page lists no required trigger"
+    }
+  }
+}
