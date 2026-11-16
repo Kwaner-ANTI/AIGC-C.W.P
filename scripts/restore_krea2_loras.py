@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Restore selected Krea-2 community LoRAs from a private TAR or Civitai.
+"""Restore explicitly selected Civitai LoRAs or a private TAR.
 
 This runs in the user's ComfyUI environment, never starts ComfyUI, and never
 puts paid weights or API tokens into the public GitHub repository.
@@ -14,6 +14,42 @@ import sys
 import tarfile
 import tempfile
 from pathlib import Path
+
+
+
+def load_assets(repo_root):
+    """Reuse the existing per-model manifest format across model families."""
+    assets = {}
+    for manifest in sorted((repo_root / "manifests").glob("*-civitai-loras.json")):
+        entries = json.loads(manifest.read_text(encoding="utf-8"))["assets"]
+        for name, item in entries.items():
+            if name in assets:
+                raise ValueError(f"Duplicate LoRA name {name!r} in {manifest}; use a distinct name")
+            assets[name] = item
+    return assets
+
+
+def link_saved_loras(assets, folder, comfy_folder):
+    """Expose persistent LoRAs to ComfyUI without copying the large files."""
+    if folder.resolve() == comfy_folder.resolve():
+        return
+    comfy_folder.mkdir(parents=True, exist_ok=True)
+    for name, item in assets.items():
+        source = folder / item["filename"]
+        if not source.is_file():
+            continue
+        target = comfy_folder / item["filename"]
+        if target.is_symlink():
+            if target.is_file() and target.resolve() == source.resolve():
+                continue
+            raise FileExistsError(f"Conflicting or broken ComfyUI LoRA link: {target}")
+        if target.exists():
+            if target.is_file():
+                print(f"[reuse] ComfyUI has its own file: {target}", flush=True)
+                continue
+            raise FileExistsError(f"Conflicting ComfyUI LoRA path: {target}")
+        target.symlink_to(source.resolve())
+        print(f"[linked] {target} -> {source}", flush=True)
 
 
 def existing_file(path):
@@ -112,8 +148,7 @@ def main():
     parser.add_argument("--download", default=os.environ.get("AIW_CIVITAI_LORAS", ""), help="Explicit comma-separated names, e.g. mrpopo,shiiro")
     parser.add_argument("--list", action="store_true", help="List recorded model versions without downloading")
     args = parser.parse_args()
-    with (args.repo_root / "manifests" / "krea2-civitai-loras.json").open(encoding="utf-8") as f:
-        assets = json.load(f)["assets"]
+    assets = load_assets(args.repo_root)
     if args.list:
         for name, item in assets.items():
             print(f"{name}: {item['filename']} (Civitai version {item['version_id']})")
@@ -124,14 +159,16 @@ def main():
         parser.error(f"unknown models: {', '.join(unknown)}; available: {', '.join(assets)}")
     if not args.archive and not selected:
         parser.error("provide AIW_LORA_ARCHIVE or explicitly select AIW_CIVITAI_LORAS")
-    folder = Path(os.environ.get("AIW_COMFY_DIR", "/workspace/ComfyUI")).expanduser() / "models" / "loras"
-    if not folder.parent.is_dir():
-        raise FileNotFoundError(f"ComfyUI models directory missing: {folder.parent}; set AIW_COMFY_DIR")
+    comfy_folder = Path(os.environ.get("AIW_COMFY_DIR", "/workspace/ComfyUI")).expanduser() / "models" / "loras"
+    if not comfy_folder.parent.is_dir():
+        raise FileNotFoundError(f"ComfyUI models directory missing: {comfy_folder.parent}; set AIW_COMFY_DIR")
+    folder = Path(os.environ.get("AIW_LORA_DIR", str(comfy_folder))).expanduser()
     folder.mkdir(parents=True, exist_ok=True)
     if args.archive:
         restore_archive(args.archive, assets, folder)
     failures = download_selected(selected, assets, folder) if selected else []
-    print("[complete] Krea-2 community LoRA restore; choose files in the existing ComfyUI T2I LoRA loader")
+    link_saved_loras(assets, folder, comfy_folder)
+    print("[complete] Selected Civitai LoRAs restored; choose compatible files in ComfyUI")
     return 1 if failures else 0
 
 
