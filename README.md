@@ -52,6 +52,8 @@ Workbench 继续使用已有 SSH、隧道、Start/Reuse 和 `/system_stats` read
 
 | Profile | 用途 |
 |---|---|
+| `images-krea2-turbo` | Krea-2 Turbo INT8 主模型、Qwen3-VL、原生 VAE、官方 Darkbrush/Style Reference LoRA |
+| `images-krea2-personal-loras` | **可选** Krea-2 第三方 LoRA：从本地 TAR 恢复或明确指定 Civitai 版本下载；不含公有权重 | 
 | `images-anima` | ANIMA Aesthetic v1.1 文生图：主模型、文本编码器、VAE、Turbo LoRA v0.2 |
 | `images-anima-ref` | ANIMA Base v1.0 与参考适配节点 |
 | `images-moss` | MOSS SFT BF16 文生图 |
@@ -75,6 +77,35 @@ export AIW_PYTHON=/path/to/vllm/bin/python
 export AIW_VLM_REPO='OWNER/EXACT_MODEL'
 bash bootstrap.sh vlm
 ```
+
+## Krea-2 第三方 LoRA：跨 Vast、Featurize、AutoDL、RunPod 恢复（可选）
+
+现有 `bootstrap.sh` 新增 `images-krea2-personal-loras`，读取公开的 `manifests/krea2-civitai-loras.json`（仅有文件名、版本 ID 和建议强度），实际权重及 Civitai Token 不进入 GitHub。三款候选分别为 Mrpopo v3 (`3168308`)、Shiiro Niji A (`3462062`) 和 Anime in Real v2.0 (`3341474`)。最后一款 2026-11-16 实测因 Buzz 不足未能下载，**不会默认获取**。这些仅适配 Krea-2 对应版本，不能用于 ANIMA/MOSS/FLUX2/H3。
+
+1. 在新 GPU 实例按平台实际路径设置 `AIW_COMFY_DIR`、`AIW_PYTHON`、`AIW_ASSETS_ROOT`。使用原有 `bash bootstrap.sh images-krea2-turbo` 恢复 Krea-2 基础资产；已通过 Provisioning 恢复则不要重复下载。
+2. **首选私人备份**：把 Windows 保存的 `KREA2_personal_loras.tar` 上传到当前实例，例如 `/workspace/KREA2_personal_loras.tar`，然后在仓库目录运行：
+
+```bash
+export AIW_COMFY_DIR=/workspace/ComfyUI       # 按当前平台修改；不是通用路径
+export AIW_PYTHON=/venv/main/bin/python       # 按当前平台修改
+AIW_LORA_ARCHIVE=/workspace/KREA2_personal_loras.tar bash bootstrap.sh images-krea2-personal-loras
+```
+
+脚本只提取已登记且实际包含在压缩包中的 LoRA，忽略其他内容；文件已存在时复用，不覆盖现有模型或软链接。若备份不包含 Mrpopo，不能因为运行成功就声称它已恢复。**这份私人压缩包必须由使用者在新实例上传**；GitHub 不会同步 Windows 私人文件。
+
+3. **无备份时按需下载**，而不是全量自动下载。以下仅为示例，先确认对应 Civitai 版本仍授权访问：
+
+```bash
+read -rsp 'Civitai API Token: ' CIVITAI_TOKEN; export CIVITAI_TOKEN; echo
+AIW_CIVITAI_LORAS=mrpopo,shiiro bash bootstrap.sh images-krea2-personal-loras
+unset CIVITAI_TOKEN
+```
+
+使用 `AIW_CIVITAI_LORAS=anime-in-real` 才会尝试该 Buzz 受限版本，401/403 会报告失败而不是绕过网站权限。Token 只在本次终端进程环境使用；下载脚本通过 curl stdin 配置传入，不写入 GitHub、URL 或 shell 命令参数。临时下载以 `.part` 保存，断线可续传。仅恢复本地压缩包时不需要 curl、Civitai Token 或 Hugging Face 依赖。
+
+4. 在 ComfyUI 左侧 Workflows 打开 `KREA2_T2I_INT8.json`，启用已有的创作 LoRA 开关并选择文件。官方 `KREA2_STYLE_REFERENCE_OFFICIAL.json` 的 `krea2_style_reference.safetensors` 是专用参考机制，不要当普通风格 LoRA 替换。
+
+Vast `scripts/vast_anima_provision.sh` 的 `AIW_PROFILES` 允许明确追加 `images-krea2-personal-loras`，**但前提是实例在 provisioning 时已经能够访问私人 TAR 路径，或显式指定获授权的 Civitai 下载**；通常新租 GPU 应先运行基础 profile，再上传 TAR 手动执行一次恢复。Featurize 历史图片路径为 `/home/featurize/ComfyUI-images`；AutoDL / RunPod 采用新实例真实路径，不把 Vast 默认值当成跨平台共用。以上恢复逻辑已做本地 TAR 模拟，尚不能代替新租 GPU 上的 LoRA 实际推理结果。
 
 ## 功能边界与重要限制
 
