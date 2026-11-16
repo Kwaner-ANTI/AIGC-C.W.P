@@ -4,6 +4,33 @@
 
 **这是可公开访问的轻量部署仓库，不需要 GitHub Pages，也不需要为克隆仓库配置 GitHub Token。** GPU 上实际模型下载仍受 Hugging Face 原作者访问条件、网络和实例空间约束。
 
+## 2026-11-16 · 多 LoRA 自动恢复与 Featurize 同步盘
+
+**Vast.ai：Templates 不限单个 LoRA。** 在现有图片模板的 Environment Variables 中设置：
+
+```text
+AIW_PROFILES=images-krea2-turbo images-civitai-loras
+AIW_CIVITAI_LORAS=mrpopo,shiiro
+```
+
+原有 `PROVISIONING_SCRIPT` 仍指向 `scripts/vast_anima_provision.sh`。`AIW_CIVITAI_LORAS` 是逗号分隔的**显式选择列表**；后续可扩充成更多名称，但未列入的版本不下载。下载器使用清单中记录的真实 `https://civitai.com/api/download/models/<version_id>` 地址，不依赖 TAR，也不从 GitHub 取得权重。需要认证时将只具备模型读取权限的 `CIVITAI_TOKEN` 配置在提供商受控的账户级环境变量中，**不要**提交至 GitHub/公开模板。各模型家族的 LoRA 通过已有 `manifests/*-civitai-loras.json` 格式登记不同名称、文件名和真实 Civitai 版本 ID；重名必须区分。现有 `images-krea2-personal-loras` 命令仍然有效，`images-civitai-loras` 是同一个恢复器的通用入口。不同基础模型对应 LoRA 不可混载；下载选择不等于 ComfyUI 同时启用 LoRA。
+
+**Featurize：持久权重放在同步盘，而非临时 ComfyUI 目录。** 图片环境历史路径为 `/home/featurize/ComfyUI-images`、Python `/home/featurize/venvs/comfy-images/bin/python`。将 `AIW_LORA_DIR` 指向 `/home/featurize/work/AIWorkbench/models/loras`，用同一个 `images-civitai-loras` 入口恢复；下载器在同步盘发现已存在的权重就复用，并在 `ComfyUI-images/models/loras/` 创建指向同步盘文件的软链接，不复制大文件、不覆盖冲突的现有文件。新实例需要重新建立的是小型链接，**不是**重新下载权重；如果原 ComfyUI 模板已经能从外部 LoRA 目录读取，也可以复用其 `extra_model_paths` 配置。
+
+若要免除每次新实例手动输入命令，需**一次性**把仓库拉取/更新与 LoRA 恢复命令写入 Workbench 已有图片 Runtime 的 Prepare（或该 Featurize 镜像实际使用的原启动流程）；图片环境的 Prepare 此前为空，公开 GitHub 变更不会自动改写你 Windows Workbench 的配置。Prepare 里的关键环境变量为：
+
+```bash
+export AIW_COMFY_DIR=/home/featurize/ComfyUI-images
+export AIW_PYTHON=/home/featurize/venvs/comfy-images/bin/python
+export AIW_LORA_DIR=/home/featurize/work/AIWorkbench/models/loras
+export AIW_CIVITAI_LORAS=mrpopo,shiiro
+bash /home/featurize/work/AIWorkbench/AIGC-C.W.P/bootstrap.sh images-civitai-loras
+```
+
+上例要求公开仓库已一次性克隆到显示的位置；可由既有 Prepare 负责 `git clone` / `git pull --ff-only`。**不要**把 Civitai Token 写在同步盘脚本里。第一次下载新模型若需要认证，仍必须由受信方式把 Token 提供给执行实例；之后在同步盘复用文件不再需要下载 Token。同步盘当前历史额度约 30GB，未来容量明显不够再考虑其他存储，不把大底模批量复制进去。
+
+以上是**已公开的恢复脚本功能**，不是新租 Vast/Featurize GPU 已完成生图的声明；应以随后真实实例运行与实际 LoRA 图片结果记录状态。旧私人 TAR 恢复仍保留作为备选。
+
 ## 2026-11-16 · Vast Krea-2 重租完整操作（模板、私人 TAR、LoRA）
 
 此节是**实际执行顺序**。公开 GitHub 只保存恢复逻辑和文件版本，**不会**包含 `KREA2_personal_loras.tar`；Vast Template 只保存启动规则，**不是**模型/LoRA 的持久磁盘或快照。Windows 已下载的个人 LoRA TAR 应留在私人存储，不上传到本公开仓库；也不要把 Civitai Token 放进公共 Template / Git。
