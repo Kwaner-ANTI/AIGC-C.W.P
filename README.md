@@ -4,6 +4,59 @@
 
 **这是可公开访问的轻量部署仓库，不需要 GitHub Pages，也不需要为克隆仓库配置 GitHub Token。** GPU 上实际模型下载仍受 Hugging Face 原作者访问条件、网络和实例空间约束。
 
+## 2026-11-16 · Vast Krea-2 重租完整操作（模板、私人 TAR、LoRA）
+
+此节是**实际执行顺序**。公开 GitHub 只保存恢复逻辑和文件版本，**不会**包含 `KREA2_personal_loras.tar`；Vast Template 只保存启动规则，**不是**模型/LoRA 的持久磁盘或快照。Windows 已下载的个人 LoRA TAR 应留在私人存储，不上传到本公开仓库；也不要把 Civitai Token 放进公共 Template / Git。
+
+### A. 当前实例 Destroy 前（在 Windows 完成，不依赖终端脚本）
+
+- 保存私人 `KREA2_personal_loras.tar` 到 Windows 长期 AIGC 存储；它可能只包含当时实际下载成功的部分 LoRA（检查压缩包成员），Anime in Real v2.0 因 Buzz 不足并未取得。
+- 另行保存希望长期保留的私有 Prompt、参考图、实际出图 PNG、修改后的工作流 JSON、Seed 对应关系及 Workbench Shot 资料；GitHub 的公开 JSON 不会自动带走本轮私有作品。
+- 修改 Vast 保存的模板**无需继续运行原 GPU 实例**。Stop 可能仍计存储费，Destroy 会清除实例的临时文件。不要把手工上传过的 TAR 误认为已经随 GitHub/Template 持久化。
+
+### B. 在 Vast 网页修改以后要用的图片模板（一次性）
+
+Vast `Templates → My Templates → 编辑（铅笔图标）→ Environment Variables`；若保留原 ANIMA 模板作另一用途，可以复制一份 Krea 专用图片模板，但不是必须创建新模板。新实例使用的 ComfyUI 镜像、启动模式、磁盘和端口以你已验证的模板为准，**不要**仅因安装 LoRA 替换它们或启动第二个 ComfyUI。
+
+| 环境变量 | 值 | 原因 |
+|---|---|---|
+| `PROVISIONING_SCRIPT` | `https://raw.githubusercontent.com/Kwaner-ANTI/AIGC-C.W.P/main/scripts/vast_anima_provision.sh` | 新租实例首次启动拉取当前公开恢复脚本 |
+| `AIW_PROFILES` | `images-krea2-turbo` | 自动恢复 Krea-2 主模型、文本编码器、原生 VAE、官方 LoRA，并复制公开工作流 |
+| `AIW_COMFY_DIR` | `/workspace/ComfyUI` | 仅在该 Vast 模板的 ComfyUI 真正位于此目录时使用 |
+| `AIW_PYTHON` | `/venv/main/bin/python` | 仅在当前模板实际有此 Python 时使用 |
+| `AIW_ASSETS_ROOT` | `/workspace/aiworkbench-assets` | 同实例模型下载资产共用目录 |
+
+选择需要的额外图片模型时，可以将 `AIW_PROFILES` 设成 `images-flux2-dev images-krea2-turbo`；这会增加空间和下载成本。**仅 Krea 2 就用单个 profile。** 保存模板后，使用该模板**新建的实例**才会按这些值执行；改 GitHub 或编辑模板不会回头自动切换旧浏览器画布。
+
+**不要把 `images-krea2-personal-loras` 追加到模板的 `AIW_PROFILES`，除非实例首次 Provisioning 开始之前私人 TAR 已经位于实例可访问位置、`AIW_LORA_ARCHIVE` 已指向该路径。** 通常新租的临时盘没有 Windows TAR，因此应在启动完成后单独执行恢复 profile。不要把 `CIVITAI_TOKEN`、私人 TAR、私有 URL 凭据写入公开模板。
+
+### C. 新租 Vast 实例自动恢复的部分
+
+按以前可用的 Vast 图片模板租 GPU，并通过网页或实例终端等待原有 Provisioning 完成。模板的 `PROVISIONING_SCRIPT` 会克隆或更新 `/workspace/AIGC-C.W.P`，将 GitHub 的公开 `workflows/vast/*.json` 复制到 `/workspace/ComfyUI/user/default/workflows/`（同名已有文件会保留），并执行 `bash bootstrap.sh images-krea2-turbo`。这一步**不会取得私人 Mrpopo/Shiiro TAR**。
+
+如没有配置 Provisioning，才需要根据实际 ComfyUI/Python 路径，手工 clone/pull 并执行基础模型 profile。模板已在运行 ComfyUI/Supervisor 时直接复用，不开第二个相同端口进程。
+
+### D. 让新租实例实际拿到 Windows TAR（每次新临时实例必做，除非已有外部持久存储）
+
+1. 在 Windows 找到 `KREA2_personal_loras.tar`，打开新 Vast 实例的 **Jupyter 文件管理器**，上传到 **`/workspace/KREA2_personal_loras.tar`**；如果新模板不是 Jupyter 启动模式，可使用本次实例实际 SSH 主机/端口的 `scp`，不要复用上次 SSH 端口。
+2. 在**新实例 Linux Terminal** 执行（当前路径适配上述 Vast 图片模板）：
+
+```bash
+cd /workspace/AIGC-C.W.P
+export AIW_COMFY_DIR=/workspace/ComfyUI
+export AIW_PYTHON=/venv/main/bin/python
+bash bootstrap.sh images-krea2-personal-loras --archive /workspace/KREA2_personal_loras.tar
+```
+
+脚本只恢复公开 manifest 登记且 TAR 中确实存在的 LoRA；跳过同名已有权重，不修改基础模型或已存工作流。因为是私人文件，上传本步骤**无法**仅靠 GitHub+无私人存储凭据的 Vast 模板自动完成。
+
+3. 打开 ComfyUI 左侧 Workflows → `KREA2_T2I_INT8`；刷新模型列表，展开内置 LoRA 控件，选实际存在的 Mrpopo/Shiiro，启用 LoRA，然后实际生成。官方 Style Reference 工作流保留专用参考 LoRA，不要用自由画风 LoRA 替换它。
+4. 如果未来改用私人对象存储，必须自行确保模型使用许可、存储访问权限与安全凭据管理，并让**新实例**取得 TAR；此仓库当前**没有**对象存储自动同步实现，不能将其当作已经部署。
+
+### E. Featurize / AutoDL / RunPod
+
+复用同一 GitHub `images-krea2-turbo` 与 `images-krea2-personal-loras` 入口，但它们**不使用 Vast Template 的 `PROVISIONING_SCRIPT` 配置机制**。Featurize 图片历史路径为 `/home/featurize/ComfyUI-images`，对应 Python `/home/featurize/venvs/comfy-images/bin/python`；其他平台以实际目录为准。先恢复基础权重，上传私人 TAR 到该实例可读路径，再设置该平台的 `AIW_COMFY_DIR`、`AIW_PYTHON`，运行 `bash bootstrap.sh images-krea2-personal-loras --archive /实际路径/KREA2_personal_loras.tar`。各平台的磁盘持久规则另按其实际产品设置判断，不能把 Vast 临时盘当作四平台共用资产库。
+
 ## 已成功运行的 ANIMA 环境与验收边界
 
 用户已在 Vast.ai RTX 4090 24GB、ComfyUI 模板镜像 `vastai/comfy:v0.43.0-cuda-12.9-py312` 上完成 ANIMA Aesthetic v1.1 首次真实出图，并提供实际工作流 `C.A-VT1.json`。成功记录来自用户原实例；本次仓库修改没有重新执行 GPU 推理。
