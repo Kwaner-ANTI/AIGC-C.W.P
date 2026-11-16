@@ -50,7 +50,7 @@ bash bootstrap.sh images-krea2-personal-loras --archive /workspace/KREA2_persona
 
 脚本只恢复公开 manifest 登记且 TAR 中确实存在的 LoRA；跳过同名已有权重，不修改基础模型或已存工作流。因为是私人文件，上传本步骤**无法**仅靠 GitHub+无私人存储凭据的 Vast 模板自动完成。
 
-3. 打开 ComfyUI 左侧 Workflows → `KREA2_T2I_INT8`；刷新模型列表，展开内置 LoRA 控件，选实际存在的 Mrpopo/Shiiro，启用 LoRA，然后实际生成。官方 Style Reference 工作流保留专用参考 LoRA，不要用自由画风 LoRA 替换它。
+3. 打开 ComfyUI 左侧 Workflows → `KREA2_T2I_INT8`。当前已替换为用户自定义 T2I（23 节点，LoRA 默认 ON，Shiiro Niji A 0.8，15 steps / CFG 1）。刷新模型列表，并先恢复私人 LoRA TAR；如果 LoRA 尚未恢复，把节点开关切至 OFF 再运行。`KREA2_I2I_CUSTOM` 当前引用私人输入图 `GALEEE-12.png`，下次租机需重新上传/选择原图。官方 Style Reference 工作流保持原样。
 4. 如果未来改用私人对象存储，必须自行确保模型使用许可、存储访问权限与安全凭据管理，并让**新实例**取得 TAR；此仓库当前**没有**对象存储自动同步实现，不能将其当作已经部署。
 
 ### E. Featurize / AutoDL / RunPod
@@ -156,7 +156,7 @@ unset CIVITAI_TOKEN
 
 使用 `AIW_CIVITAI_LORAS=anime-in-real` 才会尝试该 Buzz 受限版本，401/403 会报告失败而不是绕过网站权限。Token 只在本次终端进程环境使用；下载脚本通过 curl stdin 配置传入，不写入 GitHub、URL 或 shell 命令参数。临时下载以 `.part` 保存，断线可续传。仅恢复本地压缩包时不需要 curl、Civitai Token 或 Hugging Face 依赖。
 
-4. 在 ComfyUI 左侧 Workflows 打开 `KREA2_T2I_INT8.json`，启用已有的创作 LoRA 开关并选择文件。官方 `KREA2_STYLE_REFERENCE_OFFICIAL.json` 的 `krea2_style_reference.safetensors` 是专用参考机制，不要当普通风格 LoRA 替换。
+4. 在 ComfyUI 左侧 Workflows 打开 `KREA2_T2I_INT8.json`（已用用户自定义 T2I 直接替换原子图版本），默认 Shiiro LoRA 为 ON、强度 0.8；需有实际 LoRA 文件才能运行此分支，否则先切 OFF。`KREA2_I2I_CUSTOM.json` 已替换为用户自定义 I2I，引用的 `GALEEE-12.png` 不包含在公开仓库。`KREA2_STYLE_REFERENCE_OFFICIAL.json` 不变，其 `krea2_style_reference.safetensors` 是专用参考机制。
 
 Vast `scripts/vast_anima_provision.sh` 的 `AIW_PROFILES` 允许明确追加 `images-krea2-personal-loras`，**但前提是实例在 provisioning 时已经能够访问私人 TAR 路径，或显式指定获授权的 Civitai 下载**；通常新租 GPU 应先运行基础 profile，再上传 TAR 手动执行一次恢复。Featurize 历史图片路径为 `/home/featurize/ComfyUI-images`；AutoDL / RunPod 采用新实例真实路径，不把 Vast 默认值当成跨平台共用。以上恢复逻辑已做本地 TAR 模拟，尚不能代替新租 GPU 上的 LoRA 实际推理结果。
 
