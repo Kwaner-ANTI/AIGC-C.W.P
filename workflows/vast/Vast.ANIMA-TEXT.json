@@ -1,15 +1,15 @@
 {
   "id": "f7a250a1-53fb-496b-8c39-c60d9e764028",
   "revision": 0,
-  "last_node_id": 113,
-  "last_link_id": 209,
+  "last_node_id": 116,
+  "last_link_id": 214,
   "nodes": [
     {
       "id": 48,
       "type": "MarkdownNote",
       "pos": [
-        921.0047748664336,
-        494.9210607264169
+        900,
+        520
       ],
       "size": [
         446.65748198627006,
@@ -22,293 +22,24 @@
       "outputs": [],
       "properties": {},
       "widgets_values": [
-        "\n## 记得改名\n\n# er_sde+simple对应建筑\n\n# 1.8MP=1792*1008\n# 1.0MP\t1360×768\t\n# 1.3MP\t1536×864\t\n# 1.5MP\t约 1632×912\t\t\n# 2.0MP\t约 1888×1056\t\n# 2.36MP 2048×1152\n\n\n1029420174235775\n957452313466548\n1070301962178338\n624953497604917\n\n## 模板使用说明（2026-11-17）\n- 主输出接在上方 Anima Aesthetic 子图（ID 90）：当前保存 er_sde + simple / 40 steps / CFG 4，ResolutionSelector 为 16:9、2.4 MP，Turbo 开关 OFF。\n- 下方额外实验子图（ID 111）没有连接保存/预览输出，且内部额外 LoRA Loader 默认串在模型主链；它不是主输出的 Turbo ON/OFF 对照，也不代表已经成功出图。按需手动连接和调参。\n- 两个子图沿用历史名称；实际模型按各子图表面的 unet_name 参数为准，不按名称推断 Base/Aesthetic。\n- 保存的 Prompt/Seed 是此次实验画布状态，不是所有场景的默认推荐。新租实例需与当前 ComfyUI 核心节点/子图能力兼容。"
+        "\n## 记得改名\n\n# er_sde+simple对应建筑\n\n# 1.8MP=1792*1008\n# 1.0MP\t1360×768\t\n# 1.3MP\t1536×864\t\n# 1.5MP\t约 1632×912\t\t\n# 2.0MP\t约 1888×1056\t\n# 2.36MP 2048×1152\n\n\n1029420174235775\n957452313466548\n1070301962178338\n624953497604917\n\n## ANIMA Aesthetic T2I · 模式说明（2026-11-18）\n- Native: Turbo 8-step OFF，Creative LoRA OFF。底模直接进入 KSampler；60 Steps / CFG 4.0 为当前缓存主配方。\n- Creative: Turbo 8-step OFF，Creative LoRA ON。独立加载 `anima-base-1-masterpiece-v51.safetensors`；顶层 strength_model 当前为 1.0，可调整。\n- Turbo: Turbo 8-step ON，使用 `anima-turbo-lora-v0.2.safetensors`（强度 1.0），同时切换 Steps 8 / CFG 1.0；Turbo 有优先权，不与 Creative LoRA 叠加。\n- 三个模式均使用 ANIMA Aesthetic v1.1、Qwen3-0.6B、Qwen Image VAE。不要把仅显示模型文件名当作启用证明。\n- 输出尺寸请调整子图内 `width_1` / `height_1`，默认 1792×1008。旧外部 ResolutionSelector 两根线并未影响实际 Latent，故已移除。\n- 文件名统一前缀避免伪称所有模式均为 S60/LoRA0.7；实际 Steps/CFG/Seed 以生成执行图为准。\n"
       ],
       "widgets_values_named": {
-        "text": "\n## 记得改名\n\n# er_sde+simple对应建筑\n\n# 1.8MP=1792*1008\n# 1.0MP\t1360×768\t\n# 1.3MP\t1536×864\t\n# 1.5MP\t约 1632×912\t\t\n# 2.0MP\t约 1888×1056\t\n# 2.36MP 2048×1152\n\n\n1029420174235775\n957452313466548\n1070301962178338\n624953497604917\n\n## 模板使用说明（2026-11-17）\n- 主输出接在上方 Anima Aesthetic 子图（ID 90）：当前保存 er_sde + simple / 40 steps / CFG 4，ResolutionSelector 为 16:9、2.4 MP，Turbo 开关 OFF。\n- 下方额外实验子图（ID 111）没有连接保存/预览输出，且内部额外 LoRA Loader 默认串在模型主链；它不是主输出的 Turbo ON/OFF 对照，也不代表已经成功出图。按需手动连接和调参。\n- 两个子图沿用历史名称；实际模型按各子图表面的 unet_name 参数为准，不按名称推断 Base/Aesthetic。\n- 保存的 Prompt/Seed 是此次实验画布状态，不是所有场景的默认推荐。新租实例需与当前 ComfyUI 核心节点/子图能力兼容。"
+        "text": "\n## 记得改名\n\n# er_sde+simple对应建筑\n\n# 1.8MP=1792*1008\n# 1.0MP\t1360×768\t\n# 1.3MP\t1536×864\t\n# 1.5MP\t约 1632×912\t\t\n# 2.0MP\t约 1888×1056\t\n# 2.36MP 2048×1152\n\n\n1029420174235775\n957452313466548\n1070301962178338\n624953497604917\n\n## ANIMA Aesthetic T2I · 模式说明（2026-11-18）\n- Native: Turbo 8-step OFF，Creative LoRA OFF。底模直接进入 KSampler；60 Steps / CFG 4.0 为当前缓存主配方。\n- Creative: Turbo 8-step OFF，Creative LoRA ON。独立加载 `anima-base-1-masterpiece-v51.safetensors`；顶层 strength_model 当前为 1.0，可调整。\n- Turbo: Turbo 8-step ON，使用 `anima-turbo-lora-v0.2.safetensors`（强度 1.0），同时切换 Steps 8 / CFG 1.0；Turbo 有优先权，不与 Creative LoRA 叠加。\n- 三个模式均使用 ANIMA Aesthetic v1.1、Qwen3-0.6B、Qwen Image VAE。不要把仅显示模型文件名当作启用证明。\n- 输出尺寸请调整子图内 `width_1` / `height_1`，默认 1792×1008。旧外部 ResolutionSelector 两根线并未影响实际 Latent，故已移除。\n- 文件名统一前缀避免伪称所有模式均为 S60/LoRA0.7；实际 Steps/CFG/Seed 以生成执行图为准。\n"
       },
       "color": "#2a363b",
       "bgcolor": "#3f5159"
-    },
-    {
-      "id": 46,
-      "type": "SaveImage",
-      "pos": [
-        903.8645702061589,
-        -134.03948285258247
-      ],
-      "size": [
-        561.5365692207564,
-        469.3818257401805
-      ],
-      "flags": {},
-      "order": 5,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "images",
-          "type": "IMAGE",
-          "link": 127
-        }
-      ],
-      "outputs": [
-        {
-          "name": "images",
-          "type": "IMAGE",
-          "links": [
-            162
-          ]
-        }
-      ],
-      "properties": {
-        "cnr_id": "comfy-core",
-        "ver": "0.11.1",
-        "Node name for S&R": "SaveImage",
-        "enableTabs": false,
-        "tabWidth": 65,
-        "tabXOffset": 10,
-        "hasSecondTab": false,
-        "secondTabText": "Send Back",
-        "secondTabOffset": 80,
-        "secondTabWidth": 65
-      },
-      "widgets_values": [
-        "ersde_.SIMP_S40C4.0_2.4MP_"
-      ],
-      "widgets_values_named": {
-        "filename_prefix": "ersde_.SIMP_S40C4.0_2.4MP_"
-      }
-    },
-    {
-      "id": 90,
-      "type": "7b85231a-efd4-4929-89d9-7e849a2d4554",
-      "pos": [
-        29.287812429755775,
-        -166.72060087821143
-      ],
-      "size": [
-        819.6826611052812,
-        1130.1163288772627
-      ],
-      "flags": {
-        "collapsed": false
-      },
-      "order": 3,
-      "mode": 0,
-      "inputs": [
-        {
-          "label": "降噪步数",
-          "name": "value",
-          "type": "INT",
-          "widget": {
-            "name": "value"
-          },
-          "link": null
-        },
-        {
-          "label": "CFG",
-          "name": "value_2",
-          "type": "FLOAT",
-          "widget": {
-            "name": "value_2"
-          },
-          "link": null
-        },
-        {
-          "label": "Turbo_Steps",
-          "name": "value_1",
-          "type": "INT",
-          "widget": {
-            "name": "value_1"
-          },
-          "link": null
-        },
-        {
-          "label": "turbo CFG",
-          "name": "value_3",
-          "type": "FLOAT",
-          "widget": {
-            "name": "value_3"
-          },
-          "link": null
-        },
-        {
-          "label": "lora开关",
-          "name": "value_4",
-          "type": "BOOLEAN",
-          "widget": {
-            "name": "value_4"
-          },
-          "link": null
-        },
-        {
-          "name": "width",
-          "type": "INT",
-          "link": 138
-        },
-        {
-          "name": "height",
-          "type": "INT",
-          "link": 139
-        }
-      ],
-      "outputs": [
-        {
-          "name": "IMAGE",
-          "type": "IMAGE",
-          "links": [
-            127
-          ]
-        }
-      ],
-      "properties": {
-        "previewExposures": [
-          {
-            "name": "$$canvas-image-preview",
-            "sourceNodeId": "76",
-            "sourcePreviewName": "$$canvas-image-preview"
-          }
-        ]
-      },
-      "widgets_values": [
-        "qwen_3_06b_base.safetensors",
-        "stable_diffusion",
-        "default",
-        "qwen_image_vae.safetensors",
-        1888,
-        1056,
-        1081072663476279,
-        "er_sde",
-        "simple",
-        "anima-aesthetic-v1.1.safetensors",
-        "default",
-        40,
-        4,
-        "anima-turbo-lora-v0.2.safetensors",
-        8,
-        1,
-        1,
-        false,
-        1,
-        "A cinematic anime background painting of the interior of a modern Japanese commuter train at the transition from sunset to early blue hour. Beautiful Japanese animated-film background art, refined and detailed urban environment illustration, elegant color harmony, clear architecture, and natural atmospheric depth.\n\nCAMERA AND COMPOSITION:\n\nA cinematic 16:9 composition viewed from inside a modern commuter train, looking sideways through its large passenger windows toward a magnificent metropolitan skyline.\n\nThe camera is positioned at normal seated passenger eye level, slightly angled along the interior of the carriage. Natural rectilinear perspective, equivalent to a moderate 40–50mm photographic lens, with straight architectural lines and realistic spatial proportions.\n\nOne large rectangular window dominates the center and right side of the image, while part of a second window and the adjoining carriage interior remain visible toward the left.\n\nThe window frames have straight vertical edges and straight horizontal structural elements. The ceiling and bench seat follow consistent linear perspective, without exaggerated curvature.\n\nThe composition is subtly asymmetrical, with a natural sense of looking diagonally across the carriage rather than directly facing a symmetrical wall of windows.\n\nTRAIN INTERIOR:\n\nA calm, elegant modern Japanese commuter train interior with dark navy-blue upholstered bench seating, dark charcoal-blue window frames, muted gray wall panels, a small number of circular overhead hanging straps, and slender metal support poles.\n\nThe bench seat extends naturally along the window-side wall, with clearly defined cushions and realistic seat proportions.\n\nA comfortable empty seating area remains visible in the left foreground, suitable for adding a seated female anime character later.\n\nThe interior is moderately illuminated by soft warm-white ceiling lights combined with cool blue evening skylight entering through the windows.\n\nThe seat surfaces, window frames, wall panels, and overhead fittings remain clearly readable, with subtle highlights and detailed shadows.\n\nThe interior has a sophisticated and believable animated-film appearance, with precise geometry and restrained surface textures.\n\nCITY OUTSIDE THE WINDOWS:\n\nA vast, beautiful Japanese-inspired modern metropolis viewed from an elevated urban railway.\n\nThe train travels at approximately the height of nearby mid-rise rooftops, with taller commercial towers rising above the railway and lower residential neighborhoods extending beneath and beyond it.\n\nLayered apartment buildings, distinctive office towers, illuminated commercial districts, elegant railway bridges, elevated transit corridors, and distant skyscrapers create a convincing metropolitan panorama.\n\nIndividual buildings retain recognizable floors, windows, rooftops, balconies, and facade details. Numerous small warm evening lights sparkle across the urban landscape.\n\nThe city stretches toward a distant luminous horizon, with strong atmospheric perspective and beautiful separation between nearby buildings, middle-distance districts, and faraway towers.\n\nA distinctive monumental metropolitan railway interchange is visible in the middle distance, slightly right of center.\n\nIt has elegant layered station platforms, sweeping elevated railway connections, a graceful architectural roof, and several interconnected towers.\n\nThe railway complex is noticeably larger and more sophisticated than the surrounding ordinary buildings, suggesting an extraordinary metropolitan civilization while maintaining believable architectural structure.\n\nThe landmark integrates naturally into the city rather than dominating the entire view.\n\nSKY AND ATMOSPHERE:\n\nLate sunset transitioning into early blue hour.\n\nA luminous deep blue sky gradually softens toward lavender, muted pink, and gentle peach-orange near the horizon.\n\nBeautiful elongated cloud bands stretch across the sky, accompanied by a few larger softly illuminated cloud formations.\n\nThe last warm sunlight touches selected cloud edges, while the city below begins to glow with countless evening lights.\n\nThe atmosphere is clear and romantic, with delicate blue atmospheric haze in the far distance.\n\nThe balance between cool evening blues and restrained warm sunset colors remains harmonious and visually rich.\n\nVISUAL STYLE:\n\nHigh-quality contemporary Japanese animated-film background art, refined cinematic environment illustration, meticulous architectural drawing, clean and controlled linework, delicate painterly shading, carefully designed light and shadow, and elegant atmospheric perspective.\n\nClearly defined building silhouettes, fine architectural details, smooth tonal transitions, controlled glass reflections, and subtle illustrated surface textures.\n\nBuildings retain precise and readable architectural structure. The interior and exterior share the same coherent anime background rendering style.\n\nRich visual detail without excessive brushstroke texture. Soft atmospheric effects without losing the clarity of buildings or train components.\n\nMOOD:\n\nSerene, romantic, luminous, dreamlike, and emotionally spacious.\n\nThe quiet beauty of an evening commuter train overlooking an extraordinary modern metropolis.\n\nA sophisticated animated-film background with a believable train interior, beautiful expansive cityscape, comfortable interior illumination, and natural cinematic perspective.\n\nEnvironment only. No characters, passengers, or human silhouettes.",
-        "fisheye lens, fisheye distortion, ultra wide angle, extreme wide angle lens, panoramic lens distortion, barrel distortion, curved perspective, spherical projection, 360-degree panorama, cylindrical projection, exaggerated field of view, distorted room perspective,\n\nsymmetrical front-facing composition, camera directly centered against the window wall, curved carriage wall, curved ceiling, curved window frames, bowed structural beams, bent horizontal lines, warped vertical lines, distorted bench geometry, semicircular bench, wraparound seating, curved seating layout,\n\nwarped train windows, inconsistent window proportions, twisted support poles, duplicated hanging straps, excessive ceiling fixtures, broken interior geometry, distorted metal fittings, impossible train architecture, irregular window frames,\n\noil painting, impasto, thick paint, palette knife strokes, coarse brushwork, heavily textured painting, abstract expressionism, melted paint, smeared architectural details, muddy textures, rough canvas grain, excessive painterly distortion,\n\nlow-detail buildings, blurred urban architecture, melted buildings, indistinct rooftops, abstract city textures, chaotic building outlines, repetitive buildings, distorted skyscrapers, inconsistent perspective, malformed windows, collapsing architecture,\n\ngiant stadium, enormous sports arena, oversized stadium-like dome, isolated futuristic building, unrelated monumental structure, random fantasy machinery, floating debris, incoherent railway geometry,\n\naerial viewpoint, bird's-eye view, drone shot, extreme high-altitude viewpoint, flying train, excessive downward viewing angle, skyscraper observation deck viewpoint,\n\nwashed-out colors, pale desaturated image, excessive daylight, flat lighting, overexposure, underexposure, crushed blacks, muddy blue shadows, excessive purple tint, overwhelming orange sunset, excessive bloom, strong lens flare, heavy motion blur, foggy image,\n\nphotorealistic, live action, architectural visualization, plastic CGI, low-poly, 3D game environment, childish cartoon style, simplified storybook illustration,\n\npeople, passengers, person, woman, man, girl, character, human silhouette, face, body, human reflection,\n\ncyberpunk neon, dystopian city, post-apocalyptic city, fantasy castle, alien spacecraft, giant mecha, magical symbols,\n\ntext, subtitles, lettering, logo, watermark, signature, UI overlay, screenshot, collage, split screen, black borders",
-        1
-      ],
-      "widgets_values_named": {
-        "clip_name": "qwen_3_06b_base.safetensors",
-        "type": "stable_diffusion",
-        "device": "default",
-        "vae_name": "qwen_image_vae.safetensors",
-        "width_1": 1888,
-        "height_1": 1056,
-        "seed": 1081072663476279,
-        "sampler_name": "er_sde",
-        "scheduler": "simple",
-        "unet_name": "anima-aesthetic-v1.1.safetensors",
-        "weight_dtype": "default",
-        "value": 40,
-        "value_2": 4,
-        "lora_name": "anima-turbo-lora-v0.2.safetensors",
-        "value_1": 8,
-        "strength_model": 1,
-        "value_3": 1,
-        "value_4": false,
-        "denoise": 1,
-        "text_1": "A cinematic anime background painting of the interior of a modern Japanese commuter train at the transition from sunset to early blue hour. Beautiful Japanese animated-film background art, refined and detailed urban environment illustration, elegant color harmony, clear architecture, and natural atmospheric depth.\n\nCAMERA AND COMPOSITION:\n\nA cinematic 16:9 composition viewed from inside a modern commuter train, looking sideways through its large passenger windows toward a magnificent metropolitan skyline.\n\nThe camera is positioned at normal seated passenger eye level, slightly angled along the interior of the carriage. Natural rectilinear perspective, equivalent to a moderate 40–50mm photographic lens, with straight architectural lines and realistic spatial proportions.\n\nOne large rectangular window dominates the center and right side of the image, while part of a second window and the adjoining carriage interior remain visible toward the left.\n\nThe window frames have straight vertical edges and straight horizontal structural elements. The ceiling and bench seat follow consistent linear perspective, without exaggerated curvature.\n\nThe composition is subtly asymmetrical, with a natural sense of looking diagonally across the carriage rather than directly facing a symmetrical wall of windows.\n\nTRAIN INTERIOR:\n\nA calm, elegant modern Japanese commuter train interior with dark navy-blue upholstered bench seating, dark charcoal-blue window frames, muted gray wall panels, a small number of circular overhead hanging straps, and slender metal support poles.\n\nThe bench seat extends naturally along the window-side wall, with clearly defined cushions and realistic seat proportions.\n\nA comfortable empty seating area remains visible in the left foreground, suitable for adding a seated female anime character later.\n\nThe interior is moderately illuminated by soft warm-white ceiling lights combined with cool blue evening skylight entering through the windows.\n\nThe seat surfaces, window frames, wall panels, and overhead fittings remain clearly readable, with subtle highlights and detailed shadows.\n\nThe interior has a sophisticated and believable animated-film appearance, with precise geometry and restrained surface textures.\n\nCITY OUTSIDE THE WINDOWS:\n\nA vast, beautiful Japanese-inspired modern metropolis viewed from an elevated urban railway.\n\nThe train travels at approximately the height of nearby mid-rise rooftops, with taller commercial towers rising above the railway and lower residential neighborhoods extending beneath and beyond it.\n\nLayered apartment buildings, distinctive office towers, illuminated commercial districts, elegant railway bridges, elevated transit corridors, and distant skyscrapers create a convincing metropolitan panorama.\n\nIndividual buildings retain recognizable floors, windows, rooftops, balconies, and facade details. Numerous small warm evening lights sparkle across the urban landscape.\n\nThe city stretches toward a distant luminous horizon, with strong atmospheric perspective and beautiful separation between nearby buildings, middle-distance districts, and faraway towers.\n\nA distinctive monumental metropolitan railway interchange is visible in the middle distance, slightly right of center.\n\nIt has elegant layered station platforms, sweeping elevated railway connections, a graceful architectural roof, and several interconnected towers.\n\nThe railway complex is noticeably larger and more sophisticated than the surrounding ordinary buildings, suggesting an extraordinary metropolitan civilization while maintaining believable architectural structure.\n\nThe landmark integrates naturally into the city rather than dominating the entire view.\n\nSKY AND ATMOSPHERE:\n\nLate sunset transitioning into early blue hour.\n\nA luminous deep blue sky gradually softens toward lavender, muted pink, and gentle peach-orange near the horizon.\n\nBeautiful elongated cloud bands stretch across the sky, accompanied by a few larger softly illuminated cloud formations.\n\nThe last warm sunlight touches selected cloud edges, while the city below begins to glow with countless evening lights.\n\nThe atmosphere is clear and romantic, with delicate blue atmospheric haze in the far distance.\n\nThe balance between cool evening blues and restrained warm sunset colors remains harmonious and visually rich.\n\nVISUAL STYLE:\n\nHigh-quality contemporary Japanese animated-film background art, refined cinematic environment illustration, meticulous architectural drawing, clean and controlled linework, delicate painterly shading, carefully designed light and shadow, and elegant atmospheric perspective.\n\nClearly defined building silhouettes, fine architectural details, smooth tonal transitions, controlled glass reflections, and subtle illustrated surface textures.\n\nBuildings retain precise and readable architectural structure. The interior and exterior share the same coherent anime background rendering style.\n\nRich visual detail without excessive brushstroke texture. Soft atmospheric effects without losing the clarity of buildings or train components.\n\nMOOD:\n\nSerene, romantic, luminous, dreamlike, and emotionally spacious.\n\nThe quiet beauty of an evening commuter train overlooking an extraordinary modern metropolis.\n\nA sophisticated animated-film background with a believable train interior, beautiful expansive cityscape, comfortable interior illumination, and natural cinematic perspective.\n\nEnvironment only. No characters, passengers, or human silhouettes.",
-        "text": "fisheye lens, fisheye distortion, ultra wide angle, extreme wide angle lens, panoramic lens distortion, barrel distortion, curved perspective, spherical projection, 360-degree panorama, cylindrical projection, exaggerated field of view, distorted room perspective,\n\nsymmetrical front-facing composition, camera directly centered against the window wall, curved carriage wall, curved ceiling, curved window frames, bowed structural beams, bent horizontal lines, warped vertical lines, distorted bench geometry, semicircular bench, wraparound seating, curved seating layout,\n\nwarped train windows, inconsistent window proportions, twisted support poles, duplicated hanging straps, excessive ceiling fixtures, broken interior geometry, distorted metal fittings, impossible train architecture, irregular window frames,\n\noil painting, impasto, thick paint, palette knife strokes, coarse brushwork, heavily textured painting, abstract expressionism, melted paint, smeared architectural details, muddy textures, rough canvas grain, excessive painterly distortion,\n\nlow-detail buildings, blurred urban architecture, melted buildings, indistinct rooftops, abstract city textures, chaotic building outlines, repetitive buildings, distorted skyscrapers, inconsistent perspective, malformed windows, collapsing architecture,\n\ngiant stadium, enormous sports arena, oversized stadium-like dome, isolated futuristic building, unrelated monumental structure, random fantasy machinery, floating debris, incoherent railway geometry,\n\naerial viewpoint, bird's-eye view, drone shot, extreme high-altitude viewpoint, flying train, excessive downward viewing angle, skyscraper observation deck viewpoint,\n\nwashed-out colors, pale desaturated image, excessive daylight, flat lighting, overexposure, underexposure, crushed blacks, muddy blue shadows, excessive purple tint, overwhelming orange sunset, excessive bloom, strong lens flare, heavy motion blur, foggy image,\n\nphotorealistic, live action, architectural visualization, plastic CGI, low-poly, 3D game environment, childish cartoon style, simplified storybook illustration,\n\npeople, passengers, person, woman, man, girl, character, human silhouette, face, body, human reflection,\n\ncyberpunk neon, dystopian city, post-apocalyptic city, fantasy castle, alien spacecraft, giant mecha, magical symbols,\n\ntext, subtitles, lettering, logo, watermark, signature, UI overlay, screenshot, collage, split screen, black borders",
-        "batch_size": 1
-      },
-      "color": "#2a363b",
-      "bgcolor": "#3f5159"
-    },
-    {
-      "id": 91,
-      "type": "ResolutionSelector",
-      "pos": [
-        -334.45280432227463,
-        31.086315454380667
-      ],
-      "size": [
-        290,
-        170
-      ],
-      "flags": {},
-      "order": 1,
-      "mode": 0,
-      "showAdvanced": true,
-      "inputs": [],
-      "outputs": [
-        {
-          "name": "width",
-          "type": "INT",
-          "links": [
-            138
-          ]
-        },
-        {
-          "name": "height",
-          "type": "INT",
-          "links": [
-            139
-          ]
-        }
-      ],
-      "properties": {
-        "Node name for S&R": "ResolutionSelector"
-      },
-      "widgets_values": [
-        "16:9 (Widescreen)",
-        2.4,
-        16
-      ],
-      "widgets_values_named": {
-        "aspect_ratio": "16:9 (Widescreen)",
-        "megapixels": 2.4,
-        "multiple": 16
-      }
-    },
-    {
-      "id": 92,
-      "type": "PreviewImage",
-      "pos": [
-        1524.3790787477753,
-        107.09531196380357
-      ],
-      "size": [
-        1295.9979143414562,
-        964.924854637308
-      ],
-      "flags": {},
-      "order": 6,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "images",
-          "type": "IMAGE",
-          "link": 162
-        }
-      ],
-      "outputs": [
-        {
-          "name": "images",
-          "type": "IMAGE",
-          "links": null
-        }
-      ],
-      "properties": {
-        "Node name for S&R": "PreviewImage"
-      }
     },
     {
       "id": 111,
       "type": "c81612e8-2c84-4fb5-870b-3bea2d3c7133",
       "pos": [
-        441.22490300876734,
-        -1698.826618723771
+        0,
+        0
       ],
       "size": [
-        803.7055835619508,
-        981.4608063808937
+        803.7,
+        960
       ],
       "flags": {
         "collapsed": false
@@ -335,6 +66,15 @@
           "link": null
         },
         {
+          "label": "Turbo 8-step ON/OFF",
+          "name": "value_4",
+          "type": "BOOLEAN",
+          "widget": {
+            "name": "value_4"
+          },
+          "link": null
+        },
+        {
           "label": "Turbo_Steps",
           "name": "value_1",
           "type": "INT",
@@ -353,30 +93,22 @@
           "link": null
         },
         {
-          "label": "lora开关",
-          "name": "value_4",
+          "label": "Creative LoRA ON/OFF",
+          "name": "creative_lora_enabled",
           "type": "BOOLEAN",
           "widget": {
-            "name": "value_4"
+            "name": "creative_lora_enabled"
           },
           "link": null
-        },
-        {
-          "name": "width",
-          "type": "INT",
-          "link": 206
-        },
-        {
-          "name": "height",
-          "type": "INT",
-          "link": 207
         }
       ],
       "outputs": [
         {
           "name": "IMAGE",
           "type": "IMAGE",
-          "links": []
+          "links": [
+            210
+          ]
         }
       ],
       "properties": {
@@ -393,2043 +125,131 @@
         "stable_diffusion",
         "default",
         "qwen_image_vae.safetensors",
-        1408,
-        1056,
-        197510794716962,
-        "euler_ancestral",
-        "normal",
+        1792,
+        1008,
+        623236580007696,
+        "er_sde",
+        "simple",
         "anima-aesthetic-v1.1.safetensors",
         "default",
         60,
         4,
-        "anima-turbo-lora-v0.2.safetensors",
+        false,
+        "anima-base-1-masterpiece-v51.safetensors",
+        1,
         8,
         1,
         1,
-        false,
+        "\nmasterpiece, best quality, very aesthetic,\n\nA magnificent fictional contemporary Japanese-inspired metropolis at late sunset transitioning into early blue hour, viewed from a moderately elevated urban vantage point, designed as a wide panoramic exterior city background for a cinematic animated film.\n\nThe foreground and middle distance contain clearly structured contemporary urban buildings, residential towers, commercial blocks and elegant modern architecture. Readable building floors, carefully drawn facades, coherent window arrangements, straight architectural edges and convincing perspective establish a believable city. The buildings extend across the frame toward a vast, layered metropolitan skyline, with subtle variations in height, silhouette and architectural design.\n\nBeyond the city, an expansive romantic evening sky displays multiple separated cloud layers, asymmetrical soft evening cloud banks and scattered delicate wisps. Rich cobalt blue and gentle indigo blend into muted lavender and a narrow band of warm rose-gold near the horizon. A few distant architectural silhouettes rise dramatically above the skyline, suggesting an unusually vast and beautiful metropolis while remaining part of the coherent urban environment.\n\nNumerous small, naturally distributed warm window lights gradually illuminate the city. Cool ambient skylight shapes the buildings, while the remaining sunset creates restrained warm highlights on selected rooftops and facades.\n\nSophisticated cinematic anime background painting, refined Japanese animated-film environment art, meticulous architectural draftsmanship, beautifully organized color masses, delicate painterly textures, controlled stylized reflections on glass and metal, rich atmospheric perspective, clear foreground-to-background depth, elegant cinematic lighting, emotionally luminous metropolitan scenery, a peaceful and romantic sense of wonder.\n\nWide horizontal composition, balanced city and sky, continuous skyline, consistent viewing angle, scenery-only environmental background.\n",
+        "\nworst quality, low quality, blurry, low resolution, jpeg artifacts, oversharpening,\n\nphotorealistic city photography, live-action appearance, architectural visualization render, plastic CGI surfaces, excessive PBR reflections, crude cartoon buildings, childish storybook style, flat simplified architecture,\n\nmelting buildings, warped architecture, distorted perspective, inconsistent vanishing points, randomly tilted towers, repetitive building patterns, copy-pasted skyscrapers, meaningless facade textures, irregular window grids, incoherent floors, fused structures,\n\nmushroom cloud, nuclear explosion, isolated giant cloud pillar, overwhelming single cloud formation, excessive fantasy towers, cyberpunk neon city, dystopian atmosphere,\n\nrailway tracks, parallel railway lines, train platforms, elevated expressway networks, dense highway intersections, train carriage, train interior, window frames, window reflections, hanging straps, seats,\n\ncharacters, people, silhouettes, text, logos, watermark,\n\noverexposed daylight, harsh orange sunset, excessive magenta tint, monochromatic blue filter, muddy shadows, extreme darkness\n",
         1,
-        "A breathtaking view from inside a modern elevated commuter train, seen through a wide rectangular side window with a thin train-window frame and a small amount of dark interior edge at the sides and bottom. The exterior is a magnificent Japanese-inspired romantic metropolis at late twilight, transitioning into blue hour.\n\nAn immense metropolitan civilization stretches into the distance with clear layered urban depth. The foreground and middle distance contain readable districts, varied building groups, residential blocks, commercial towers, and dense but coherent city structure. The urban core is grand and monumental, composed of multiple interconnected megastructural architectural masses and clustered skyline forms, rather than a single isolated needle tower. The city should feel like a vast living metropolitan world, with a strong central skyline and a believable hierarchy of building scale.\n\nAbove the vast metropolitan skyline, magnificent layers of twilight clouds stretch across the sky in an irregular, asymmetrical arrangement. Several distinct cloud banks occupy different distances and elevations, with softly illuminated cumulus formations, sweeping wisps of high-altitude clouds, and broad openings revealing the deep cobalt and violet evening sky.\n\nWarm rose-gold sunlight gently illuminates selected cloud edges, while cool blue-violet shadows create delicate volume and atmospheric depth. The clouds complement the majestic city rather than overwhelming it. Monumental architectural complexes and distant urban megastructures remain prominent beneath the sky, creating an extraordinary contrast between human civilization and the vast natural atmosphere.\n\nThe metropolitan cityscape occupies approximately the lower 55–60 percent of the visible exterior composition, with varied building heights, distinct architectural silhouettes, and a grand urban core. The clouds form multiple naturally separated masses rather than a single enormous centralized formation.\n\nThe sky shows a refined late-evening palette: cobalt blue, indigo, muted violet, rose-gold, peach, and soft coral near the horizon. The city below is cooling into blue tones, while countless warm urban lights begin to shimmer across the metropolis. Rich atmospheric perspective, elegant tonal hierarchy, controlled luminous haze, and a beautiful balance between monumental sky and expansive urban civilization.\n\nOnly one main railway route is implied by the viewer’s train. No second railway line is visible, and no dense network of elevated roads or excessive overpasses appears in the scene. The grandeur comes from the city itself, not from transportation clutter. The exterior should feel vast, majestic, romantic, emotionally uplifting, dreamlike yet believable, with the sophistication of high-end animated-film background art and premium cinematic digital matte painting.\n\nHighly refined anime environment art, painterly but structured city design, visually coherent architectural silhouettes, controlled detail density, elegant atmospheric depth, detailed skyline hierarchy, cinematic composition, grand but peaceful metropolitan wonder, no characters, no people, no text.",
-        "single isolated needle tower dominating the composition, lone ultra-thin spire as the only focal point, airplane window, rounded aircraft porthole, cockpit view, two railway lines, multiple parallel railways, dense elevated highway network, excessive overpasses, transportation map feeling, suburban emptiness, rural scenery, plain daytime sky, bright noon sunlight, photorealistic architectural visualization, realistic photography, cyberpunk neon overload, dystopian mood, apocalyptic destruction, low-detail skyline, repetitive blocky buildings with no hierarchy, blurred city core, empty skyline, characters, passengers, people, text, logo, watermark",
-        1
+        true
       ],
       "widgets_values_named": {
         "clip_name": "qwen_3_06b_base.safetensors",
         "type": "stable_diffusion",
         "device": "default",
         "vae_name": "qwen_image_vae.safetensors",
-        "width_1": 1408,
-        "height_1": 1056,
-        "seed": 197510794716962,
-        "sampler_name": "euler_ancestral",
-        "scheduler": "normal",
+        "width_1": 1792,
+        "height_1": 1008,
+        "seed": 623236580007696,
+        "sampler_name": "er_sde",
+        "scheduler": "simple",
         "unet_name": "anima-aesthetic-v1.1.safetensors",
         "weight_dtype": "default",
         "value": 60,
         "value_2": 4,
-        "lora_name": "anima-turbo-lora-v0.2.safetensors",
-        "value_1": 8,
-        "strength_model": 1,
-        "value_3": 1,
         "value_4": false,
+        "lora_name": "anima-base-1-masterpiece-v51.safetensors",
+        "strength_model": 1,
+        "value_1": 8,
+        "value_3": 1,
         "denoise": 1,
-        "text_1": "A breathtaking view from inside a modern elevated commuter train, seen through a wide rectangular side window with a thin train-window frame and a small amount of dark interior edge at the sides and bottom. The exterior is a magnificent Japanese-inspired romantic metropolis at late twilight, transitioning into blue hour.\n\nAn immense metropolitan civilization stretches into the distance with clear layered urban depth. The foreground and middle distance contain readable districts, varied building groups, residential blocks, commercial towers, and dense but coherent city structure. The urban core is grand and monumental, composed of multiple interconnected megastructural architectural masses and clustered skyline forms, rather than a single isolated needle tower. The city should feel like a vast living metropolitan world, with a strong central skyline and a believable hierarchy of building scale.\n\nAbove the vast metropolitan skyline, magnificent layers of twilight clouds stretch across the sky in an irregular, asymmetrical arrangement. Several distinct cloud banks occupy different distances and elevations, with softly illuminated cumulus formations, sweeping wisps of high-altitude clouds, and broad openings revealing the deep cobalt and violet evening sky.\n\nWarm rose-gold sunlight gently illuminates selected cloud edges, while cool blue-violet shadows create delicate volume and atmospheric depth. The clouds complement the majestic city rather than overwhelming it. Monumental architectural complexes and distant urban megastructures remain prominent beneath the sky, creating an extraordinary contrast between human civilization and the vast natural atmosphere.\n\nThe metropolitan cityscape occupies approximately the lower 55–60 percent of the visible exterior composition, with varied building heights, distinct architectural silhouettes, and a grand urban core. The clouds form multiple naturally separated masses rather than a single enormous centralized formation.\n\nThe sky shows a refined late-evening palette: cobalt blue, indigo, muted violet, rose-gold, peach, and soft coral near the horizon. The city below is cooling into blue tones, while countless warm urban lights begin to shimmer across the metropolis. Rich atmospheric perspective, elegant tonal hierarchy, controlled luminous haze, and a beautiful balance between monumental sky and expansive urban civilization.\n\nOnly one main railway route is implied by the viewer’s train. No second railway line is visible, and no dense network of elevated roads or excessive overpasses appears in the scene. The grandeur comes from the city itself, not from transportation clutter. The exterior should feel vast, majestic, romantic, emotionally uplifting, dreamlike yet believable, with the sophistication of high-end animated-film background art and premium cinematic digital matte painting.\n\nHighly refined anime environment art, painterly but structured city design, visually coherent architectural silhouettes, controlled detail density, elegant atmospheric depth, detailed skyline hierarchy, cinematic composition, grand but peaceful metropolitan wonder, no characters, no people, no text.",
-        "text": "single isolated needle tower dominating the composition, lone ultra-thin spire as the only focal point, airplane window, rounded aircraft porthole, cockpit view, two railway lines, multiple parallel railways, dense elevated highway network, excessive overpasses, transportation map feeling, suburban emptiness, rural scenery, plain daytime sky, bright noon sunlight, photorealistic architectural visualization, realistic photography, cyberpunk neon overload, dystopian mood, apocalyptic destruction, low-detail skyline, repetitive blocky buildings with no hierarchy, blurred city core, empty skyline, characters, passengers, people, text, logo, watermark",
-        "batch_size": 1
+        "text_1": "\nmasterpiece, best quality, very aesthetic,\n\nA magnificent fictional contemporary Japanese-inspired metropolis at late sunset transitioning into early blue hour, viewed from a moderately elevated urban vantage point, designed as a wide panoramic exterior city background for a cinematic animated film.\n\nThe foreground and middle distance contain clearly structured contemporary urban buildings, residential towers, commercial blocks and elegant modern architecture. Readable building floors, carefully drawn facades, coherent window arrangements, straight architectural edges and convincing perspective establish a believable city. The buildings extend across the frame toward a vast, layered metropolitan skyline, with subtle variations in height, silhouette and architectural design.\n\nBeyond the city, an expansive romantic evening sky displays multiple separated cloud layers, asymmetrical soft evening cloud banks and scattered delicate wisps. Rich cobalt blue and gentle indigo blend into muted lavender and a narrow band of warm rose-gold near the horizon. A few distant architectural silhouettes rise dramatically above the skyline, suggesting an unusually vast and beautiful metropolis while remaining part of the coherent urban environment.\n\nNumerous small, naturally distributed warm window lights gradually illuminate the city. Cool ambient skylight shapes the buildings, while the remaining sunset creates restrained warm highlights on selected rooftops and facades.\n\nSophisticated cinematic anime background painting, refined Japanese animated-film environment art, meticulous architectural draftsmanship, beautifully organized color masses, delicate painterly textures, controlled stylized reflections on glass and metal, rich atmospheric perspective, clear foreground-to-background depth, elegant cinematic lighting, emotionally luminous metropolitan scenery, a peaceful and romantic sense of wonder.\n\nWide horizontal composition, balanced city and sky, continuous skyline, consistent viewing angle, scenery-only environmental background.\n",
+        "text": "\nworst quality, low quality, blurry, low resolution, jpeg artifacts, oversharpening,\n\nphotorealistic city photography, live-action appearance, architectural visualization render, plastic CGI surfaces, excessive PBR reflections, crude cartoon buildings, childish storybook style, flat simplified architecture,\n\nmelting buildings, warped architecture, distorted perspective, inconsistent vanishing points, randomly tilted towers, repetitive building patterns, copy-pasted skyscrapers, meaningless facade textures, irregular window grids, incoherent floors, fused structures,\n\nmushroom cloud, nuclear explosion, isolated giant cloud pillar, overwhelming single cloud formation, excessive fantasy towers, cyberpunk neon city, dystopian atmosphere,\n\nrailway tracks, parallel railway lines, train platforms, elevated expressway networks, dense highway intersections, train carriage, train interior, window frames, window reflections, hanging straps, seats,\n\ncharacters, people, silhouettes, text, logos, watermark,\n\noverexposed daylight, harsh orange sunset, excessive magenta tint, monochromatic blue filter, muddy shadows, extreme darkness\n",
+        "batch_size": 1,
+        "creative_lora_enabled": true
       },
       "color": "#2a363b",
-      "bgcolor": "#3f5159"
+      "bgcolor": "#3f5159",
+      "title": "ANIMA Aesthetic T2I | 3 modes"
     },
     {
-      "id": 112,
-      "type": "ResolutionSelector",
+      "id": 114,
+      "type": "SaveImageAdvanced",
       "pos": [
-        97.09868468077275,
-        -1465.1147991917314
+        900,
+        110
       ],
       "size": [
-        290,
-        170
+        282.3276868939181,
+        340.2558323093272
       ],
       "flags": {},
-      "order": 2,
+      "order": 6,
       "mode": 0,
-      "showAdvanced": true,
-      "inputs": [],
-      "outputs": [
+      "showAdvanced": false,
+      "inputs": [
         {
-          "name": "width",
-          "type": "INT",
-          "links": [
-            206
-          ]
-        },
-        {
-          "name": "height",
-          "type": "INT",
-          "links": [
-            207
-          ]
+          "name": "images",
+          "type": "IMAGE",
+          "link": 210
         }
       ],
-      "properties": {
-        "Node name for S&R": "ResolutionSelector"
-      },
+      "outputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "links": null
+        }
+      ],
+      "properties": {},
       "widgets_values": [
-        "16:9 (Widescreen)",
-        1,
-        16
+        "ANIMA_AESTHETIC_T2I",
+        "png",
+        "8-bit",
+        "sRGB"
       ],
       "widgets_values_named": {
-        "aspect_ratio": "16:9 (Widescreen)",
-        "megapixels": 1,
-        "multiple": 16
+        "filename_prefix": "ANIMA_AESTHETIC_T2I",
+        "format": "png",
+        "format.bit_depth": "8-bit",
+        "format.input_color_space": "sRGB"
       }
     }
   ],
   "links": [
     [
-      127,
-      90,
+      210,
+      111,
       0,
-      46,
+      114,
       0,
       "IMAGE"
-    ],
-    [
-      162,
-      46,
-      0,
-      92,
-      0,
-      "IMAGE"
-    ],
-    [
-      206,
-      112,
-      0,
-      111,
-      5,
-      "INT"
-    ],
-    [
-      207,
-      112,
-      1,
-      111,
-      6,
-      "INT"
-    ],
-    [
-      138,
-      91,
-      0,
-      90,
-      5,
-      "INT"
-    ],
-    [
-      139,
-      91,
-      1,
-      90,
-      6,
-      "INT"
     ]
   ],
   "groups": [],
   "definitions": {
     "subgraphs": [
       {
-        "id": "7b85231a-efd4-4929-89d9-7e849a2d4554",
-        "version": 1,
-        "state": {
-          "lastGroupId": 10,
-          "lastNodeId": 113,
-          "lastLinkId": 209,
-          "lastRerouteId": 0
-        },
-        "revision": 0,
-        "config": {},
-        "name": "Text to Image (Anima Base v1.0)",
-        "inputNode": {
-          "id": -10,
-          "bounding": [
-            -300,
-            470,
-            135.87890625,
-            528
-          ]
-        },
-        "outputNode": {
-          "id": -20,
-          "bounding": [
-            2655,
-            494,
-            128,
-            68
-          ]
-        },
-        "inputs": [
-          {
-            "id": "4214b7e7-ad3d-48a9-a290-ef4ee449c22e",
-            "name": "clip_name",
-            "type": "COMBO",
-            "linkIds": [
-              140
-            ],
-            "pos": [
-              -188.12109375,
-              494
-            ]
-          },
-          {
-            "id": "f861b91b-2325-479c-94b9-e5d7048790d6",
-            "name": "type",
-            "type": "COMBO",
-            "linkIds": [
-              141
-            ],
-            "pos": [
-              -188.12109375,
-              514
-            ]
-          },
-          {
-            "id": "898c2911-2cef-4db5-af0e-04895c5cd3a6",
-            "name": "device",
-            "type": "COMBO",
-            "linkIds": [
-              142
-            ],
-            "pos": [
-              -188.12109375,
-              534
-            ]
-          },
-          {
-            "id": "6726daff-b16e-4167-b693-d7b0bfe0b885",
-            "name": "vae_name",
-            "type": "COMBO",
-            "linkIds": [
-              143
-            ],
-            "pos": [
-              -188.12109375,
-              554
-            ]
-          },
-          {
-            "id": "72c242f6-a57f-4dad-8ba9-bc0badc98889",
-            "name": "width_1",
-            "type": "INT",
-            "linkIds": [
-              144
-            ],
-            "pos": [
-              -188.12109375,
-              574
-            ]
-          },
-          {
-            "id": "dc609c91-826c-4023-952c-4a40c519ba19",
-            "name": "height_1",
-            "type": "INT",
-            "linkIds": [
-              145
-            ],
-            "pos": [
-              -188.12109375,
-              594
-            ]
-          },
-          {
-            "id": "ad3cf684-6379-4207-bd4c-b3a414e705d4",
-            "name": "seed",
-            "type": "INT",
-            "linkIds": [
-              148
-            ],
-            "pos": [
-              -188.12109375,
-              614
-            ]
-          },
-          {
-            "id": "70a699d9-2ee8-49b4-94db-65ab36af4fb0",
-            "name": "sampler_name",
-            "type": "COMBO",
-            "linkIds": [
-              149
-            ],
-            "pos": [
-              -188.12109375,
-              634
-            ]
-          },
-          {
-            "id": "6053b306-ccf0-4fc0-a1bd-8881f621dbbd",
-            "name": "scheduler",
-            "type": "COMBO",
-            "linkIds": [
-              150
-            ],
-            "pos": [
-              -188.12109375,
-              654
-            ]
-          },
-          {
-            "id": "362127d0-2873-45fe-ab77-9e297000cd58",
-            "name": "unet_name",
-            "type": "COMBO",
-            "linkIds": [
-              153
-            ],
-            "pos": [
-              -188.12109375,
-              674
-            ]
-          },
-          {
-            "id": "406c4dac-95ab-48f2-86b5-05e0b0486479",
-            "name": "weight_dtype",
-            "type": "COMBO",
-            "linkIds": [
-              154
-            ],
-            "pos": [
-              -188.12109375,
-              694
-            ]
-          },
-          {
-            "id": "fdf1f740-2f18-4696-b483-b109b4a5177c",
-            "name": "value",
-            "type": "INT",
-            "linkIds": [
-              155
-            ],
-            "pos": [
-              -188.12109375,
-              714
-            ]
-          },
-          {
-            "id": "d427626e-a024-444c-9b2c-a295d77f410e",
-            "name": "value_2",
-            "type": "FLOAT",
-            "linkIds": [
-              159
-            ],
-            "pos": [
-              -188.12109375,
-              734
-            ]
-          },
-          {
-            "id": "fe48f260-fc73-4bfa-9df9-d683a3c989ce",
-            "name": "lora_name",
-            "type": "COMBO",
-            "linkIds": [
-              157
-            ],
-            "pos": [
-              -188.12109375,
-              754
-            ]
-          },
-          {
-            "id": "386453fa-aeaa-460f-aa25-57f4ef664e29",
-            "name": "value_1",
-            "type": "INT",
-            "linkIds": [
-              156
-            ],
-            "pos": [
-              -188.12109375,
-              774
-            ]
-          },
-          {
-            "id": "ba41f5f7-4747-4c1b-8b07-3bff17c0741b",
-            "name": "strength_model",
-            "type": "FLOAT",
-            "linkIds": [
-              158
-            ],
-            "pos": [
-              -188.12109375,
-              794
-            ]
-          },
-          {
-            "id": "5188a916-60e1-45e1-9948-b4883b1afd27",
-            "name": "value_3",
-            "type": "FLOAT",
-            "linkIds": [
-              160
-            ],
-            "pos": [
-              -188.12109375,
-              814
-            ]
-          },
-          {
-            "id": "b3e3d105-ec6f-4128-ae36-91667e413077",
-            "name": "value_4",
-            "type": "BOOLEAN",
-            "linkIds": [
-              161
-            ],
-            "pos": [
-              -188.12109375,
-              834
-            ]
-          },
-          {
-            "id": "00a281bb-d4d2-4477-a55f-ac2ab7620d60",
-            "name": "denoise",
-            "type": "FLOAT",
-            "linkIds": [
-              151
-            ],
-            "pos": [
-              -188.12109375,
-              854
-            ]
-          },
-          {
-            "id": "24211a0d-4b54-483c-a636-c55ecfc70e0b",
-            "name": "text_1",
-            "type": "STRING",
-            "linkIds": [
-              152
-            ],
-            "pos": [
-              -188.12109375,
-              874
-            ]
-          },
-          {
-            "id": "360b40e4-92ba-4ca2-b83c-f09eda4fe084",
-            "name": "text",
-            "type": "STRING",
-            "linkIds": [
-              147
-            ],
-            "pos": [
-              -188.12109375,
-              894
-            ]
-          },
-          {
-            "id": "e1b2fd7a-34a5-4120-bdaa-f1b0ede6ff2d",
-            "name": "batch_size",
-            "type": "INT",
-            "linkIds": [
-              146
-            ],
-            "pos": [
-              -188.12109375,
-              914
-            ]
-          },
-          {
-            "id": "713f6391-d4ab-4453-82ff-9f36f55923ae",
-            "name": "width",
-            "type": "INT",
-            "linkIds": [],
-            "pos": [
-              -188.12109375,
-              934
-            ]
-          },
-          {
-            "id": "3c1d653d-e6c0-4a33-bde1-170ea5a1bbdb",
-            "name": "height",
-            "type": "INT",
-            "linkIds": [],
-            "pos": [
-              -188.12109375,
-              954
-            ]
-          }
-        ],
-        "outputs": [
-          {
-            "id": "11b121b7-0105-462a-bdb5-44dd023162bc",
-            "name": "IMAGE",
-            "type": "IMAGE",
-            "linkIds": [
-              113
-            ],
-            "localized_name": "IMAGE",
-            "pos": [
-              2679,
-              518
-            ]
-          }
-        ],
-        "widgets": [],
-        "nodes": [
-          {
-            "id": 71,
-            "type": "CLIPLoader",
-            "pos": [
-              320,
-              360
-            ],
-            "size": [
-              310,
-              150
-            ],
-            "flags": {
-              "collapsed": false
-            },
-            "order": 0,
-            "mode": 0,
-            "inputs": [
-              {
-                "localized_name": "CLIP名称",
-                "name": "clip_name",
-                "type": "COMBO",
-                "widget": {
-                  "name": "clip_name"
-                },
-                "link": 140
-              },
-              {
-                "localized_name": "类型",
-                "name": "type",
-                "type": "COMBO",
-                "widget": {
-                  "name": "type"
-                },
-                "link": 141
-              },
-              {
-                "localized_name": "设备",
-                "name": "device",
-                "shape": 7,
-                "type": "COMBO",
-                "widget": {
-                  "name": "device"
-                },
-                "link": 142
-              }
-            ],
-            "outputs": [
-              {
-                "localized_name": "CLIP",
-                "name": "CLIP",
-                "type": "CLIP",
-                "links": [
-                  107,
-                  112
-                ]
-              }
-            ],
-            "properties": {
-              "Node name for S&R": "CLIPLoader",
-              "cnr_id": "comfy-core",
-              "ver": "0.11.0",
-              "enableTabs": false,
-              "tabWidth": 65,
-              "tabXOffset": 10,
-              "hasSecondTab": false,
-              "secondTabText": "Send Back",
-              "secondTabOffset": 80,
-              "secondTabWidth": 65,
-              "models": [
-                {
-                  "name": "qwen_3_06b_base.safetensors",
-                  "url": "https://huggingface.co/circlestone-labs/Anima/resolve/main/split_files/text_encoders/qwen_3_06b_base.safetensors",
-                  "directory": "text_encoders"
-                }
-              ]
-            },
-            "widgets_values": [
-              "qwen_3_06b_base.safetensors",
-              "stable_diffusion",
-              "default"
-            ],
-            "widgets_values_named": {
-              "clip_name": "qwen_3_06b_base.safetensors",
-              "type": "stable_diffusion",
-              "device": "default"
-            }
-          },
-          {
-            "id": 72,
-            "type": "VAELoader",
-            "pos": [
-              330,
-              590
-            ],
-            "size": [
-              310,
-              100
-            ],
-            "flags": {
-              "collapsed": false
-            },
-            "order": 1,
-            "mode": 0,
-            "inputs": [
-              {
-                "localized_name": "vae名称",
-                "name": "vae_name",
-                "type": "COMBO",
-                "widget": {
-                  "name": "vae_name"
-                },
-                "link": 143
-              }
-            ],
-            "outputs": [
-              {
-                "localized_name": "VAE",
-                "name": "VAE",
-                "type": "VAE",
-                "links": [
-                  106
-                ]
-              }
-            ],
-            "properties": {
-              "Node name for S&R": "VAELoader",
-              "cnr_id": "comfy-core",
-              "ver": "0.3.40",
-              "enableTabs": false,
-              "tabWidth": 65,
-              "tabXOffset": 10,
-              "hasSecondTab": false,
-              "secondTabText": "Send Back",
-              "secondTabOffset": 80,
-              "secondTabWidth": 65,
-              "models": [
-                {
-                  "name": "qwen_image_vae.safetensors",
-                  "url": "https://huggingface.co/circlestone-labs/Anima/resolve/main/split_files/vae/qwen_image_vae.safetensors",
-                  "directory": "vae"
-                }
-              ]
-            },
-            "widgets_values": [
-              "qwen_image_vae.safetensors"
-            ],
-            "widgets_values_named": {
-              "vae_name": "qwen_image_vae.safetensors"
-            }
-          },
-          {
-            "id": 73,
-            "type": "VAEDecode",
-            "pos": [
-              2370,
-              210
-            ],
-            "size": [
-              230,
-              50
-            ],
-            "flags": {
-              "collapsed": true
-            },
-            "order": 2,
-            "mode": 0,
-            "inputs": [
-              {
-                "localized_name": "Latent",
-                "name": "samples",
-                "type": "LATENT",
-                "link": 105
-              },
-              {
-                "localized_name": "vae",
-                "name": "vae",
-                "type": "VAE",
-                "link": 106
-              }
-            ],
-            "outputs": [
-              {
-                "localized_name": "图像",
-                "name": "IMAGE",
-                "type": "IMAGE",
-                "slot_index": 0,
-                "links": [
-                  113
-                ]
-              }
-            ],
-            "properties": {
-              "Node name for S&R": "VAEDecode",
-              "cnr_id": "comfy-core",
-              "ver": "0.3.40",
-              "enableTabs": false,
-              "tabWidth": 65,
-              "tabXOffset": 10,
-              "hasSecondTab": false,
-              "secondTabText": "Send Back",
-              "secondTabOffset": 80,
-              "secondTabWidth": 65
-            }
-          },
-          {
-            "id": 74,
-            "type": "EmptyLatentImage",
-            "pos": [
-              330,
-              800
-            ],
-            "size": [
-              310,
-              150
-            ],
-            "flags": {
-              "collapsed": false
-            },
-            "order": 3,
-            "mode": 0,
-            "inputs": [
-              {
-                "localized_name": "宽度",
-                "name": "width",
-                "type": "INT",
-                "widget": {
-                  "name": "width"
-                },
-                "link": 144
-              },
-              {
-                "localized_name": "高度",
-                "name": "height",
-                "type": "INT",
-                "widget": {
-                  "name": "height"
-                },
-                "link": 145
-              },
-              {
-                "localized_name": "批量大小",
-                "name": "batch_size",
-                "type": "INT",
-                "widget": {
-                  "name": "batch_size"
-                },
-                "link": 146
-              }
-            ],
-            "outputs": [
-              {
-                "localized_name": "Latent",
-                "name": "LATENT",
-                "type": "LATENT",
-                "links": [
-                  111
-                ]
-              }
-            ],
-            "properties": {
-              "Node name for S&R": "EmptyLatentImage",
-              "cnr_id": "comfy-core",
-              "ver": "0.3.40",
-              "enableTabs": false,
-              "tabWidth": 65,
-              "tabXOffset": 10,
-              "hasSecondTab": false,
-              "secondTabText": "Send Back",
-              "secondTabOffset": 80,
-              "secondTabWidth": 65
-            },
-            "widgets_values": [
-              1024,
-              1024,
-              1
-            ],
-            "widgets_values_named": {
-              "width": 1024,
-              "height": 1024,
-              "batch_size": 1
-            }
-          },
-          {
-            "id": 75,
-            "type": "CLIPTextEncode",
-            "pos": [
-              720,
-              810
-            ],
-            "size": [
-              490,
-              140
-            ],
-            "flags": {
-              "collapsed": false
-            },
-            "order": 4,
-            "mode": 0,
-            "inputs": [
-              {
-                "localized_name": "clip",
-                "name": "clip",
-                "type": "CLIP",
-                "link": 107
-              },
-              {
-                "localized_name": "文本",
-                "name": "text",
-                "type": "STRING",
-                "widget": {
-                  "name": "text"
-                },
-                "link": 147
-              }
-            ],
-            "outputs": [
-              {
-                "localized_name": "条件",
-                "name": "CONDITIONING",
-                "type": "CONDITIONING",
-                "links": [
-                  110
-                ]
-              }
-            ],
-            "title": "CLIP Text Encode (Negative Prompt)",
-            "properties": {
-              "Node name for S&R": "CLIPTextEncode",
-              "cnr_id": "comfy-core",
-              "ver": "0.3.65",
-              "enableTabs": false,
-              "tabWidth": 65,
-              "tabXOffset": 10,
-              "hasSecondTab": false,
-              "secondTabText": "Send Back",
-              "secondTabOffset": 80,
-              "secondTabWidth": 65
-            },
-            "widgets_values": [
-              "worst quality, low quality, score_1, score_2, score_3, blurry, jpeg artifacts, sepia"
-            ],
-            "widgets_values_named": {
-              "text": "worst quality, low quality, score_1, score_2, score_3, blurry, jpeg artifacts, sepia"
-            },
-            "color": "#223",
-            "bgcolor": "#335"
-          },
-          {
-            "id": 76,
-            "type": "KSampler",
-            "pos": [
-              2040,
-              180
-            ],
-            "size": [
-              300,
-              620
-            ],
-            "flags": {
-              "collapsed": false
-            },
-            "order": 5,
-            "mode": 0,
-            "inputs": [
-              {
-                "localized_name": "模型",
-                "name": "model",
-                "type": "MODEL",
-                "link": 117
-              },
-              {
-                "localized_name": "正面条件",
-                "name": "positive",
-                "type": "CONDITIONING",
-                "link": 109
-              },
-              {
-                "localized_name": "负面条件",
-                "name": "negative",
-                "type": "CONDITIONING",
-                "link": 110
-              },
-              {
-                "localized_name": "Latent图像",
-                "name": "latent_image",
-                "type": "LATENT",
-                "link": 111
-              },
-              {
-                "localized_name": "种子",
-                "name": "seed",
-                "type": "INT",
-                "widget": {
-                  "name": "seed"
-                },
-                "link": 148
-              },
-              {
-                "localized_name": "步数",
-                "name": "steps",
-                "type": "INT",
-                "widget": {
-                  "name": "steps"
-                },
-                "link": 123
-              },
-              {
-                "localized_name": "cfg",
-                "name": "cfg",
-                "type": "FLOAT",
-                "widget": {
-                  "name": "cfg"
-                },
-                "link": 122
-              },
-              {
-                "localized_name": "采样器名称",
-                "name": "sampler_name",
-                "type": "COMBO",
-                "widget": {
-                  "name": "sampler_name"
-                },
-                "link": 149
-              },
-              {
-                "localized_name": "调度器",
-                "name": "scheduler",
-                "type": "COMBO",
-                "widget": {
-                  "name": "scheduler"
-                },
-                "link": 150
-              },
-              {
-                "localized_name": "降噪",
-                "name": "denoise",
-                "type": "FLOAT",
-                "widget": {
-                  "name": "denoise"
-                },
-                "link": 151
-              }
-            ],
-            "outputs": [
-              {
-                "localized_name": "Latent",
-                "name": "LATENT",
-                "type": "LATENT",
-                "slot_index": 0,
-                "links": [
-                  105
-                ]
-              }
-            ],
-            "properties": {
-              "Node name for S&R": "KSampler",
-              "cnr_id": "comfy-core",
-              "ver": "0.3.40",
-              "enableTabs": false,
-              "tabWidth": 65,
-              "tabXOffset": 10,
-              "hasSecondTab": false,
-              "secondTabText": "Send Back",
-              "secondTabOffset": 80,
-              "secondTabWidth": 65
-            },
-            "widgets_values": [
-              755918130909406,
-              "randomize",
-              30,
-              4,
-              "euler",
-              "simple",
-              1
-            ],
-            "widgets_values_named": {
-              "seed": 755918130909406,
-              "control_after_generate": "randomize",
-              "steps": 30,
-              "cfg": 4,
-              "sampler_name": "euler",
-              "scheduler": "simple",
-              "denoise": 1
-            }
-          },
-          {
-            "id": 77,
-            "type": "CLIPTextEncode",
-            "pos": [
-              710,
-              150
-            ],
-            "size": [
-              490,
-              610
-            ],
-            "flags": {
-              "collapsed": false
-            },
-            "order": 6,
-            "mode": 0,
-            "inputs": [
-              {
-                "localized_name": "clip",
-                "name": "clip",
-                "type": "CLIP",
-                "link": 112
-              },
-              {
-                "localized_name": "文本",
-                "name": "text",
-                "type": "STRING",
-                "widget": {
-                  "name": "text"
-                },
-                "link": 152
-              }
-            ],
-            "outputs": [
-              {
-                "localized_name": "条件",
-                "name": "CONDITIONING",
-                "type": "CONDITIONING",
-                "links": [
-                  109
-                ]
-              }
-            ],
-            "title": "CLIP Text Encode (Positive Prompt)",
-            "properties": {
-              "Node name for S&R": "CLIPTextEncode",
-              "cnr_id": "comfy-core",
-              "ver": "0.3.65",
-              "enableTabs": false,
-              "tabWidth": 65,
-              "tabXOffset": 10,
-              "hasSecondTab": false,
-              "secondTabText": "Send Back",
-              "secondTabOffset": 80,
-              "secondTabWidth": 65
-            },
-            "widgets_values": [
-              "Anime monochrome cyberpunk front portrait, male figure, sleek skin with delicate mechanical lines, piercing glowing eyes, partial exposed metallic mecha components and light cables, sharp domineering cool style, textured anime brushwork, faint circuit background, high contrast chiaroscuro lighting, immersive cinematic shadows, ultra fine details, 8K high-def render, futuristic dystopian mood"
-            ],
-            "widgets_values_named": {
-              "text": "Anime monochrome cyberpunk front portrait, male figure, sleek skin with delicate mechanical lines, piercing glowing eyes, partial exposed metallic mecha components and light cables, sharp domineering cool style, textured anime brushwork, faint circuit background, high contrast chiaroscuro lighting, immersive cinematic shadows, ultra fine details, 8K high-def render, futuristic dystopian mood"
-            },
-            "color": "#232",
-            "bgcolor": "#353"
-          },
-          {
-            "id": 78,
-            "type": "UNETLoader",
-            "pos": [
-              330,
-              150
-            ],
-            "size": [
-              310,
-              130
-            ],
-            "flags": {
-              "collapsed": false
-            },
-            "order": 7,
-            "mode": 0,
-            "inputs": [
-              {
-                "localized_name": "UNet名称",
-                "name": "unet_name",
-                "type": "COMBO",
-                "widget": {
-                  "name": "unet_name"
-                },
-                "link": 153
-              },
-              {
-                "localized_name": "数据类型",
-                "name": "weight_dtype",
-                "type": "COMBO",
-                "widget": {
-                  "name": "weight_dtype"
-                },
-                "link": 154
-              }
-            ],
-            "outputs": [
-              {
-                "localized_name": "模型",
-                "name": "MODEL",
-                "type": "MODEL",
-                "links": [
-                  114,
-                  116
-                ]
-              }
-            ],
-            "properties": {
-              "Node name for S&R": "UNETLoader",
-              "cnr_id": "comfy-core",
-              "ver": "0.11.0",
-              "enableTabs": false,
-              "tabWidth": 65,
-              "tabXOffset": 10,
-              "hasSecondTab": false,
-              "secondTabText": "Send Back",
-              "secondTabOffset": 80,
-              "secondTabWidth": 65,
-              "models": [
-                {
-                  "name": "anima-base-v1.0.safetensors",
-                  "url": "https://huggingface.co/circlestone-labs/Anima/resolve/main/split_files/diffusion_models/anima-base-v1.0.safetensors",
-                  "directory": "diffusion_models"
-                }
-              ]
-            },
-            "widgets_values": [
-              "anima-base-v1.0.safetensors",
-              "default"
-            ],
-            "widgets_values_named": {
-              "unet_name": "anima-base-v1.0.safetensors",
-              "weight_dtype": "default"
-            }
-          },
-          {
-            "id": 79,
-            "type": "PrimitiveInt",
-            "pos": [
-              1260,
-              130
-            ],
-            "size": [
-              270,
-              90
-            ],
-            "flags": {
-              "collapsed": false
-            },
-            "order": 8,
-            "mode": 0,
-            "inputs": [
-              {
-                "localized_name": "数值",
-                "name": "value",
-                "type": "INT",
-                "widget": {
-                  "name": "value"
-                },
-                "link": 155
-              }
-            ],
-            "outputs": [
-              {
-                "localized_name": "整数",
-                "name": "INT",
-                "type": "INT",
-                "links": [
-                  118
-                ]
-              }
-            ],
-            "title": "Int (Steps)",
-            "properties": {
-              "Node name for S&R": "PrimitiveInt"
-            },
-            "widgets_values": [
-              30,
-              "fixed"
-            ],
-            "widgets_values_named": {
-              "value": 30,
-              "control_after_generate": "fixed"
-            }
-          },
-          {
-            "id": 81,
-            "type": "PrimitiveInt",
-            "pos": [
-              1260,
-              460
-            ],
-            "size": [
-              270,
-              90
-            ],
-            "flags": {
-              "collapsed": false
-            },
-            "order": 9,
-            "mode": 0,
-            "inputs": [
-              {
-                "localized_name": "数值",
-                "name": "value",
-                "type": "INT",
-                "widget": {
-                  "name": "value"
-                },
-                "link": 156
-              }
-            ],
-            "outputs": [
-              {
-                "localized_name": "整数",
-                "name": "INT",
-                "type": "INT",
-                "links": [
-                  119
-                ]
-              }
-            ],
-            "title": "Int (Steps)",
-            "properties": {
-              "Node name for S&R": "PrimitiveInt"
-            },
-            "widgets_values": [
-              8,
-              "fixed"
-            ],
-            "widgets_values_named": {
-              "value": 8,
-              "control_after_generate": "fixed"
-            }
-          },
-          {
-            "id": 83,
-            "type": "LoraLoaderModelOnly",
-            "pos": [
-              1260,
-              740
-            ],
-            "size": [
-              270,
-              120
-            ],
-            "flags": {
-              "collapsed": false
-            },
-            "order": 10,
-            "mode": 0,
-            "inputs": [
-              {
-                "localized_name": "模型",
-                "name": "model",
-                "type": "MODEL",
-                "link": 114
-              },
-              {
-                "localized_name": "LoRA名称",
-                "name": "lora_name",
-                "type": "COMBO",
-                "widget": {
-                  "name": "lora_name"
-                },
-                "link": 157
-              },
-              {
-                "localized_name": "模型强度",
-                "name": "strength_model",
-                "type": "FLOAT",
-                "widget": {
-                  "name": "strength_model"
-                },
-                "link": 158
-              }
-            ],
-            "outputs": [
-              {
-                "localized_name": "模型",
-                "name": "MODEL",
-                "type": "MODEL",
-                "links": [
-                  115
-                ]
-              }
-            ],
-            "properties": {
-              "Node name for S&R": "LoraLoaderModelOnly",
-              "models": [
-                {
-                  "name": "anima-turbo-lora-v0.2.safetensors",
-                  "url": "https://huggingface.co/circlestone-labs/Anima-Official-LoRAs/resolve/main/anima-turbo-lora-v0.2.safetensors",
-                  "directory": "loras"
-                }
-              ]
-            },
-            "widgets_values": [
-              "anima-turbo-lora-v0.2.safetensors",
-              1
-            ],
-            "widgets_values_named": {
-              "lora_name": "anima-turbo-lora-v0.2.safetensors",
-              "strength_model": 1
-            }
-          },
-          {
-            "id": 84,
-            "type": "ComfySwitchNode",
-            "pos": [
-              1630,
-              270
-            ],
-            "size": [
-              270,
-              130
-            ],
-            "flags": {
-              "collapsed": false
-            },
-            "order": 11,
-            "mode": 0,
-            "inputs": [
-              {
-                "localized_name": "为假时",
-                "name": "on_false",
-                "shape": 7,
-                "type": "MODEL",
-                "link": 116
-              },
-              {
-                "localized_name": "为真时",
-                "name": "on_true",
-                "shape": 7,
-                "type": "MODEL",
-                "link": 115
-              },
-              {
-                "localized_name": "切换",
-                "name": "switch",
-                "type": "BOOLEAN",
-                "widget": {
-                  "name": "switch"
-                },
-                "link": 124
-              }
-            ],
-            "outputs": [
-              {
-                "localized_name": "输出",
-                "name": "output",
-                "type": "MODEL",
-                "links": [
-                  117
-                ]
-              }
-            ],
-            "title": "模型切换",
-            "properties": {
-              "Node name for S&R": "ComfySwitchNode"
-            },
-            "widgets_values": [
-              false
-            ],
-            "widgets_values_named": {
-              "switch": false
-            }
-          },
-          {
-            "id": 85,
-            "type": "ComfySwitchNode",
-            "pos": [
-              1630,
-              460
-            ],
-            "size": [
-              270,
-              130
-            ],
-            "flags": {
-              "collapsed": false
-            },
-            "order": 12,
-            "mode": 0,
-            "inputs": [
-              {
-                "localized_name": "为假时",
-                "name": "on_false",
-                "shape": 7,
-                "type": "INT",
-                "link": 118
-              },
-              {
-                "localized_name": "为真时",
-                "name": "on_true",
-                "shape": 7,
-                "type": "INT",
-                "link": 119
-              },
-              {
-                "localized_name": "切换",
-                "name": "switch",
-                "type": "BOOLEAN",
-                "widget": {
-                  "name": "switch"
-                },
-                "link": 125
-              }
-            ],
-            "outputs": [
-              {
-                "localized_name": "输出",
-                "name": "output",
-                "type": "INT",
-                "links": [
-                  123
-                ]
-              }
-            ],
-            "title": "STEP切换",
-            "properties": {
-              "Node name for S&R": "ComfySwitchNode"
-            },
-            "widgets_values": [
-              false
-            ],
-            "widgets_values_named": {
-              "switch": false
-            }
-          },
-          {
-            "id": 86,
-            "type": "PrimitiveFloat",
-            "pos": [
-              1260,
-              270
-            ],
-            "size": [
-              270,
-              80
-            ],
-            "flags": {
-              "collapsed": false
-            },
-            "order": 13,
-            "mode": 0,
-            "inputs": [
-              {
-                "localized_name": "值",
-                "name": "value",
-                "type": "FLOAT",
-                "widget": {
-                  "name": "value"
-                },
-                "link": 159
-              }
-            ],
-            "outputs": [
-              {
-                "localized_name": "浮点",
-                "name": "FLOAT",
-                "type": "FLOAT",
-                "links": [
-                  120
-                ]
-              }
-            ],
-            "title": "Float (CFG)",
-            "properties": {
-              "Node name for S&R": "PrimitiveFloat"
-            },
-            "widgets_values": [
-              4
-            ],
-            "widgets_values_named": {
-              "value": 4
-            }
-          },
-          {
-            "id": 87,
-            "type": "ComfySwitchNode",
-            "pos": [
-              1630,
-              660
-            ],
-            "size": [
-              270,
-              130
-            ],
-            "flags": {
-              "collapsed": false
-            },
-            "order": 14,
-            "mode": 0,
-            "inputs": [
-              {
-                "localized_name": "为假时",
-                "name": "on_false",
-                "shape": 7,
-                "type": "FLOAT",
-                "link": 120
-              },
-              {
-                "localized_name": "为真时",
-                "name": "on_true",
-                "shape": 7,
-                "type": "FLOAT",
-                "link": 121
-              },
-              {
-                "localized_name": "切换",
-                "name": "switch",
-                "type": "BOOLEAN",
-                "widget": {
-                  "name": "switch"
-                },
-                "link": 126
-              }
-            ],
-            "outputs": [
-              {
-                "localized_name": "输出",
-                "name": "output",
-                "type": "FLOAT",
-                "links": [
-                  122
-                ]
-              }
-            ],
-            "title": "CFG切换",
-            "properties": {
-              "Node name for S&R": "ComfySwitchNode"
-            },
-            "widgets_values": [
-              false
-            ],
-            "widgets_values_named": {
-              "switch": false
-            }
-          },
-          {
-            "id": 88,
-            "type": "PrimitiveFloat",
-            "pos": [
-              1260,
-              600
-            ],
-            "size": [
-              270,
-              80
-            ],
-            "flags": {
-              "collapsed": false
-            },
-            "order": 15,
-            "mode": 0,
-            "inputs": [
-              {
-                "localized_name": "值",
-                "name": "value",
-                "type": "FLOAT",
-                "widget": {
-                  "name": "value"
-                },
-                "link": 160
-              }
-            ],
-            "outputs": [
-              {
-                "localized_name": "浮点",
-                "name": "FLOAT",
-                "type": "FLOAT",
-                "links": [
-                  121
-                ]
-              }
-            ],
-            "title": "Float (CFG)",
-            "properties": {
-              "Node name for S&R": "PrimitiveFloat"
-            },
-            "widgets_values": [
-              1
-            ],
-            "widgets_values_named": {
-              "value": 1
-            }
-          },
-          {
-            "id": 89,
-            "type": "PrimitiveBoolean",
-            "pos": [
-              1261.8501443176483,
-              925.1807873305694
-            ],
-            "size": [
-              270,
-              80
-            ],
-            "flags": {
-              "collapsed": false
-            },
-            "order": 16,
-            "mode": 0,
-            "inputs": [
-              {
-                "localized_name": "值",
-                "name": "value",
-                "type": "BOOLEAN",
-                "widget": {
-                  "name": "value"
-                },
-                "link": 161
-              }
-            ],
-            "outputs": [
-              {
-                "localized_name": "布尔",
-                "name": "BOOLEAN",
-                "type": "BOOLEAN",
-                "links": [
-                  124,
-                  125,
-                  126
-                ]
-              }
-            ],
-            "title": "Lora开关",
-            "properties": {
-              "Node name for S&R": "PrimitiveBoolean"
-            },
-            "widgets_values": [
-              false
-            ],
-            "widgets_values_named": {
-              "value": false
-            }
-          }
-        ],
-        "groups": [
-          {
-            "id": 1,
-            "title": "Load Models",
-            "bounding": [
-              300,
-              60,
-              360,
-              640
-            ],
-            "color": "#3f789e",
-            "flags": {}
-          },
-          {
-            "id": 2,
-            "title": "Image Size(1MP))",
-            "bounding": [
-              300,
-              730,
-              360,
-              240
-            ],
-            "color": "#3f789e",
-            "flags": {}
-          },
-          {
-            "id": 3,
-            "title": "Prompt",
-            "bounding": [
-              690,
-              60,
-              530,
-              910
-            ],
-            "color": "#3f789e",
-            "flags": {}
-          },
-          {
-            "id": 4,
-            "title": "Settings (Full)",
-            "bounding": [
-              1250,
-              60,
-              290,
-              306
-            ],
-            "color": "#3f789e",
-            "flags": {}
-          },
-          {
-            "id": 5,
-            "title": "Settings (Turbo LoRA)",
-            "bounding": [
-              1250,
-              390,
-              300,
-              490
-            ],
-            "color": "#3f789e",
-            "flags": {}
-          }
-        ],
-        "links": [
-          {
-            "id": 105,
-            "origin_id": 76,
-            "origin_slot": 0,
-            "target_id": 73,
-            "target_slot": 0,
-            "type": "LATENT"
-          },
-          {
-            "id": 106,
-            "origin_id": 72,
-            "origin_slot": 0,
-            "target_id": 73,
-            "target_slot": 1,
-            "type": "VAE"
-          },
-          {
-            "id": 107,
-            "origin_id": 71,
-            "origin_slot": 0,
-            "target_id": 75,
-            "target_slot": 0,
-            "type": "CLIP"
-          },
-          {
-            "id": 117,
-            "origin_id": 84,
-            "origin_slot": 0,
-            "target_id": 76,
-            "target_slot": 0,
-            "type": "MODEL"
-          },
-          {
-            "id": 109,
-            "origin_id": 77,
-            "origin_slot": 0,
-            "target_id": 76,
-            "target_slot": 1,
-            "type": "CONDITIONING"
-          },
-          {
-            "id": 110,
-            "origin_id": 75,
-            "origin_slot": 0,
-            "target_id": 76,
-            "target_slot": 2,
-            "type": "CONDITIONING"
-          },
-          {
-            "id": 111,
-            "origin_id": 74,
-            "origin_slot": 0,
-            "target_id": 76,
-            "target_slot": 3,
-            "type": "LATENT"
-          },
-          {
-            "id": 123,
-            "origin_id": 85,
-            "origin_slot": 0,
-            "target_id": 76,
-            "target_slot": 5,
-            "type": "INT"
-          },
-          {
-            "id": 122,
-            "origin_id": 87,
-            "origin_slot": 0,
-            "target_id": 76,
-            "target_slot": 6,
-            "type": "FLOAT"
-          },
-          {
-            "id": 112,
-            "origin_id": 71,
-            "origin_slot": 0,
-            "target_id": 77,
-            "target_slot": 0,
-            "type": "CLIP"
-          },
-          {
-            "id": 114,
-            "origin_id": 78,
-            "origin_slot": 0,
-            "target_id": 83,
-            "target_slot": 0,
-            "type": "MODEL"
-          },
-          {
-            "id": 116,
-            "origin_id": 78,
-            "origin_slot": 0,
-            "target_id": 84,
-            "target_slot": 0,
-            "type": "MODEL"
-          },
-          {
-            "id": 115,
-            "origin_id": 83,
-            "origin_slot": 0,
-            "target_id": 84,
-            "target_slot": 1,
-            "type": "MODEL"
-          },
-          {
-            "id": 124,
-            "origin_id": 89,
-            "origin_slot": 0,
-            "target_id": 84,
-            "target_slot": 2,
-            "type": "BOOLEAN"
-          },
-          {
-            "id": 118,
-            "origin_id": 79,
-            "origin_slot": 0,
-            "target_id": 85,
-            "target_slot": 0,
-            "type": "INT"
-          },
-          {
-            "id": 119,
-            "origin_id": 81,
-            "origin_slot": 0,
-            "target_id": 85,
-            "target_slot": 1,
-            "type": "INT"
-          },
-          {
-            "id": 125,
-            "origin_id": 89,
-            "origin_slot": 0,
-            "target_id": 85,
-            "target_slot": 2,
-            "type": "BOOLEAN"
-          },
-          {
-            "id": 120,
-            "origin_id": 86,
-            "origin_slot": 0,
-            "target_id": 87,
-            "target_slot": 0,
-            "type": "FLOAT"
-          },
-          {
-            "id": 121,
-            "origin_id": 88,
-            "origin_slot": 0,
-            "target_id": 87,
-            "target_slot": 1,
-            "type": "FLOAT"
-          },
-          {
-            "id": 126,
-            "origin_id": 89,
-            "origin_slot": 0,
-            "target_id": 87,
-            "target_slot": 2,
-            "type": "BOOLEAN"
-          },
-          {
-            "id": 113,
-            "origin_id": 73,
-            "origin_slot": 0,
-            "target_id": -20,
-            "target_slot": 0,
-            "type": "IMAGE"
-          },
-          {
-            "id": 140,
-            "origin_id": -10,
-            "origin_slot": 0,
-            "target_id": 71,
-            "target_slot": 0,
-            "type": "COMBO"
-          },
-          {
-            "id": 141,
-            "origin_id": -10,
-            "origin_slot": 1,
-            "target_id": 71,
-            "target_slot": 1,
-            "type": "COMBO"
-          },
-          {
-            "id": 142,
-            "origin_id": -10,
-            "origin_slot": 2,
-            "target_id": 71,
-            "target_slot": 2,
-            "type": "COMBO"
-          },
-          {
-            "id": 143,
-            "origin_id": -10,
-            "origin_slot": 3,
-            "target_id": 72,
-            "target_slot": 0,
-            "type": "COMBO"
-          },
-          {
-            "id": 144,
-            "origin_id": -10,
-            "origin_slot": 4,
-            "target_id": 74,
-            "target_slot": 0,
-            "type": "INT"
-          },
-          {
-            "id": 145,
-            "origin_id": -10,
-            "origin_slot": 5,
-            "target_id": 74,
-            "target_slot": 1,
-            "type": "INT"
-          },
-          {
-            "id": 148,
-            "origin_id": -10,
-            "origin_slot": 6,
-            "target_id": 76,
-            "target_slot": 4,
-            "type": "INT"
-          },
-          {
-            "id": 149,
-            "origin_id": -10,
-            "origin_slot": 7,
-            "target_id": 76,
-            "target_slot": 7,
-            "type": "COMBO"
-          },
-          {
-            "id": 150,
-            "origin_id": -10,
-            "origin_slot": 8,
-            "target_id": 76,
-            "target_slot": 8,
-            "type": "COMBO"
-          },
-          {
-            "id": 153,
-            "origin_id": -10,
-            "origin_slot": 9,
-            "target_id": 78,
-            "target_slot": 0,
-            "type": "COMBO"
-          },
-          {
-            "id": 154,
-            "origin_id": -10,
-            "origin_slot": 10,
-            "target_id": 78,
-            "target_slot": 1,
-            "type": "COMBO"
-          },
-          {
-            "id": 155,
-            "origin_id": -10,
-            "origin_slot": 11,
-            "target_id": 79,
-            "target_slot": 0,
-            "type": "INT"
-          },
-          {
-            "id": 159,
-            "origin_id": -10,
-            "origin_slot": 12,
-            "target_id": 86,
-            "target_slot": 0,
-            "type": "FLOAT"
-          },
-          {
-            "id": 157,
-            "origin_id": -10,
-            "origin_slot": 13,
-            "target_id": 83,
-            "target_slot": 1,
-            "type": "COMBO"
-          },
-          {
-            "id": 156,
-            "origin_id": -10,
-            "origin_slot": 14,
-            "target_id": 81,
-            "target_slot": 0,
-            "type": "INT"
-          },
-          {
-            "id": 158,
-            "origin_id": -10,
-            "origin_slot": 15,
-            "target_id": 83,
-            "target_slot": 2,
-            "type": "FLOAT"
-          },
-          {
-            "id": 160,
-            "origin_id": -10,
-            "origin_slot": 16,
-            "target_id": 88,
-            "target_slot": 0,
-            "type": "FLOAT"
-          },
-          {
-            "id": 161,
-            "origin_id": -10,
-            "origin_slot": 17,
-            "target_id": 89,
-            "target_slot": 0,
-            "type": "BOOLEAN"
-          },
-          {
-            "id": 151,
-            "origin_id": -10,
-            "origin_slot": 18,
-            "target_id": 76,
-            "target_slot": 9,
-            "type": "FLOAT"
-          },
-          {
-            "id": 152,
-            "origin_id": -10,
-            "origin_slot": 19,
-            "target_id": 77,
-            "target_slot": 1,
-            "type": "STRING"
-          },
-          {
-            "id": 147,
-            "origin_id": -10,
-            "origin_slot": 20,
-            "target_id": 75,
-            "target_slot": 1,
-            "type": "STRING"
-          },
-          {
-            "id": 146,
-            "origin_id": -10,
-            "origin_slot": 21,
-            "target_id": 74,
-            "target_slot": 2,
-            "type": "INT"
-          }
-        ],
-        "extra": {}
-      },
-      {
         "id": "c81612e8-2c84-4fb5-870b-3bea2d3c7133",
         "version": 1,
         "state": {
           "lastGroupId": 10,
-          "lastNodeId": 113,
-          "lastLinkId": 209,
+          "lastNodeId": 116,
+          "lastLinkId": 214,
           "lastRerouteId": 0
         },
         "revision": 0,
         "config": {},
-        "name": "Lora LOADEDDDDD",
+        "name": "ANIMA Aesthetic | Native / Creative / Turbo 8-step",
         "inputNode": {
           "id": -10,
           "bounding": [
             -300,
             470,
             135.87890625,
-            528
+            548
           ]
         },
         "outputNode": {
@@ -2599,11 +419,11 @@
             ]
           },
           {
-            "id": "fe48f260-fc73-4bfa-9df9-d683a3c989ce",
-            "name": "lora_name",
-            "type": "COMBO",
+            "id": "b3e3d105-ec6f-4128-ae36-91667e413077",
+            "name": "value_4",
+            "type": "BOOLEAN",
             "linkIds": [
-              197
+              201
             ],
             "pos": [
               -188.12109375,
@@ -2611,11 +431,11 @@
             ]
           },
           {
-            "id": "386453fa-aeaa-460f-aa25-57f4ef664e29",
-            "name": "value_1",
-            "type": "INT",
+            "id": "fe48f260-fc73-4bfa-9df9-d683a3c989ce",
+            "name": "lora_name",
+            "type": "COMBO",
             "linkIds": [
-              198
+              197
             ],
             "pos": [
               -188.12109375,
@@ -2635,11 +455,11 @@
             ]
           },
           {
-            "id": "5188a916-60e1-45e1-9948-b4883b1afd27",
-            "name": "value_3",
-            "type": "FLOAT",
+            "id": "386453fa-aeaa-460f-aa25-57f4ef664e29",
+            "name": "value_1",
+            "type": "INT",
             "linkIds": [
-              200
+              198
             ],
             "pos": [
               -188.12109375,
@@ -2647,11 +467,11 @@
             ]
           },
           {
-            "id": "b3e3d105-ec6f-4128-ae36-91667e413077",
-            "name": "value_4",
-            "type": "BOOLEAN",
+            "id": "5188a916-60e1-45e1-9948-b4883b1afd27",
+            "name": "value_3",
+            "type": "FLOAT",
             "linkIds": [
-              201
+              200
             ],
             "pos": [
               -188.12109375,
@@ -2707,23 +527,15 @@
             ]
           },
           {
-            "id": "713f6391-d4ab-4453-82ff-9f36f55923ae",
-            "name": "width",
-            "type": "INT",
-            "linkIds": [],
+            "id": "7f80d47e-3c60-4be0-872d-17f2ca721a99",
+            "name": "creative_lora_enabled",
+            "type": "BOOLEAN",
+            "linkIds": [
+              214
+            ],
             "pos": [
               -188.12109375,
               934
-            ]
-          },
-          {
-            "id": "3c1d653d-e6c0-4a33-bde1-170ea5a1bbdb",
-            "name": "height",
-            "type": "INT",
-            "linkIds": [],
-            "pos": [
-              -188.12109375,
-              954
             ]
           }
         ],
@@ -2898,7 +710,7 @@
             "id": 96,
             "type": "VAEDecode",
             "pos": [
-              2370,
+              2600,
               210
             ],
             "size": [
@@ -3095,7 +907,7 @@
             "id": 99,
             "type": "KSampler",
             "pos": [
-              2040,
+              2230,
               180
             ],
             "size": [
@@ -3337,7 +1149,8 @@
                 "type": "MODEL",
                 "links": [
                   173,
-                  174
+                  174,
+                  211
                 ]
               }
             ],
@@ -3538,14 +1351,15 @@
             "widgets_values_named": {
               "lora_name": "anima-turbo-lora-v0.2.safetensors",
               "strength_model": 1
-            }
+            },
+            "title": "Turbo 8-step LoRA (acceleration)"
           },
           {
             "id": 105,
             "type": "ComfySwitchNode",
             "pos": [
-              1638.3404357538866,
-              261.6596278781027
+              1900,
+              200
             ],
             "size": [
               270,
@@ -3562,7 +1376,7 @@
                 "name": "on_false",
                 "shape": 7,
                 "type": "MODEL",
-                "link": 174
+                "link": 208
               },
               {
                 "localized_name": "为真时",
@@ -3587,11 +1401,11 @@
                 "name": "output",
                 "type": "MODEL",
                 "links": [
-                  208
+                  209
                 ]
               }
             ],
-            "title": "模型切换",
+            "title": "Turbo 8-step MODEL selector",
             "properties": {
               "Node name for S&R": "ComfySwitchNode"
             },
@@ -3861,7 +1675,7 @@
                 ]
               }
             ],
-            "title": "Lora开关",
+            "title": "Turbo mode (also switches Steps/CFG)",
             "properties": {
               "Node name for S&R": "PrimitiveBoolean"
             },
@@ -3876,8 +1690,8 @@
             "id": 113,
             "type": "LoraLoaderModelOnly",
             "pos": [
-              1641.2473912502446,
-              28.790774635290774
+              1260,
+              -110
             ],
             "size": [
               270,
@@ -3891,7 +1705,7 @@
                 "localized_name": "模型",
                 "name": "model",
                 "type": "MODEL",
-                "link": 208
+                "link": 211
               }
             ],
             "outputs": [
@@ -3900,7 +1714,7 @@
                 "name": "MODEL",
                 "type": "MODEL",
                 "links": [
-                  209
+                  212
                 ]
               }
             ],
@@ -3908,12 +1722,123 @@
               "Node name for S&R": "LoraLoaderModelOnly"
             },
             "widgets_values": [
-              "anima-turbo-lora-v0.2.safetensors",
-              1
+              "anima-base-1-masterpiece-v51.safetensors",
+              0.7
             ],
             "widgets_values_named": {
-              "lora_name": "anima-turbo-lora-v0.2.safetensors",
-              "strength_model": 1
+              "lora_name": "anima-base-1-masterpiece-v51.safetensors",
+              "strength_model": 0.7
+            },
+            "title": "Creative LoRA | independent"
+          },
+          {
+            "id": 115,
+            "type": "PrimitiveBoolean",
+            "pos": [
+              1260,
+              25
+            ],
+            "size": [
+              270,
+              80
+            ],
+            "flags": {
+              "collapsed": false
+            },
+            "order": 16,
+            "mode": 0,
+            "inputs": [
+              {
+                "localized_name": "值",
+                "name": "value",
+                "type": "BOOLEAN",
+                "widget": {
+                  "name": "value"
+                },
+                "link": 214
+              }
+            ],
+            "outputs": [
+              {
+                "localized_name": "布尔",
+                "name": "BOOLEAN",
+                "type": "BOOLEAN",
+                "links": [
+                  213
+                ]
+              }
+            ],
+            "title": "Creative LoRA enabled",
+            "properties": {
+              "Node name for S&R": "PrimitiveBoolean"
+            },
+            "widgets_values": [
+              true
+            ],
+            "widgets_values_named": {
+              "value": false
+            }
+          },
+          {
+            "id": 116,
+            "type": "ComfySwitchNode",
+            "pos": [
+              1610,
+              45
+            ],
+            "size": [
+              270,
+              130
+            ],
+            "flags": {
+              "collapsed": false
+            },
+            "order": 11,
+            "mode": 0,
+            "inputs": [
+              {
+                "localized_name": "为假时",
+                "name": "on_false",
+                "shape": 7,
+                "type": "MODEL",
+                "link": 174
+              },
+              {
+                "localized_name": "为真时",
+                "name": "on_true",
+                "shape": 7,
+                "type": "MODEL",
+                "link": 212
+              },
+              {
+                "localized_name": "切换",
+                "name": "switch",
+                "type": "BOOLEAN",
+                "widget": {
+                  "name": "switch"
+                },
+                "link": 213
+              }
+            ],
+            "outputs": [
+              {
+                "localized_name": "输出",
+                "name": "output",
+                "type": "MODEL",
+                "links": [
+                  208
+                ]
+              }
+            ],
+            "title": "Creative LoRA ON/OFF",
+            "properties": {
+              "Node name for S&R": "ComfySwitchNode"
+            },
+            "widgets_values": [
+              false
+            ],
+            "widgets_values_named": {
+              "switch": false
             }
           }
         ],
@@ -4064,7 +1989,7 @@
             "id": 174,
             "origin_id": 101,
             "origin_slot": 0,
-            "target_id": 105,
+            "target_id": 116,
             "target_slot": 0,
             "type": "MODEL"
           },
@@ -4139,6 +2064,22 @@
             "target_id": -20,
             "target_slot": 0,
             "type": "IMAGE"
+          },
+          {
+            "id": 208,
+            "origin_id": 116,
+            "origin_slot": 0,
+            "target_id": 105,
+            "target_slot": 0,
+            "type": "MODEL"
+          },
+          {
+            "id": 209,
+            "origin_id": 105,
+            "origin_slot": 0,
+            "target_id": 99,
+            "target_slot": 0,
+            "type": "MODEL"
           },
           {
             "id": 184,
@@ -4245,20 +2186,20 @@
             "type": "FLOAT"
           },
           {
-            "id": 197,
+            "id": 201,
             "origin_id": -10,
             "origin_slot": 13,
+            "target_id": 110,
+            "target_slot": 0,
+            "type": "BOOLEAN"
+          },
+          {
+            "id": 197,
+            "origin_id": -10,
+            "origin_slot": 14,
             "target_id": 104,
             "target_slot": 1,
             "type": "COMBO"
-          },
-          {
-            "id": 198,
-            "origin_id": -10,
-            "origin_slot": 14,
-            "target_id": 103,
-            "target_slot": 0,
-            "type": "INT"
           },
           {
             "id": 199,
@@ -4269,20 +2210,20 @@
             "type": "FLOAT"
           },
           {
-            "id": 200,
+            "id": 198,
             "origin_id": -10,
             "origin_slot": 16,
+            "target_id": 103,
+            "target_slot": 0,
+            "type": "INT"
+          },
+          {
+            "id": 200,
+            "origin_id": -10,
+            "origin_slot": 17,
             "target_id": 109,
             "target_slot": 0,
             "type": "FLOAT"
-          },
-          {
-            "id": 201,
-            "origin_id": -10,
-            "origin_slot": 17,
-            "target_id": 110,
-            "target_slot": 0,
-            "type": "BOOLEAN"
           },
           {
             "id": 202,
@@ -4317,20 +2258,36 @@
             "type": "INT"
           },
           {
-            "id": 208,
-            "origin_id": 105,
+            "id": 211,
+            "origin_id": 101,
             "origin_slot": 0,
             "target_id": 113,
             "target_slot": 0,
             "type": "MODEL"
           },
           {
-            "id": 209,
+            "id": 212,
             "origin_id": 113,
             "origin_slot": 0,
-            "target_id": 99,
-            "target_slot": 0,
+            "target_id": 116,
+            "target_slot": 1,
             "type": "MODEL"
+          },
+          {
+            "id": 213,
+            "origin_id": 115,
+            "origin_slot": 0,
+            "target_id": 116,
+            "target_slot": 2,
+            "type": "BOOLEAN"
+          },
+          {
+            "id": 214,
+            "origin_id": -10,
+            "origin_slot": 22,
+            "target_id": 115,
+            "target_slot": 0,
+            "type": "BOOLEAN"
           }
         ],
         "extra": {}
@@ -4346,10 +2303,10 @@
     "VHS_MetadataImage": true,
     "VHS_KeepIntermediate": true,
     "ds": {
-      "scale": 0.6648572059500087,
+      "scale": 0.58,
       "offset": [
-        369.3037362146469,
-        376.54288128366085
+        230,
+        250
       ]
     }
   },
