@@ -1,15 +1,15 @@
 {
   "id": "03eee4e1-33c6-45a8-836d-8ded3b7b424e",
   "revision": 0,
-  "last_node_id": 23,
-  "last_link_id": 14,
+  "last_node_id": 24,
+  "last_link_id": 16,
   "nodes": [
     {
       "id": 1,
       "type": "UNETLoader",
       "pos": [
-        40,
-        40
+        298.75525695037834,
+        6.716143049621564
       ],
       "size": [
         320,
@@ -33,11 +33,11 @@
         "Node name for S&R": "UNETLoader"
       },
       "widgets_values": [
-        "anima-aesthetic-v1.1.safetensors",
+        "anima-base-v1.0.safetensors",
         "default"
       ],
       "widgets_values_named": {
-        "unet_name": "anima-aesthetic-v1.1.safetensors",
+        "unet_name": "anima-base-v1.0.safetensors",
         "weight_dtype": "default"
       }
     },
@@ -45,8 +45,8 @@
       "id": 2,
       "type": "CLIPLoader",
       "pos": [
-        40,
-        170
+        298.75525695037834,
+        136.71614304962156
       ],
       "size": [
         320,
@@ -85,8 +85,8 @@
       "id": 3,
       "type": "VAELoader",
       "pos": [
-        40,
-        320
+        298.75525695037834,
+        286.71614304962156
       ],
       "size": [
         320,
@@ -154,7 +154,7 @@
           "type": "MODEL",
           "slot_index": 0,
           "links": [
-            6
+            15
           ]
         }
       ],
@@ -182,12 +182,12 @@
       "id": 9,
       "type": "CLIPTextEncode",
       "pos": [
-        756.1547861640244,
-        -261.68874101542775
+        740.397145672192,
+        -42.90081598879428
       ],
       "size": [
-        420,
-        296
+        227.96120383522722,
+        230.06256103515625
       ],
       "flags": {},
       "order": 6,
@@ -218,18 +218,20 @@
       ],
       "widgets_values_named": {
         "text": "masterpiece, best quality, high quality anime illustration, solo, one adult woman, mature feminine proportions, closed eyes, calm peaceful expression,\n\na quiet adult woman sitting beside a very large panoramic side window inside a modern Japanese commuter train, seated naturally on a long passenger seat, relaxed posture, hands resting gently on her lap, body angled slightly toward the window, long hair falling naturally over her shoulders and beside the seat,\n\npreserve the character identity, face, hair, ears, horns, sailor uniform and legwear from the reference image, but make the character slightly smaller in the composition so the environment becomes important, complete head, complete ears, complete horns, complete upper body, lap and knees visible,\n\nwide cinematic composition, the character placed on the right side of the frame occupying about one third of the image, the panoramic side window and the exterior city view occupying most of the image, clear relationship between character, seat, window frame and outside scenery,\n\ninside a clean modern Japanese commuter train, elegant seat design, clear window frame, subtle interior paneling, believable train wall surfaces, refined seat cushions, coherent perspective, visible lower wall vent and interior structure, simple and realistic train interior details,\n\noutside the window: a vast fictional Japanese-inspired romantic metropolis seen from an elevated railway, richly layered mid-rise city blocks, dense residential and commercial districts, clearly separated middle-distance building groups, distant high-rise skyline, scattered warm city windows, luminous atmospheric depth, refined architectural silhouettes, visible urban layering, believable building volumes, no empty blur, no abstract texture field,\n\nlate twilight transitioning into early blue hour, indigo-blue city atmosphere, soft violet-blue ambient light, pale rose and lavender evening sky near the horizon, delicate separated evening cloud bands, warm city lights beginning to glow, subtle reflected cool light from the window softly illuminating the character and train interior,\n\nsophisticated cinematic anime background art, refined animated-film environment painting, detailed architectural drawing, clear atmospheric perspective, delicate painterly depth, controlled glass reflections, beautiful modern urban romanticism, serene dreamlike everyday mood, strong sense of place, strong environment quality, harmonious integration of character and scene"
-      }
+      },
+      "color": "#232",
+      "bgcolor": "#353"
     },
     {
       "id": 10,
       "type": "CLIPTextEncode",
       "pos": [
-        742.970182560692,
-        145.1768673943706
+        735.2483366356208,
+        258.3041463083887
       ],
       "size": [
-        438.532492897727,
-        248.69022314930027
+        236.05789855957033,
+        212.38743041992188
       ],
       "flags": {},
       "order": 7,
@@ -260,14 +262,16 @@
       ],
       "widgets_values_named": {
         "text": "worst quality, low quality, lowres, blurry, soft focus, smeared background, muddy details, abstract city texture, shapeless buildings, melted architecture, repetitive building noise, unreadable skyline, empty exterior, flat blue background, washed out cityscape, low-detail scenery,\n\nmultiple characters, extra character, duplicate character, collage, multiple views, split screen, character sheet, standing pose, floating pose, distorted seated pose, bad sitting anatomy, twisted legs, fused legs, extra limbs, missing limbs, bad hands, extra fingers, malformed body, broken proportions,\n\ncropped head, cropped ears, cropped horns, missing ears, missing horns, duplicate ears, duplicate horns, deformed face, asymmetrical face, open eyes, wrong expression,\n\nwrong outfit, incorrect sailor uniform, wrong color scheme, missing neckerchief, exposed midriff, bare waist, unintended bodysuit, wrong stockings, missing pantyhose, wrong socks, random leg accessories, fantasy armor parts,\n\nfantasy cape, floating mechanical ring, staff, weapon, large fantasy ornaments, decorative halo, giant sci-fi structures attached to the character,\n\nsecond railway outside the window, parallel railway tracks, excessive elevated highways, road interchange, front windshield view, driver perspective, countryside, rural railway, cyberpunk neon, dystopian city, giant mushroom cloud, over-orange sunset, midday lighting,\n\nphotorealistic rendering, 3d cgi, plastic shading, childish cartoon, flat storybook scenery, poor train perspective, malformed window frame, duplicated reflections, reflected duplicate face, text, watermark, logo, signature"
-      }
+      },
+      "color": "#332922",
+      "bgcolor": "#593930"
     },
     {
       "id": 20,
       "type": "EmptyLatentImage",
       "pos": [
-        760,
-        460
+        762.6666564941406,
+        480.66668701171875
       ],
       "size": [
         420,
@@ -313,13 +317,13 @@
         280.9958618164062
       ],
       "flags": {},
-      "order": 9,
+      "order": 10,
       "mode": 0,
       "inputs": [
         {
           "name": "model",
           "type": "MODEL",
-          "link": 6
+          "link": 16
         },
         {
           "name": "positive",
@@ -351,18 +355,18 @@
         "Node name for S&R": "KSampler"
       },
       "widgets_values": [
-        1070465197304739,
+        420863973810996,
         "randomize",
-        80,
+        60,
         4.5,
         "er_sde",
         "simple",
         1
       ],
       "widgets_values_named": {
-        "seed": 1070465197304739,
+        "seed": 420863973810996,
         "control_after_generate": "randomize",
-        "steps": 80,
+        "steps": 60,
         "cfg": 4.5,
         "sampler_name": "er_sde",
         "scheduler": "simple",
@@ -381,7 +385,7 @@
         50
       ],
       "flags": {},
-      "order": 10,
+      "order": 11,
       "mode": 0,
       "inputs": [
         {
@@ -423,7 +427,7 @@
       "flags": {
         "collapsed": false
       },
-      "order": 11,
+      "order": 12,
       "mode": 0,
       "inputs": [
         {
@@ -443,10 +447,10 @@
         "Node name for S&R": "SaveImage"
       },
       "widgets_values": [
-        "ersde_S60C4.5_0.9-0.8"
+        "ersde_S60C4.5_0.9-0.8LORA1.0"
       ],
       "widgets_values_named": {
-        "filename_prefix": "ersde_S60C4.5_0.9-0.8"
+        "filename_prefix": "ersde_S60C4.5_0.9-0.8LORA1.0"
       }
     },
     {
@@ -468,10 +472,10 @@
       "title": "How to use",
       "properties": {},
       "widgets_values": [
-        "\n## 记得改名\n\n# er_sde+simple对应建筑\n\n# 1.8MP=1792*1008\n# 1.0MP\t1360×768\t\n# 1.3MP\t1536×864\t\n# 1.5MP\t约 1632×912\t\t\n# 2.0MP\t约 1888×1056\t\n# 2.36MP 2048×1152\n\n\n1029420174235775\n957452313466548\n1070301962178338\n624953497604917\n\n## 跨实例使用提醒（2026-11-17）\n- LoadImage 参考图位置已改为 UPLOAD_REFERENCE_IMAGE.png 占位名称；这是提示，不是自带图片。进入新实例后须主动在 LoadImage 重新上传或选择真实参考图，才可以 Queue。工作流 JSON 不携带原图片。\n- 本次实测画布当前为 ANIMA Aesthetic v1.1 + Ref Adapter v2，输出 1792×1008、80 steps / CFG 4.5 / er_sde + simple；原文件名 S30 是历史命名，不代表目前参数。\n- Ref Adapter 作者的验证底模为 ANIMA Base v1.0；Aesthetic v1.1 与此适配器组合并非作者已验证的等价方案，按实际输出判断。\n- 在 Vast 新实例需 images-anima 与 images-anima-ref 的资产组合；上传图、模型文件、工作流 JSON 是不同资产。旧文件名可能在其他用户工作流或浏览器状态仍存在，本文件不会删除任何历史图片。"
+        "\n## 记得改名\n\n# er_sde+simple对应建筑\n\n# 1.8MP=1792*1008\n# 1.0MP\t1360×768\t\n# 1.3MP\t1536×864\t\n# 1.5MP\t约 1632×912\t\t\n# 2.0MP\t约 1888×1056\t\n# 2.36MP 2048×1152\n\n\n1029420174235775\n957452313466548\n1070301962178338\n624953497604917"
       ],
       "widgets_values_named": {
-        "text": "\n## 记得改名\n\n# er_sde+simple对应建筑\n\n# 1.8MP=1792*1008\n# 1.0MP\t1360×768\t\n# 1.3MP\t1536×864\t\n# 1.5MP\t约 1632×912\t\t\n# 2.0MP\t约 1888×1056\t\n# 2.36MP 2048×1152\n\n\n1029420174235775\n957452313466548\n1070301962178338\n624953497604917\n\n## 跨实例使用提醒（2026-11-17）\n- LoadImage 参考图位置已改为 UPLOAD_REFERENCE_IMAGE.png 占位名称；这是提示，不是自带图片。进入新实例后须主动在 LoadImage 重新上传或选择真实参考图，才可以 Queue。工作流 JSON 不携带原图片。\n- 本次实测画布当前为 ANIMA Aesthetic v1.1 + Ref Adapter v2，输出 1792×1008、80 steps / CFG 4.5 / er_sde + simple；原文件名 S30 是历史命名，不代表目前参数。\n- Ref Adapter 作者的验证底模为 ANIMA Base v1.0；Aesthetic v1.1 与此适配器组合并非作者已验证的等价方案，按实际输出判断。\n- 在 Vast 新实例需 images-anima 与 images-anima-ref 的资产组合；上传图、模型文件、工作流 JSON 是不同资产。旧文件名可能在其他用户工作流或浏览器状态仍存在，本文件不会删除任何历史图片。"
+        "text": "\n## 记得改名\n\n# er_sde+simple对应建筑\n\n# 1.8MP=1792*1008\n# 1.0MP\t1360×768\t\n# 1.3MP\t1536×864\t\n# 1.5MP\t约 1632×912\t\t\n# 2.0MP\t约 1888×1056\t\n# 2.36MP 2048×1152\n\n\n1029420174235775\n957452313466548\n1070301962178338\n624953497604917"
       },
       "color": "#432",
       "bgcolor": "#653"
@@ -509,12 +513,54 @@
         "Node name for S&R": "LoadImage"
       },
       "widgets_values": [
-        "UPLOAD_REFERENCE_IMAGE.png",
+        "S.45-ersde-W_S219876224999112.png",
         "image"
       ],
       "widgets_values_named": {
-        "image": "UPLOAD_REFERENCE_IMAGE.png",
+        "image": "S.45-ersde-W_S219876224999112.png",
         "upload": "image"
+      }
+    },
+    {
+      "id": 24,
+      "type": "LoraLoaderModelOnly",
+      "pos": [
+        981.4114135212359,
+        130.4181278940506
+      ],
+      "size": [
+        225,
+        122.11553400213069
+      ],
+      "flags": {},
+      "order": 9,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 15
+        }
+      ],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            16
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LoraLoaderModelOnly"
+      },
+      "widgets_values": [
+        "anima-base-1-masterpiece-v51.safetensors",
+        1
+      ],
+      "widgets_values_named": {
+        "lora_name": "anima-base-1-masterpiece-v51.safetensors",
+        "strength_model": 1
       }
     }
   ],
@@ -550,14 +596,6 @@
       10,
       0,
       "CLIP"
-    ],
-    [
-      6,
-      4,
-      0,
-      15,
-      0,
-      "MODEL"
     ],
     [
       7,
@@ -614,6 +652,22 @@
       4,
       2,
       "IMAGE"
+    ],
+    [
+      15,
+      4,
+      0,
+      24,
+      0,
+      "MODEL"
+    ],
+    [
+      16,
+      24,
+      0,
+      15,
+      0,
+      "MODEL"
     ]
   ],
   "groups": [],
@@ -622,8 +676,8 @@
     "ds": {
       "scale": 0.8264462809917354,
       "offset": [
-        -441.80361172369294,
-        346.41124282832743
+        -306.2439209286847,
+        277.7452939310118
       ]
     },
     "frontendVersion": "1.57.6"
