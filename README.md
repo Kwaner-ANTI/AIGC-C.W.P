@@ -4,6 +4,18 @@
 
 **这是可公开访问的轻量部署仓库，不需要 GitHub Pages，也不需要为克隆仓库配置 GitHub Token。** GPU 上实际模型下载仍受 Hugging Face 原作者访问条件、网络和实例空间约束。
 
+## 2026-11-18 · Vast H3 RTX5090 Pruned INT8 / NVFP4 / LightX2V
+
+新增独立 H3 路线，保留旧 Full INT8 和 BF16 文本配置，不覆盖历史画布：
+
+- Vast Template `PROVISIONING_SCRIPT=https://raw.githubusercontent.com/Kwaner-ANTI/AIGC-C.W.P/main/scripts/vast_h3_pruned_int8_nvfp4_lightx2v_provision.sh`。
+- 与现有 Vast H3 模板相符时设置 `AIW_COMFY_DIR=/workspace/ComfyUI`、`AIW_PYTHON=/venv/main/bin/python`、`AIW_ASSETS_ROOT=/workspace/aiworkbench-assets`，否则用本次实例真实路径。
+- 恢复脚本仅执行 `h3-ref2va-pruned-int8-nvfp4`、`h3-audio`、`h3-lightx2v-ref2va8`，下载 Pruned Ref2VA INT8 DiT、NVFP4-AWQ Qwen3-VL 32B、H3 Video/Audio VAE及LightX2V Ref2VA 8step v1.1。不顺带下载Full DiT、BF16/INT8文本。
+- 配套可视画布：`workflows/vast/h3_ref2va_pruned_int8_nvfp4_lightx2v8.json`。沿用现有39节点Power LoRA与三个Switch；预设LoRA行ON、Acceleration Boolean ON、Euler/Simple/8、video/audio shift12/3、参考缩放match、0.5MP/约5s/24fps。**这是AIWorkbench自定义JSON，不是LightX2V官方原版。**
+- 新JSON不包含原私有Prompt/素材名；参考图和Prompt均为明确占位符。导入后必须重新上传真实图片、填写Prompt；同名用户工作流不被自动覆盖。
+- Boolean OFF + 所有LoRA行OFF时恢复的是 **Pruned原生20-step**，不是Full版本。旧Full+BF16需独立工作流与已下载权重。
+- 当前Pruned+LightX2V尚未在本次RTX5090 GPU完成真实MP4；加载时留意AdaLN等LoRA不匹配和显存卸载。新脚本不装Long Video、不启动第二个ComfyUI。Vast Destroy前保存重要MP4/Seed/Prompt/Atlas。
+
 ## 2026-11-17 · ANIMA 实测画布模板更新
 
 - `workflows/vast/Vast.ANIMA-TEXT.json`：已用用户 2026-11-17 提交的 `Aesthic.T2I-3.json` 替换。主输出为 ANIMA Aesthetic v1.1、`er_sde + simple`、40 Steps / CFG 4、16:9 的 2.4 MP ResolutionSelector，Turbo 开关默认关闭。画布另有 **未连接输出** 的实验子图，内部包含额外直接串联的 LoRA Loader；它不代表默认主输出可启用第二层 LoRA，亦不应当作已验证的生成路径。原子图名称含 Base v1.0，不要仅凭名称确定实际底模。
