@@ -1,0 +1,21 @@
+{
+  "description": "MiniMax H3 Ref2VA Pruned INT8 ConvRot DiT + Qwen3-VL 32B NVFP4-AWQ text encoder + Video VAE; RTX5090 candidate; without Full/BF16/INT8 text weights.",
+  "models": [
+    {
+      "repo": "Comfy-Org/MiniMax-H3",
+      "source": "diffusion_models/minimax_h3_ref2va_pruned_int8_convrot.safetensors",
+      "target": "diffusion_models/minimax_h3_ref2va_pruned_int8_convrot.safetensors"
+    },
+    {
+      "repo": "Comfy-Org/MiniMax-H3",
+      "source": "text_encoders/qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors",
+      "target": "text_encoders/qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors"
+    },
+    {
+      "repo": "Comfy-Org/MiniMax-H3",
+      "source": "vae/minimax_h3_video_vae_fp16.safetensors",
+      "target": "vae/minimax_h3_video_vae_fp16.safetensors"
+    }
+  ],
+  "nodes": []
+}
