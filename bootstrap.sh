@@ -4,7 +4,7 @@ set -euo pipefail
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PROFILE="${1:-}"
 if [[ -z "$PROFILE" ]]; then
-  echo 'Usage: bash bootstrap.sh images-krea2-turbo | images-civitai-loras [--download name1,name2] | images-krea2-personal-loras [--archive PATH] [--download mrpopo,shiiro] | images-anima | images-anima-ref | images-moss | images-moss-edit | images-flux2-dev | h3-int8-int8 | h3-int8-bf16 | h3-audio | h3-controlnet-int8 | h3-controlnet-bf16 | vlm' >&2
+  echo 'Usage: bash bootstrap.sh images-krea2-turbo | images-civitai-loras [--download name1,name2] | images-krea2-personal-loras [--archive PATH] [--download mrpopo,shiiro] | images-anima | images-anima-ref | images-moss | images-moss-edit | images-flux2-dev | h3-int8-int8 | h3-ref2va-pruned-int8-nvfp4 | h3-int8-bf16 | h3-audio | h3-controlnet-int8 | h3-controlnet-bf16 | vlm' >&2
   exit 2
 fi
 
