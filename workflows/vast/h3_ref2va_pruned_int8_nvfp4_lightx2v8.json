@@ -133,7 +133,7 @@
       "flags": {
         "collapsed": false
       },
-      "order": 28,
+      "order": 36,
       "mode": 0,
       "inputs": [
         {
@@ -176,7 +176,7 @@
       "flags": {
         "collapsed": false
       },
-      "order": 27,
+      "order": 35,
       "mode": 0,
       "inputs": [
         {
@@ -209,8 +209,8 @@
       "id": 123,
       "type": "KSamplerSelect",
       "pos": [
-        53.38144003193796,
-        5176.148700031215
+        33.503793580910916,
+        5186.5196184843335
       ],
       "size": [
         370,
@@ -253,7 +253,7 @@
         140
       ],
       "flags": {},
-      "order": 26,
+      "order": 34,
       "mode": 0,
       "inputs": [
         {
@@ -315,7 +315,7 @@
         60
       ],
       "flags": {},
-      "order": 25,
+      "order": 32,
       "mode": 0,
       "inputs": [
         {
@@ -348,8 +348,8 @@
       "id": 127,
       "type": "UNETLoader",
       "pos": [
-        -1560.7276156316116,
-        4949.666518207314
+        -1564.6235278979973,
+        5144.462161250026
       ],
       "size": [
         640,
@@ -469,11 +469,11 @@
         "Node name for S&R": "RandomNoise"
       },
       "widgets_values": [
-        42,
+        554981382827619,
         "randomize"
       ],
       "widgets_values_named": {
-        "noise_seed": 42,
+        "noise_seed": 554981382827619,
         "control_after_generate": "randomize"
       }
     },
@@ -481,8 +481,8 @@
       "id": 131,
       "type": "ComfyMathExpression",
       "pos": [
-        -1470.6843939033176,
-        6833.618535282689
+        -1248.9974437197582,
+        6740.1650606455205
       ],
       "size": [
         225,
@@ -491,7 +491,7 @@
       "flags": {
         "collapsed": true
       },
-      "order": 22,
+      "order": 26,
       "mode": 0,
       "inputs": [
         {
@@ -542,8 +542,8 @@
       "id": 140,
       "type": "MarkdownNote",
       "pos": [
-        -1880,
-        6070
+        -2234.4098016144103,
+        6647.454503060581
       ],
       "size": [
         445,
@@ -569,8 +569,8 @@
       "id": 143,
       "type": "PrimitiveInt",
       "pos": [
-        -730,
-        5090
+        32.43534043896718,
+        5486.428357870398
       ],
       "size": [
         270,
@@ -608,12 +608,12 @@
       "id": 144,
       "type": "PrimitiveInt",
       "pos": [
-        -730,
-        5220
+        -713.5793131793732,
+        6166.173557792111
       ],
       "size": [
-        270,
-        90
+        210,
+        105.55637767967619
       ],
       "flags": {},
       "order": 9,
@@ -647,11 +647,11 @@
       "id": 146,
       "type": "PrimitiveBoolean",
       "pos": [
-        -1470.6843939033176,
-        6333.618535282689
+        -1224.7678944850597,
+        6078.273928179778
       ],
       "size": [
-        270,
+        447.5201171875,
         70
       ],
       "flags": {},
@@ -688,8 +688,8 @@
       "id": 116,
       "type": "MarkdownNote",
       "pos": [
-        -2321.433219468683,
-        4891.013986585402
+        -2350.0919389038286,
+        5654.708365702983
       ],
       "size": [
         460,
@@ -707,9 +707,7 @@
       ],
       "widgets_values_named": {
         "text": "# Mode controls\n- Default 8-step: LightX2V Power Loader row ON and Acceleration Boolean ON. Euler + Simple 8 steps, video/audio shift 12/3.\n- Fallback Pruned native 20-step: ALL LoRA rows OFF and Acceleration Boolean OFF. `res_multistep + beta + 20 steps`.\n- Boolean switches MODEL, SAMPLER and SIGMAS but does NOT toggle LoRA row. Both controls must agree.\n- Pruned native fallback remains Pruned, not Full. Import the separate historical Full workflow for Full/BF16 production quality comparison.\n- Shift 12/3 is a candidate configuration for Ref2VA 8-step v1.1, not a validated best setting."
-      },
-      "color": "#222",
-      "bgcolor": "#000"
+      }
     },
     {
       "id": 124,
@@ -723,7 +721,7 @@
         130
       ],
       "flags": {},
-      "order": 23,
+      "order": 24,
       "mode": 0,
       "inputs": [
         {
@@ -769,15 +767,15 @@
       "id": 130,
       "type": "CreateVideo",
       "pos": [
-        330,
-        5650
+        241.24228356700684,
+        6093.788819536444
       ],
       "size": [
         270,
         174
       ],
       "flags": {},
-      "order": 29,
+      "order": 37,
       "mode": 0,
       "inputs": [
         {
@@ -825,15 +823,15 @@
       "id": 92,
       "type": "SaveVideo",
       "pos": [
-        859.4687589182879,
-        5434.637933498171
+        -435.17999621348747,
+        6380.383977646875
       ],
       "size": [
-        512.71875,
-        383.93930288461536
+        391.72464863107996,
+        428.8798967655713
       ],
       "flags": {},
-      "order": 30,
+      "order": 38,
       "mode": 0,
       "inputs": [
         {
@@ -870,8 +868,8 @@
       "id": 148,
       "type": "GetVideoComponents",
       "pos": [
-        395.85486385509614,
-        6496.413676512639
+        441.6597273150877,
+        6468.757841221773
       ],
       "size": [
         225,
@@ -929,15 +927,15 @@
       "id": 155,
       "type": "ImageScaleToTotalPixels",
       "pos": [
-        400.6825733090958,
-        6267.616381523334
+        725.8746387686186,
+        6349.863343822315
       ],
       "size": [
         270,
         114
       ],
       "flags": {},
-      "order": 21,
+      "order": 25,
       "mode": 0,
       "inputs": [
         {
@@ -973,15 +971,15 @@
       "id": 136,
       "type": "MiniMaxH3ReferenceToVideo",
       "pos": [
-        -601.1928792138979,
-        5953.475130589712
+        -1630.9049088875854,
+        6214.672027283236
       ],
       "size": [
         400,
-        384
+        364
       ],
       "flags": {},
-      "order": 24,
+      "order": 29,
       "mode": 0,
       "inputs": [
         {
@@ -1010,12 +1008,6 @@
         },
         {
           "name": "ref_images.ref_image_1",
-          "shape": 7,
-          "type": "IMAGE",
-          "link": 346
-        },
-        {
-          "name": "ref_images.ref_image_2",
           "shape": 7,
           "type": "IMAGE",
           "link": null
@@ -1126,12 +1118,12 @@
       "id": 115,
       "type": "ResolutionSelector",
       "pos": [
-        -1614.2667572980652,
-        6507.238977196193
+        -1125.236591518206,
+        6546.160064409101
       ],
       "size": [
-        409.25,
-        190
+        210,
+        177.9005423888102
       ],
       "flags": {},
       "order": 13,
@@ -1162,12 +1154,12 @@
       },
       "widgets_values": [
         "16:9 (Widescreen)",
-        0.5,
+        0.9,
         32
       ],
       "widgets_values_named": {
         "aspect_ratio": "16:9 (Widescreen)",
-        "megapixels": 0.5,
+        "megapixels": 0.9,
         "multiple": 32
       },
       "color": "#322",
@@ -1177,12 +1169,12 @@
       "id": 132,
       "type": "PrimitiveFloat",
       "pos": [
-        -1805.749929505601,
-        7161.880272920805
+        -1127.6648836555294,
+        6703.392014484738
       ],
       "size": [
-        340.96875,
-        264.15625
+        210,
+        58
       ],
       "flags": {},
       "order": 14,
@@ -1216,12 +1208,12 @@
       "id": 138,
       "type": "PrimitiveStringMultiline",
       "pos": [
-        -2569.2641209477483,
-        6705.78148742894
+        -1120.666891529567,
+        6172.568401131934
       ],
       "size": [
-        583.03125,
-        922.125
+        346.0678451988301,
+        335.46807040329077
       ],
       "flags": {},
       "order": 15,
@@ -1255,12 +1247,12 @@
       "id": 192,
       "type": "LoadImage",
       "pos": [
-        -904.8704100589201,
-        6580.612520069199
+        -775.7838687755408,
+        6489.316885976182
       ],
       "size": [
-        270,
-        314
+        288.0705876827519,
+        326
       ],
       "flags": {},
       "order": 16,
@@ -1298,8 +1290,8 @@
       "id": 193,
       "type": "LoadImage",
       "pos": [
-        -474.47729425455105,
-        6668.765326920693
+        -797.9212041289583,
+        6930.987033312909
       ],
       "size": [
         270,
@@ -1313,9 +1305,7 @@
         {
           "name": "IMAGE",
           "type": "IMAGE",
-          "links": [
-            346
-          ]
+          "links": []
         },
         {
           "name": "MASK",
@@ -1349,7 +1339,7 @@
         545
       ],
       "flags": {},
-      "order": 0,
+      "order": 18,
       "mode": 0,
       "inputs": [],
       "outputs": [],
@@ -1376,7 +1366,7 @@
         650
       ],
       "flags": {},
-      "order": 0,
+      "order": 19,
       "mode": 0,
       "inputs": [],
       "outputs": [],
@@ -1403,7 +1393,7 @@
         635
       ],
       "flags": {},
-      "order": 0,
+      "order": 20,
       "mode": 0,
       "inputs": [],
       "outputs": [],
@@ -1430,7 +1420,7 @@
         645
       ],
       "flags": {},
-      "order": 0,
+      "order": 21,
       "mode": 0,
       "inputs": [],
       "outputs": [],
@@ -1449,25 +1439,33 @@
       "id": 201,
       "type": "Power Lora Loader (rgthree)",
       "pos": [
-        -840,
-        4780
+        -33.22892383108573,
+        6372.152077641577
       ],
       "size": [
-        620,
-        240
+        359.3296875,
+        229.62908154688375
       ],
       "flags": {},
-      "order": 25,
+      "order": 23,
       "mode": 0,
       "inputs": [
         {
+          "dir": 3,
           "name": "model",
           "type": "MODEL",
           "link": 352
+        },
+        {
+          "dir": 3,
+          "name": "clip",
+          "type": "CLIP",
+          "link": null
         }
       ],
       "outputs": [
         {
+          "dir": 4,
           "name": "MODEL",
           "type": "MODEL",
           "links": [
@@ -1476,6 +1474,7 @@
           ]
         },
         {
+          "dir": 4,
           "name": "CLIP",
           "type": "CLIP",
           "links": []
@@ -1483,11 +1482,14 @@
       ],
       "title": "LoRA Library · creative + LightX2V (toggle rows)",
       "properties": {
-        "cnr_id": "rgthree-comfy",
-        "Show Strengths": "Single Strength"
+        "aux_id": "rgthree/rgthree-comfy",
+        "ver": "bc48c6aaeca87bedbc14245d89f9bc6be37a630e",
+        "Show Strengths": "Single Strength",
+        "Match": "",
+        "cnr_id": "rgthree-comfy"
       },
       "widgets_values": [
-        null,
+        {},
         {
           "type": "PowerLoraLoaderHeaderWidget"
         },
@@ -1503,23 +1505,43 @@
           "strength": 1,
           "strengthTwo": null
         },
-        null,
+        {},
         ""
-      ]
+      ],
+      "widgets_values_named": {
+        "divider": {},
+        "PowerLoraLoaderHeaderWidget": {
+          "type": "PowerLoraLoaderHeaderWidget"
+        },
+        "lora_1": {
+          "on": false,
+          "lora": null,
+          "strength": 0.7,
+          "strengthTwo": null
+        },
+        "lora_2": {
+          "on": true,
+          "lora": "minimax_h3_ref2v_turbo_8step_v1.1_768p_comfyui_bf16.safetensors",
+          "strength": 1,
+          "strengthTwo": null
+        },
+        "divider#2": {},
+        "➕ Add Lora": ""
+      }
     },
     {
       "id": 202,
       "type": "MiniMaxH3SigmaShift",
       "pos": [
-        -470,
-        4750
+        -238.06072411189342,
+        6232.086870929415
       ],
       "size": [
-        400,
-        100
+        289.9380859375,
+        108.81530442229814
       ],
       "flags": {},
-      "order": 25,
+      "order": 28,
       "mode": 0,
       "inputs": [
         {
@@ -1540,26 +1562,32 @@
       ],
       "title": "LightX2V Ref2VA shift video12/audio3",
       "properties": {
-        "cnr_id": "comfy-core"
+        "cnr_id": "comfy-core",
+        "ver": "0.44.0",
+        "Node name for S&R": "MiniMaxH3SigmaShift"
       },
       "widgets_values": [
         12,
         3
-      ]
+      ],
+      "widgets_values_named": {
+        "shift_video": 12,
+        "shift_audio": 3
+      }
     },
     {
       "id": 203,
       "type": "BasicScheduler",
       "pos": [
-        -100,
-        4820
+        -468.1676446475765,
+        6229.148782188798
       ],
       "size": [
-        360,
-        120
+        210,
+        124.32118964752226
       ],
       "flags": {},
-      "order": 25,
+      "order": 31,
       "mode": 0,
       "inputs": [
         {
@@ -1570,6 +1598,9 @@
         {
           "name": "steps",
           "type": "INT",
+          "widget": {
+            "name": "steps"
+          },
           "link": 359
         }
       ],
@@ -1584,27 +1615,34 @@
       ],
       "title": "LightX2V simple 8 step",
       "properties": {
-        "cnr_id": "comfy-core"
+        "cnr_id": "comfy-core",
+        "ver": "0.44.0",
+        "Node name for S&R": "BasicScheduler"
       },
       "widgets_values": [
         "simple",
         8,
         1
-      ]
+      ],
+      "widgets_values_named": {
+        "scheduler": "simple",
+        "steps": 8,
+        "denoise": 1
+      }
     },
     {
       "id": 204,
       "type": "KSamplerSelect",
       "pos": [
-        -80,
-        5050
+        -715.116708099759,
+        6333.703792831226
       ],
       "size": [
-        300,
-        65
+        210,
+        97.84121539359603
       ],
       "flags": {},
-      "order": 25,
+      "order": 22,
       "mode": 0,
       "inputs": [],
       "outputs": [
@@ -1618,40 +1656,50 @@
       ],
       "title": "LightX2V Euler",
       "properties": {
-        "cnr_id": "comfy-core"
+        "cnr_id": "comfy-core",
+        "ver": "0.44.0",
+        "Node name for S&R": "KSamplerSelect"
       },
       "widgets_values": [
         "euler"
-      ]
+      ],
+      "widgets_values_named": {
+        "sampler_name": "euler"
+      }
     },
     {
       "id": 205,
       "type": "ComfySwitchNode",
       "pos": [
-        290,
-        4840
+        587.4726176983282,
+        4763.946611197782
       ],
       "size": [
         430,
         130
       ],
       "flags": {},
-      "order": 25,
+      "order": 27,
       "mode": 0,
       "inputs": [
         {
           "name": "on_false",
+          "shape": 7,
           "type": "SAMPLER",
           "link": 363
         },
         {
           "name": "on_true",
+          "shape": 7,
           "type": "SAMPLER",
           "link": 364
         },
         {
           "name": "switch",
           "type": "BOOLEAN",
+          "widget": {
+            "name": "switch"
+          },
           "link": 368
         }
       ],
@@ -1666,7 +1714,9 @@
       ],
       "title": "Mode selects sampler: Native RES / LightX Euler",
       "properties": {
-        "cnr_id": "comfy-core"
+        "cnr_id": "comfy-core",
+        "ver": "0.44.0",
+        "Node name for S&R": "ComfySwitchNode"
       },
       "widgets_values": [
         true
@@ -1687,22 +1737,27 @@
         130
       ],
       "flags": {},
-      "order": 25,
+      "order": 30,
       "mode": 0,
       "inputs": [
         {
           "name": "on_false",
+          "shape": 7,
           "type": "MODEL",
           "link": 353
         },
         {
           "name": "on_true",
+          "shape": 7,
           "type": "MODEL",
           "link": 355
         },
         {
           "name": "switch",
           "type": "BOOLEAN",
+          "widget": {
+            "name": "switch"
+          },
           "link": 366
         }
       ],
@@ -1717,7 +1772,9 @@
       ],
       "title": "Mode selects model: native / LightX shift",
       "properties": {
-        "cnr_id": "comfy-core"
+        "cnr_id": "comfy-core",
+        "ver": "0.44.0",
+        "Node name for S&R": "ComfySwitchNode"
       },
       "widgets_values": [
         true
@@ -1730,30 +1787,35 @@
       "id": 207,
       "type": "ComfySwitchNode",
       "pos": [
-        300,
-        5250
+        554.9517716804082,
+        5353.709184531168
       ],
       "size": [
         430,
         130
       ],
       "flags": {},
-      "order": 25,
+      "order": 33,
       "mode": 0,
       "inputs": [
         {
           "name": "on_false",
+          "shape": 7,
           "type": "SIGMAS",
           "link": 360
         },
         {
           "name": "on_true",
+          "shape": 7,
           "type": "SIGMAS",
           "link": 361
         },
         {
           "name": "switch",
           "type": "BOOLEAN",
+          "widget": {
+            "name": "switch"
+          },
           "link": 367
         }
       ],
@@ -1768,7 +1830,9 @@
       ],
       "title": "Mode selects SIGMAS: beta20 / simple8",
       "properties": {
-        "cnr_id": "comfy-core"
+        "cnr_id": "comfy-core",
+        "ver": "0.44.0",
+        "Node name for S&R": "ComfySwitchNode"
       },
       "widgets_values": [
         true
@@ -1868,94 +1932,6 @@
       "IMAGE"
     ],
     [
-      261,
-      132,
-      0,
-      131,
-      0,
-      "FLOAT"
-    ],
-    [
-      260,
-      130,
-      0,
-      92,
-      0,
-      "VIDEO"
-    ],
-    [
-      272,
-      128,
-      0,
-      136,
-      0,
-      "CLIP"
-    ],
-    [
-      273,
-      119,
-      0,
-      136,
-      1,
-      "VAE"
-    ],
-    [
-      274,
-      120,
-      0,
-      136,
-      2,
-      "VAE"
-    ],
-    [
-      345,
-      192,
-      0,
-      136,
-      3,
-      "IMAGE"
-    ],
-    [
-      346,
-      193,
-      0,
-      136,
-      4,
-      "IMAGE"
-    ],
-    [
-      279,
-      138,
-      0,
-      136,
-      11,
-      "STRING"
-    ],
-    [
-      276,
-      115,
-      0,
-      136,
-      12,
-      "INT"
-    ],
-    [
-      277,
-      115,
-      1,
-      136,
-      13,
-      "INT"
-    ],
-    [
-      275,
-      131,
-      1,
-      136,
-      14,
-      "INT"
-    ],
-    [
       347,
       121,
       0,
@@ -2010,22 +1986,6 @@
       203,
       0,
       "MODEL"
-    ],
-    [
-      358,
-      143,
-      0,
-      124,
-      1,
-      "INT"
-    ],
-    [
-      359,
-      144,
-      0,
-      203,
-      1,
-      "INT"
     ],
     [
       360,
@@ -2098,6 +2058,102 @@
       205,
       2,
       "BOOLEAN"
+    ],
+    [
+      261,
+      132,
+      0,
+      131,
+      0,
+      "FLOAT"
+    ],
+    [
+      260,
+      130,
+      0,
+      92,
+      0,
+      "VIDEO"
+    ],
+    [
+      358,
+      143,
+      0,
+      124,
+      1,
+      "INT"
+    ],
+    [
+      359,
+      144,
+      0,
+      203,
+      1,
+      "INT"
+    ],
+    [
+      272,
+      128,
+      0,
+      136,
+      0,
+      "CLIP"
+    ],
+    [
+      273,
+      119,
+      0,
+      136,
+      1,
+      "VAE"
+    ],
+    [
+      274,
+      120,
+      0,
+      136,
+      2,
+      "VAE"
+    ],
+    [
+      345,
+      192,
+      0,
+      136,
+      3,
+      "IMAGE"
+    ],
+    [
+      279,
+      138,
+      0,
+      136,
+      10,
+      "STRING"
+    ],
+    [
+      276,
+      115,
+      0,
+      136,
+      11,
+      "INT"
+    ],
+    [
+      277,
+      115,
+      1,
+      136,
+      12,
+      "INT"
+    ],
+    [
+      275,
+      131,
+      1,
+      136,
+      13,
+      "INT"
     ]
   ],
   "groups": [
@@ -2153,8 +2209,8 @@
       "id": 5,
       "title": "User Inputs",
       "bounding": [
-        -1500.6843939033176,
-        6253.618535282689,
+        -1454.8795304433281,
+        6225.962699991823,
         2190,
         1090
       ],
@@ -2177,10 +2233,10 @@
   "config": {},
   "extra": {
     "ds": {
-      "scale": 0.7713878029380689,
+      "scale": 0.8485265832318781,
       "offset": [
-        490.9987937230229,
-        -5224.137216991338
+        1086.1218916540836,
+        -5935.080023651025
       ]
     },
     "frontendVersion": "1.57.6",
